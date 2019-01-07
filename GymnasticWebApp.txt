@@ -1,0 +1,437 @@
+
+Conversation opened. 3 messages. All messages read.
+
+Skip to content
+Using Gmail with screen readers
+in:sent 
+
+2 of 1,267
+gymnastic BDD + Database Relationships
+
+ajinkya dravid
+AttachmentsThu, Jan 3, 4:13 PM (2 days ago)
+based on my understanding, first draft
+
+ajinkya dravid
+AttachmentsThu, Jan 3, 6:28 PM (2 days ago)
+uodated
+
+ajinkya dravid <ajinkyameister@gmail.com>
+Attachments
+Fri, Jan 4, 6:27 PM (1 day ago)
+to Amod, ajinkyameistergithub
+
+updated with tables
+
+Attachments area
+
+G Db
+
+Req
+
+User is associated with two institutes.
+
+Each institute has students associated with User.
+
+User should be able to see the list of students under each institute.
+
+User should be able to see the list of students as per the batch timing.
+
+User should be able to update the student attendance for both the institutes.
+
+User should be able to see if the fees(monthly/quarterly/half-yearly/yearly) are paid
+
+User should be able to add Institute
+
+User should be able to add students
+
+User should be able to create new batch 
+
+User should be able to change the tuition fees
+
+User should be able to see the total of tuition fees collected per institute
+
+User should be able to update the tuition fee status (paid/not paid)
+
+User should be able to send the tuition fee receipt to Parents through automated mail
+
+User should be able to send the student attendance to Parents through automated mail
+
+
+
+
+
+
+
+	??Feature: User Registration 
+
+		What is the feature: This is the registration form for the web application
+		who will benefit: the administrator will 
+		why this feature is required: in order to have a access for the web application
+
+		Scenario: Registration
+
+			Given User Visits the Homepage
+			Then  User should see Registration Form
+			When  User enters the details 
+			And   User clicks the submit button
+			Then  User registers
+-------------------------------------------------------------------------------
+	Feature: User Login		
+	(Note: user can be stored in a database directly as it is a single user application)
+
+		What is the feature: This is the Login form for the web application
+		who will benefit: the administrator will 
+		why this feature is required: in order to have a access formr the web application
+
+
+		Scenario: Login
+
+			Given User Visits the Homepage
+			Then  User should see Login Form
+			
+			When  User enters the details 
+			And   User clicks the submit button
+			Then  User Logs In
+			And   User is redirected to Dashboard	
+-------------------------------------------------------------------------------			
+	Feature: Student list (Location: Institute Dashboard)
+
+		What is the feature: 			
+			This is the List of students for each institute
+
+		who will benefit: 				
+			the administrator 
+
+		why this feature is required:	
+			in order to see the number of students and coaching batch for each student, fees paid or not (monthly/quarterly/half-yearly/yearly)
+
+		Scenario: User selects the institute to see the list of students under the institute
+
+			Given User has selected the institute
+
+			Then  User should see the list of students
+
+-------------------------------------------------------------------------------
+	
+	Feature: Add Institute	(Location: Admin Dashboard)
+		what is the feature:
+			The feature adds the institute
+		who will benefit:
+			The Admin
+		why this feature is required:
+			in future if coaching is carried out at more institutes		
+
+		Scenario: User wants to add an institute
+
+			Given User clicks the Add Institute Button
+
+			Then  User should see Institute Form
+
+		Scenario: User Enters the Details
+
+			When  User enters the institute details
+
+			And   User Clicks the submit button
+
+			Then  Institute is added
+
+-------------------------------------------------------------------------------
+	
+	Feature: Add Batch	(Location: Institute Dashboard)
+		what is the feature:
+			The feature adds the batch
+		who will benefit:
+			The Admin
+		why this feature is required:
+			in future if number of batches increase		
+
+		Scenario: User wants to add a batch
+
+			Given User clicks the Add batch Button
+
+			Then  User should see batch Form
+
+		Scenario: User Enters the Details
+
+			When  User enters the batch details
+
+			And   User Clicks the submit button
+
+			Then  Batch is added
+
+-------------------------------------------------------------------------------
+	
+	Feature: Add Student	(Location: Institute Dashboard)
+		what is the feature:
+			The feature adds the student
+		who will benefit:
+			The Admin
+		why this feature is required:
+			in future if number of students increase		
+
+		Scenario: User wants to add a student
+
+			Given User clicks the Add student Button
+
+			Then  User should see student Form
+
+		Scenario:	User Enters the Details
+
+			When  User enters the student details
+
+			And   User Clicks the submit button
+
+			Then  student is added
+
+-------------------------------------------------------------------------------
+	
+	Feature: Add Tuition Fees	(Location: Institute Dashboard)
+		what is the feature:
+			The feature adds the Tuition Fees
+		who will benefit:
+			The Admin
+		why this feature is required:
+			in future if Tuition Fees changes
+
+		Scenario: User wants to add a Tuition Fees
+
+			Given User clicks the Add Tuition Fees
+
+			Then  User should see Tuition Fees Form
+
+		Scenario:	User Enters the Details
+
+			When  User enters the Tuition Fees details
+
+			And   User Clicks the submit button
+
+			Then  Tuition Fees is added
+
+-------------------------------------------------------------------------------
+	
+	Feature: Student Profile	(Location: Student List)
+		what is the feature:
+			The feature shows the student details
+		who will benefit:
+			The Admin
+		why this feature is required:
+			the feature shows student details, fees paid, attendance, level : beginner/advance etc., photo, age etc.
+
+		Scenario: User wants to view student profile
+
+			Given User clicks the Student
+
+			Then  User should see Student Profile
+
+------------------------------------------------------------------------------------------------
+
+	Feature: View Attendance ( Location:Student list )
+
+		what is the feature:
+			The feature shows the weekly student attendance
+
+		who will benefit:
+			The admin
+
+		why this feature is required:
+			in order to keep track of student attenadance and generate monthly attendance report	
+
+		Scenario: User selects the student profile
+		
+			Given User selected a student profile
+
+			Then User should see the weekly attendance of selected student
+
+		Scenario: User sees the weekly attendance on Institute Dashboard
+
+			Given User selects the Institute
+
+			And   User selects the batch
+
+			Then  User should see the Weekly attendance of all the students for the selected batch
+
+
+---------------------------------------------------------------------------------------------------
+
+	Feature: Mark Attendance ( Location:Student list )
+
+		what is the feature:
+			The feature allows User to mark the daily student attendance
+
+		who will benefit:
+			The admin
+
+		why this feature is required:
+			In order to Mark student attenadance and calculate Attendance %
+
+	
+		Scenario:  User unchecks the absent student
+		
+			Given  User Selects the Batch 
+
+			And    Student is absent
+
+			Then   User unchecks the student for that day of the week	
+
+---------------------------------------------------------------------------------------------------
+	Feature: Send Attendance Email
+
+		what is the feature:
+			The feature allows User to send automated email to the registered email address
+
+		who will benefit:
+			The admin
+
+		why this feature is required:
+			This will reduce the admin effort to update individual parent about the respective student attendance
+
+	 	Scenario: Send automated attendance email on pre decided date
+	 	
+	 		Given  User has selected the date
+
+	 		Then   Automated Email is Sent to the registered email address				 					 
+
+---------------------------------------------------------------------------------------------------
+	Feature:  Attendance in Automated Email with respective Student Name
+
+		what is the feature:
+			The feature allows User to attach student attendance to the automated email with student Name
+
+		who will benefit:
+			The admin
+
+		why this feature is required:
+			This will reduce the admin effort to attach individual student attendance in automated email
+
+	 	Scenario: on Pre decided date of the month
+	 	
+	 		Given  User has calculated %attendace
+
+	 		And    Automated Email is sent
+
+	 		Then   User should see Student %attendance in the mail
+
+---------------------------------------------------------------------------------------------------
+
+	Feature: Calendar (Location: Institute Dashboard)
+
+		What is the Feature: 
+			The feature displays the calendar 
+
+		Who will benefit :
+			The Admin
+
+		why the feature is required:
+			The User will be able to access the attendance of any particular batch on any date			
+			 		
+		Scenario: Parent asks User, Student's attendance on a particular day
+
+			Given User selects  Institute (Auto filled),Month, Date, Batch Time
+
+			And Clicks Submit Button
+
+			Then User should see the Student Attendance for that batch
+
+
+-----------------------XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX---------------------------------
+
+
+-----------------------------DATABASE RELATIONSHIPS-----------------------------------------------------------
+
+One User has Many Institutes
+One Institute Belongs to One User
+
+One Institute has many Batches
+One Batch belongs to One Institute
+
+//xxxxxxxOne Batch Has Many Students
+//xxxxxxxOne Student Belongs to Many Batches
+
+//One Month has Many Days
+//One Day Belongs To Many Months
+
+//One Batch has Many Days
+//One Day belongsToMany Batches
+
+One Batch has Many Students
+One Student belongs to One Batch
+
+One Student has One Fee
+One Fee belongsToMany Students
+
+One Student has Many Attendance
+One Attendance belongs To One Student
+
+xxxxxxxxxxxOne Student has Many Age-groups
+
+xxxxxxxxxxxOne Age-group belongs to Many Students
+
+xxxxxxxxxxxOne Age-group has one Fee
+
+--------------------------------------------------TABLES------------------------------------------------------
+User
+ID|Name
+1 | Pep Guardiola
+
+Institute
+ID|User_id|Name             |ContactDetails
+1 |1      |Symbi Institute  |1223
+2 |1      |ManCity Institute|0000
+
+Month
+ID|Name
+1 |January
+2 |Feb
+3 |Mar
+4 |Apr
+
+
+//Days
+ID|Name 
+1 |Monday    
+2 |Tuesday
+
+
+//Batch Time:
+//ID|Time
+//1 | 6 AM
+//2 | 7 AM
+
+14  | 8 PM 
+
+Batch
+ID|Institute_id|//Day_Id |//Batch_Time
+1 |1           |   1   |  6AM    
+2 |2           |   2   |  3PM
+3 |1           |   3   |  10AM
+4 |2           |   2   |  6AM
+5 |1           |   1   |  6PM 
+
+
+Students
+ID|Name  |//Institute_id|Batch_Id|EmailID  |Phone_Number |Attendance %
+1 |amruta| 2          | 2      |am@am.com| 123
+2 |reeya | 1          | 1      |reeya@am.com| 243
+3 |pandya| 2          | 4      |pandya@p.com|555
+
+Fees 
+ID| Student_Id | Month_Id | Amount
+1 |  2         | 3        | 2000   
+2 |  1         | 2        | 2100
+
+
+//Attendance NOT APPLICABLE
+ID|name
+1 | Present
+2 | Absent
+
+Attendance
+ID|Student_Id|Date    |Present
+1 |27        |mm-dd-yy|1
+2 |
+
+
+
+GymBDD.txt
+Displaying GymBDD.txt.
