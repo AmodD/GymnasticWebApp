@@ -337,7 +337,7 @@ User should be able to send the student attendance to Parents through automated 
 -----------------------XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX---------------------------------
 
 
------------------------------DATABASE RELATIONSHIPS-----------------------------------------------------------
+-----------------------------DATABASE RELATIONSHIPS--------------------------------------
 
 One User has Many Institutes
 One Institute Belongs to One User
