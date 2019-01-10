@@ -9,24 +9,28 @@
 	<link href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.2/css/bulma.css" rel="stylesheet">
 </head>
 <body>
+	<div class="section">
+		<form action="/users" method="POST">
+			{{csrf_field()}}
 
-	<form >
-		<a class="button is-dark is-pulled-right has-text-white" style="margin-left: 30px;margin-right: 10px">Login</a>		
-		
-		<div class="field  is-pulled-right" >
-			<div class="control">
-				<input id="password" class="input is-primary has-text-grey" type="text" value="password" 
-					style="margin-left: 20px"> 
+			<div class="columns is-pulled-right">
+				<div class="field" >
+					<div class="control">
+						<input id="username" name ="username"class="input is-primary has-text-grey" type="text" value="username"> 
+					</div>
 			</div>
+
+				<div class="field" >
+					<div class="control">
+						<input type ="password" id="password" class="input is-primary has-text-grey" type="text" value="password"> 
+					</div>
+				</div>
+
+				<button class="button is-dark  has-text-white" type="submit" style="margin-left: 10px" >Login</buton>
+				</div>
+
+			</form>
 		</div>
 
-		<div class="field  is-pulled-right" >
-			<div class="control">
-				<input id="username" name ="username"class="input is-primary has-text-grey" type="text" value="username"> 
-			</div>
-		</div>
-
-	</form>
-
-</body>
-</html>
+	</body>
+	</html>

@@ -93,11 +93,14 @@
                     <a href="https://github.com/laravel/laravel">GitHub</a>
                 </div>
             </div>
+<<<<<<< HEAD
             <form action="hello/home">
             <input id="Username" type="" name="Username" placeholder="Username" value="Username"></input>
             <input id="Password" type="" name="Password" placeholder="Password" value="Password"></input>
             <button id="Login" type="submit"> Login </button>
         </form>
+=======
+>>>>>>> f598e01219ac696a3112514966046886cc42b67d
         </div>
     </body>
 </html>

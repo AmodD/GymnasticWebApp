@@ -8,7 +8,9 @@ use Behat\Behat\Context\SnippetAcceptingContext;
 #This will be needed if you require "behat/mink-selenium2-driver"
 #use Behat\Mink\Driver\Selenium2Driver;
 use Behat\MinkExtension\Context\MinkContext;
+
 use PHPUnit_Framework_Assert as PHPUnit;
+
 //
 /**
  * Defines application features from the specific context.
