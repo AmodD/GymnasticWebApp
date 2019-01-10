@@ -18,6 +18,7 @@ class CreateStudentsTable extends Migration
             $table->unsignedInteger('batch_id');
             $table->string('name');
             $table->text('email');
+            $table->string('level');
             $table->unsignedInteger('attendance');
             $table->timestamps();
         });

@@ -3,12 +3,15 @@
 use App\Student;
 use Faker\Generator as Faker;
 
-// $batchId=[1,2,3,4];
 
-// $factory->define(App\Student::class, function (Faker $faker) {
-//     return [
-//         'batch_id'=>array_rand($batchId,1);
-//         'name'=>$faker->name,
-//         'email'=>$faker->unique()->safeEmail,
-//     ];
-// });
+$factory->define(App\Student::class, function (Faker $faker) {
+
+	$level=['beginner','intermediate','advanced'];
+    return [
+        'name'=>$faker->name,
+        'email'=>$faker->unique()->safeEmail,
+        'level'=> array_rand($level,1),
+        'attendance'=>100
+
+    ];
+});

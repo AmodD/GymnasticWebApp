@@ -10,7 +10,7 @@ class UserSeeder extends Seeder
     /**
      * Run the database seeds.
      *
-     * @return void
+     * @return 
      */
     public function run()
     {
@@ -21,9 +21,18 @@ class UserSeeder extends Seeder
         	foreach ($institutes as $institute) {
         		$user->institutes()->save($institute);
 
-                factory(App\Batch::class,4)->create(['institute_id'=>$institute->id]);
+                $batches= factory(App\Batch::class,4)->create(
+                           ['institute_id'=>$institute->id]
+                );
 
-        	}
+                foreach ($batches as $batch) {
+                        factory(App\Student::class,100)->create(
+                           ['batch_id'=>$batch->id]
+                );       
+                    }	
+
+            }
+
 
 
         	
