@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use App\User;
 
 class UserController extends Controller
 {
@@ -13,7 +15,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        //
+        dd("hello user");
     }
 
     /**
@@ -32,9 +34,17 @@ class UserController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request,User $user)
     {
-        //
+        $users = $user->all();
+
+        foreach ($users as $admin) {        
+        
+            if ($request->username === $admin->name) return view('dashboard',compact('admin')); 
+        
+        }
+        
+        return "not authorized id for this web app";
     }
 
     /**

@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Seeder;
 
+
 class DatabaseSeeder extends Seeder
 {
     /**
@@ -11,7 +12,28 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        $this->call(UserSeeder::class);
-        $this->call(InstituteSeeder::class);
-    }
+     DB::table('users')->insert([
+        ['name' => 'Ajinkya',
+        'email' => 'ajinkyameister@gmail.comp',
+        'email_verified_at' => now(),
+        'password' => Hash::make('abc'), 
+        ],
+
+        ['name' => 'Amod',
+        'email' => 'amod.d.kulkarni@gmail.com',
+        'email_verified_at' => now(),
+        'password' => Hash::make('abc'),
+        ],
+
+        ['name' => 'Admin',
+        'email' => 'admin@gmail.com',
+        'email_verified_at' => now(),
+        'password' => Hash::make('abc'),
+        ]
+    ]);
+
+     $this->call(UserSeeder::class);
+        // $this->call(InstituteSeeder::class);
+
+ }
 }
