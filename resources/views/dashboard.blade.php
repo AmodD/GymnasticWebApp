@@ -9,7 +9,9 @@
 	<link href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.2/css/bulma.css" rel="stylesheet">
 </head>
 <body>
-		Hello, {{$admin->name}}
+		
+			Hello, {{$admin->name}}
+
 
 	<div class="section">
 		<div class="columns is-mobile is-multiline">

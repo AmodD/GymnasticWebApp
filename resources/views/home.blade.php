@@ -16,21 +16,19 @@
 			<div class="columns is-pulled-right">
 				<div class="field" >
 					<div class="control">
-						<input id="username" name ="username"class="input is-primary has-text-grey" type="text" value="username"> 
+						<input id="username" name ="username"class="input is-primary has-text-grey" type="text" placeholder ="username"> 
 					</div>
 			</div>
 
-				<div class="field" >
-					<div class="control">
-						<input type ="password" id="password" class="input is-primary has-text-grey" type="text" value="password"> 
-					</div>
+			<div class="field" >
+				<div class="control">
+					<input id="password" class="input is-primary has-text-grey" placeholder="password"> 
 				</div>
+			</div>
 
-				<button class="button is-dark  has-text-white" type="submit" style="margin-left: 10px" >Login</buton>
-				</div>
-
+			<button class="button is-dark  has-text-white" type="submit" style="margin-left: 10px">
+				Login</buton>
 			</form>
 		</div>
-
 	</body>
 	</html>

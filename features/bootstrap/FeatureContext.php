@@ -10,6 +10,9 @@ use Behat\Behat\Context\SnippetAcceptingContext;
 use Behat\MinkExtension\Context\MinkContext;
 
 use PHPUnit_Framework_Assert as PHPUnit;
+use Laracasts\Behat\Context\Migrator;
+use Laracasts\Behat\Context\DatabaseTransactions;
+
 
 //
 /**
@@ -24,6 +27,10 @@ class FeatureContext extends MinkContext implements Context,SnippetAcceptingCont
      * You can also pass arbitrary arguments to the
      * context constructor through behat.yml.
      */
+    use Migrator, DatabaseTransactions;
+
+    protected $usertable;
+
     public function __construct()
     {
     }
@@ -98,5 +105,34 @@ class FeatureContext extends MinkContext implements Context,SnippetAcceptingCont
     public function iShouldSeeError($arg1)
     {
         throw new PendingException();
+    }
+
+    /**
+     * @Given I have the following users
+     */
+    public function iHaveTheFollowingUsers(TableNode $table)
+    {
+        $this->usertable = $table;
+    }
+
+    /**
+     * @Given I fill in :username :password
+     */
+    public function iFillIn($username, $password)
+    {
+        foreach($this->usertable as $user){
+
+            if($this->fillField('username',$user['username'])){
+
+                dd($user['username']);
+
+                if($this->fillField('password',$user['password'])){
+
+                    PHPUnit::assertTrue(true);
+                }
+
+                PHPUnit::assertTrue(false);
+            }
+        }        
     }
 }

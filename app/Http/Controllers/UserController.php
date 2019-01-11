@@ -36,15 +36,20 @@ class UserController extends Controller
      */
     public function store(Request $request,User $user)
     {
+       
+
         $users = $user->all();
 
-        foreach ($users as $admin) {        
+        foreach ($users as $admin) {       
         
-            if ($request->username === $admin->name) return view('dashboard',compact('admin')); 
-        
+            if ($request->username === $admin->name) 
+            return view('dashboard',compact('admin'));         
+                
         }
         
-        return "not authorized id for this web app";
+        // return redirect('/');
+
+        return "credentials not matched";
     }
 
     /**
