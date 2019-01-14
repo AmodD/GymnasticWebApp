@@ -20,6 +20,6 @@ Route::get('/', function () {
 });
 
 Route::resource('users', 'UserController');
-Auth::routes();
+Auth::routes(['register' => false]);
 
 //Route::get('/home', 'HomeController@index')->name('home');

@@ -8,6 +8,21 @@ use App\User;
 
 class UserController extends Controller
 {
+    
+    /**
+     * Instantiate a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+
+        // $this->middleware('log')->only('index');
+
+        // $this->middleware('subscribed')->except('store');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -15,6 +30,7 @@ class UserController extends Controller
      */
     public function index()
     {
+        dd(Auth::user());
         dd("hello user");
     }
 
@@ -36,17 +52,22 @@ class UserController extends Controller
      */
     public function store(Request $request,User $user)
     {
+      dd(Auth::login($user));
+       if(Auth::login($user)){
+
         $users = $user->all();
 
-        foreach ($users as $admin) {        
-        
-            if ($request->username === $admin->name) return view('dashboard',compact('admin')); 
-        
+        foreach ($users as $admin) {       
+            dd($admin);
+            // if ($request->username === Auth::user()->name) {
+           
+            return view('dashboard',compact('admin'));         
+                
         }
-        
-        return "not authorized id for this web app";
+       }
+       return "credentials not matched";
     }
-
+    
     /**
      * Display the specified resource.
      *
