@@ -2,6 +2,8 @@
 
 namespace App\Http\Middleware;
 
+use App\User;
+use Hash;
 use Illuminate\Auth\Middleware\Authenticate as Middleware;
 
 class Authenticate extends Middleware
@@ -12,10 +14,25 @@ class Authenticate extends Middleware
      * @param  \Illuminate\Http\Request  $request
      * @return string
      */
-    protected function redirectTo($request)
-    {
-        if (! $request->expectsJson()) {
-            return route('login');
+    protected function redirectTo($request)  {
+
+        
+        $guestname = User::where('email',$request->email)->first();
+
+        if(User::where('email',$request->email)->exists())
+        {
+            
+            if(Hash::check($request->password,$guestname->password))   {
+
+                return route("hello");
+            }
+             
+             return "whats going on";
+        }
+        elseif(! $request->expectsJson()) {
+                
+                // return route('login');
+                return view('home');
         }
     }
 }

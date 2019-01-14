@@ -20,6 +20,11 @@ Route::get('/', function () {
 });
 
 Route::resource('users', 'UserController');
+
+Route::get('/hello', function(){
+
+	return "route is working , redirect needs to bechecked";
+})->name('hello');
 Auth::routes();
 
 //Route::get('/home', 'HomeController@index')->name('home');

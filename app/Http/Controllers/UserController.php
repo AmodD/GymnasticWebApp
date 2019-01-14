@@ -8,6 +8,11 @@ use App\User;
 
 class UserController extends Controller
 {
+    
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -42,14 +47,14 @@ class UserController extends Controller
 
         foreach ($users as $admin) {       
         
-            if ($request->username === $admin->name) 
+        //     if ($request->username === $admin->name) 
             return view('dashboard',compact('admin'));         
                 
         }
         
         // return redirect('/');
 
-        return "credentials not matched";
+        // return "credentials not matched";
     }
 
     /**
