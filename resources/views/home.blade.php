@@ -10,7 +10,7 @@
 </head>
 <body>
 	<div class="section">
-		<form action="/users" method="POST">
+		<form action="/hello" method="POST">
 			{{csrf_field()}}
 
 			<div class="columns is-pulled-right">

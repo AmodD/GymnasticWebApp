@@ -15,16 +15,40 @@
 // Route::get('/', function () {
 //     return view('welcome');
 // });
+
+// GET	/photo	index	photo.index
+// GET	/photo/create	create	photo.create
+// POST	/photo	store	photo.store
+// GET	/photo/{photo}	show	photo.show
+// GET	/photo/{photo}/edit	edit	photo.edit
+// PUT/PATCH	/photo/{photo}	update	photo.update
+// DELETE	/photo/{photo}	destroy	photo.destroy
+
 Route::get('/', function () {
     return view('home');
 });
 
-Route::resource('users', 'UserController');
 
-Route::get('/hello', function(){
+Route::get('/user','UserController@index');
+Route::get('/user/create','UserController@create');
+Route::post('/user',function(){
+				return "POST METHOD ENTERED";
+			})->middleware('auth')->name('pune');
+Route::get('/user/{user}','UserController@show');
+Route::get('/user/{user}/edit','UserController@edit');
+Route::patch('/user/{user}','UserController@index');
+Route::delete('/user/{user}','UserController@index');
 
+
+Route::post('/hello', function(){
 	return "route is working , redirect needs to bechecked";
-})->name('hello');
+})->middleware('auth');
+
+Route::get('/hyd',function(){
+
+	return "welcome to HYD";
+})->name('hyd');
+
 Auth::routes();
 
 //Route::get('/home', 'HomeController@index')->name('home');
