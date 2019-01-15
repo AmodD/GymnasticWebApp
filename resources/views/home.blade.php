@@ -9,6 +9,7 @@
 	<link href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.2/css/bulma.css" rel="stylesheet">
 </head>
 <body>
+	<div class="hero is-fullheight"  style="background-image: url('gymnastics3.png')">
 	<div class="section">
 		<form action="{{ route('login') }}" method="POST">
 			{{csrf_field()}}
@@ -47,7 +48,7 @@
 	</form>
 
 </div>
-
+</div>
 
 </body>
 </html>

@@ -17,7 +17,7 @@
 				<div class="box">
 					<article class="media">
 						<div class="media-content">
-							<div class="content"> <a><strong>Institutes</strong></a></div>
+							<div class="content"> <a href="/institutes"><strong>Institutes</strong></a></div>
 						</div>
 						<div class="media-left">
 							<figure class="image is-128x128">

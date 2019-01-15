@@ -9,7 +9,7 @@ use Behat\Behat\Context\SnippetAcceptingContext;
 #use Behat\Mink\Driver\Selenium2Driver;
 use Behat\MinkExtension\Context\MinkContext;
 
-use PHPUnit_Framework_Assert as PHPUnit;
+use PHPUnit\Framework\Assert as PHPUnit;
 use Laracasts\Behat\Context\Migrator;
 use Laracasts\Behat\Context\DatabaseTransactions;
 
@@ -35,77 +35,8 @@ class FeatureContext extends MinkContext implements Context,SnippetAcceptingCont
     {
     }
 
-    /**
-     * @Then I should see Username as placeholder the Textbox in the top right corner
-     */
-    public function iShouldSeeUsernameAsPlaceholderTheTextboxInTheTopRightCorner()
-    {
-        throw new PendingException();
-    }
-
-    /**
-     * @Then I should see Password as placeholder in the Textbox in the top right corner
-     */
-    public function iShouldSeePasswordAsPlaceholderInTheTextboxInTheTopRightCorner()
-    {
-        throw new PendingException();
-    }
-
-    /**
-     * @Then Login Button
-     */
-    public function loginButton()
-    {
-        throw new PendingException();
-    }
-
-    /**
-     * @When I fill in the Username with :arg1
-     */
-    public function iFillInTheUsernameWith($arg1)
-    {
-        throw new PendingException();
-    }
-
-    /**
-     * @When I fill in the password with :arg1
-     */
-    public function iFillInThePasswordWith($arg1)
-    {
-        throw new PendingException();
-    }
-
-    /**
-     * @When I click Log In Button
-     */
-    public function iClickLogInButton()
-    {
-        throw new PendingException();
-    }
-
-    /**
-     * @Then I should see dashboard
-     */
-    public function iShouldSeeDashboard()
-    {
-        throw new PendingException();
-    }
-
-    /**
-     * @Then I should see homepage
-     */
-    public function iShouldSeeHomepage()
-    {
-        throw new PendingException();
-    }
-
-    /**
-     * @Then I should see error :arg1
-     */
-    public function iShouldSeeError($arg1)
-    {
-        throw new PendingException();
-    }
+    
+   
 
     /**
      * @Given I have the following users
@@ -118,21 +49,52 @@ class FeatureContext extends MinkContext implements Context,SnippetAcceptingCont
     /**
      * @Given I fill in :username :password
      */
-    public function iFillIn($username, $password)
+    public function iFillIn($email, $password)
     {
-        foreach($this->usertable as $user){
+        // foreach($this->usertable as $user){
 
-            if($this->fillField('username',$user['username'])){
+        //     if($this->fillField('email',$user['email'])){
 
-                dd($user['username']);
+        //         if($this->fillField('password',$user['password'])){
 
-                if($this->fillField('password',$user['password'])){
+        //             PHPUnit::assertTrue(true);
+        //         }
 
-                    PHPUnit::assertTrue(true);
-                }
+        //         PHPUnit::assertTrue(false);
+        //     }
+        // }        
+    }
 
-                PHPUnit::assertTrue(false);
-            }
-        }        
+    /**
+     * @Given I am on InstitutePage
+     */
+    public function iAmOnInstitutepage()
+    {
+       $this->visit('/institutes');
+    }
+
+    /**
+     * @Then I should see :institute1 :Institute2
+     */
+    public function iShouldSee($institute)
+    {
+       
+      PHPUnit::assertSeeText($institute);
+    }
+
+    /**
+     * @Then I should see :arg1 :arg2 :arg3
+     */
+    public function iShouldSee2($arg1, $arg2, $arg3)
+    {
+        throw new PendingException();
+    }
+
+    /**
+     * @Given I follow link :arg1
+     */
+    public function iFollowLink($arg1)
+    {
+        throw new PendingException();
     }
 }

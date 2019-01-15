@@ -38,3 +38,5 @@ Route::delete('/user/{user}','UserController@index');
 
 Auth::routes();
 Route::get('/dashboard', 'HomeController@index')->name('home');
+
+Route::resource('institutes','InstituteController');
