@@ -10,25 +10,44 @@
 </head>
 <body>
 	<div class="section">
-		<form action="/hello" method="POST">
+		<form action="{{ route('login') }}" method="POST">
 			{{csrf_field()}}
 
-			<div class="columns is-pulled-right">
-				<div class="field" >
-					<div class="control">
-						<input id="email" name ="email"class="input is-primary has-text-grey" type="text" placeholder ="email"> 
+			<div class="columns is-mobile is-pulled-right is-multiline">
+				<div class = "column is-narrow is-4 is-offset-1">
+					<div class="field" >
+						<div class="control">
+							<input id="email" name ="email" class="input is-primary has-text-grey" type="text" placeholder ="email">							 			
+						</div>
+						<p class="help is-danger">{{ $errors->first('email') }}</p>		
 					</div>
-			</div>
+				</div>		
+				<div class = "column is-narrow is-4 is-offset-0">
+					<div class="field" >
+						<div class="control">
+							<input name ="password" type="password"id="password" class="input is-primary has-text-grey" placeholder="password">							 	
+						</div>
+						<p class="help is-danger">{{ $errors->first('password') }}</p>						
+					</div>
+				</div>		
 
-			<div class="field" >
-				<div class="control">
-					<input name ="password" type="password"id="password" class="input is-primary has-text-grey" placeholder="password"> 
+				<div class = "column is-narrow is-1 is-offset-0">
+					<button class="button is-dark  has-text-white" type="submit" style="margin-left: 10px">
+						Login
+					</button>		
 				</div>
-			</div>
 
-			<button class="button is-dark  has-text-white" type="submit" style="margin-left: 10px">
-				Login</buton>
-			</form>
+				<div class = "column is-narrow">				
+									
+				</div>		
+					
+			</div>	
 		</div>
-	</body>
-	</html>
+
+	</form>
+
+</div>
+
+
+</body>
+</html>

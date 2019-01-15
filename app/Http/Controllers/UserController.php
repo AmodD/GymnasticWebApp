@@ -11,7 +11,7 @@ class UserController extends Controller
     
     public function __construct()
     {
-        $this->middleware('auth');
+        
     }
     /**
      * Display a listing of the resource.
@@ -20,7 +20,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        dd("hello user");
+       
     }
 
     /**
@@ -42,17 +42,9 @@ class UserController extends Controller
     public function store(Request $request,User $user)
     {
        
-        $users = $user->all();
-
-        foreach ($users as $admin) {       
-        
-        //     if ($request->username === $admin->name) 
-            return view('dashboard',compact('admin'));    
-        }
-        
-        // return redirect('/');
-
-        // return "credentials not matched";
+       
+            // return view('dashboard',compact('user'));    
+     
     }
 
     /**

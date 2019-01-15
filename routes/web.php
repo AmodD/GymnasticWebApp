@@ -28,27 +28,13 @@ Route::get('/', function () {
     return view('home');
 });
 
-
-Route::get('/user','UserController@index');
+Route::get('/user','UserController@index')->name('indexing');
 Route::get('/user/create','UserController@create');
-Route::post('/user',function(){
-				return "POST METHOD ENTERED";
-			})->middleware('auth')->name('pune');
+Route::post('/user','UserController@store')->middleware('auth');
 Route::get('/user/{user}','UserController@show');
 Route::get('/user/{user}/edit','UserController@edit');
 Route::patch('/user/{user}','UserController@index');
 Route::delete('/user/{user}','UserController@index');
 
-
-Route::post('/hello', function(){
-	return "route is working , redirect needs to bechecked";
-})->middleware('auth');
-
-Route::get('/hyd',function(){
-
-	return "welcome to HYD";
-})->name('hyd');
-
 Auth::routes();
-
-//Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/dashboard', 'HomeController@index')->name('home');

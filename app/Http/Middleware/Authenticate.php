@@ -15,19 +15,10 @@ class Authenticate extends Middleware
      * @return string
      */
     protected function redirectTo($request)  {
+      
+        if(! $request->expectsJson()) {  
 
-        $guestname = User::where('email',$request->email)->first();
-
-        if(User::where('email',$request->email)->exists())
-        {
-            if(Hash::check($request->password,$guestname->password)){
-
-                return route('hyd');
-            }             
-               return "whats going on";
-        }
-        elseif(! $request->expectsJson()) {                
-                return route('login');
+            return route('login');
         }
     }
 }
