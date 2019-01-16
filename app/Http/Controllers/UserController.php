@@ -9,6 +9,7 @@ use App\User;
 class UserController extends Controller
 {
     
+
     /**
      * Instantiate a new controller instance.
      *
@@ -18,10 +19,7 @@ class UserController extends Controller
     {
         $this->middleware('auth');
 
-        // $this->middleware('log')->only('index');
-
-        // $this->middleware('subscribed')->except('store');
-    }
+            }
 
     /**
      * Display a listing of the resource.
@@ -30,8 +28,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        dd(Auth::user());
-        dd("hello user");
+        return view('dashboard');
     }
 
     /**
@@ -52,20 +49,8 @@ class UserController extends Controller
      */
     public function store(Request $request,User $user)
     {
-      dd(Auth::login($user));
-       if(Auth::login($user)){
+      
 
-        $users = $user->all();
-
-        foreach ($users as $admin) {       
-            dd($admin);
-            // if ($request->username === Auth::user()->name) {
-           
-            return view('dashboard',compact('admin'));         
-                
-        }
-       }
-       return "credentials not matched";
     }
     
     /**

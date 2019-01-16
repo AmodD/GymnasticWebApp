@@ -10,19 +10,23 @@
 </head>
 <body>
 	<div class="section">
-		<form action="/users" method="POST">
+		<form action="{{ route('login') }}" method="POST">
 			{{csrf_field()}}
 
 			<div class="columns is-pulled-right">
 				<div class="field" >
 					<div class="control">
-						<input id="username" name ="username"class="input is-primary has-text-grey" type="text" placeholder ="username"> 
+						<input id="email" name ="email" class="input is-primary has-text-grey" type="text" placeholder ="email"> 
 					</div>
 			</div>
 
 			<div class="field" >
 				<div class="control">
-					<input id="password" type ="password" class="input is-primary has-text-grey" placeholder="password"> 
+
+					<input id="password" name="password" type ="password" class="input is-primary has-text-grey" placeholder="password"> 
+
+					{{-- <input name ="password" type="password"id="password" class="input is-primary has-text-grey" placeholder="password">  --}}
+
 				</div>
 			</div>
 
