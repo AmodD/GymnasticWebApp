@@ -17,10 +17,7 @@ class UserController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
-
-            }
-
+    }
     /**
      * Display a listing of the resource.
      *
@@ -28,7 +25,8 @@ class UserController extends Controller
      */
     public function index()
     {
-        return view('dashboard');
+        // return view('dashboard');
+       
     }
 
     /**
@@ -49,8 +47,9 @@ class UserController extends Controller
      */
     public function store(Request $request,User $user)
     {
-      
 
+            // return view('dashboard',compact('user'));    
+     
     }
     
     /**

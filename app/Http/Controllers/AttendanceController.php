@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Attendance;
+use App\Batch;
+use App\Student;
+use App\Institute;
 use Illuminate\Http\Request;
 
 class AttendanceController extends Controller
@@ -14,7 +17,7 @@ class AttendanceController extends Controller
      */
     public function index()
     {
-        //
+
     }
 
     /**
@@ -33,11 +36,32 @@ class AttendanceController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Attendance $attendance, Request $request)
     {
-        //
-    }
+        // dd($request->attendance);
+        if($request->attendance===true){
 
+            // dd("student is present");
+
+            $attendance->create([
+                'date'=>$request->day,
+                'student_id'=>$request->studentId,
+                'present'=>true  
+            ]);
+        }else{
+
+             // dd("student is absent");
+
+            $attendance->create([
+                'date'=>$request->day,
+                'student_id'=>$request->studentId,
+                'present'=>false 
+            ]);
+        } 
+    }   
+    
+
+    
     /**
      * Display the specified resource.
      *
@@ -46,7 +70,7 @@ class AttendanceController extends Controller
      */
     public function show(Attendance $attendance)
     {
-        //
+
     }
 
     /**

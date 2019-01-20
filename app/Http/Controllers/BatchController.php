@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Institute;
 use App\Batch;
 use Illuminate\Http\Request;
 
@@ -12,9 +13,13 @@ class BatchController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Batch $batch, Request $request)
     {
-        //
+        
+        $batches = $batch->getAllBatchesForInstitute($request->instituteId); 
+
+        return view('showAllBatches',compact('batches'));
+          
     }
 
     /**
@@ -46,7 +51,7 @@ class BatchController extends Controller
      */
     public function show(Batch $batch)
     {
-        //
+        
     }
 
     /**

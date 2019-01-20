@@ -8,7 +8,7 @@ Feature: I Login
 		Scenario: I visit the homepage
 
 			Given I am on homepage
-			#Then  the "username" field should contain "username"
+			#Then  the "email" field should contain "email"
 			#And   the "password" field should contain "password"
 			When  I press "Login"	
 			Then  the url should match "/"
@@ -17,19 +17,19 @@ Feature: I Login
 
 			Given I am on homepage
 			And   I have the following users
-					|username|password|
+					|email|password|
 					|Ajinkya|abc|
 					|Amod|abc|
 					|Admin|abc|
-			And   I fill in "Ajinkya" "abc"		
+			And   I fill in "amod.d.kulkarni@gmail.com" "abc"		
 			And   I press "Login"
-			Then  I should be on "/users"
+			Then  the url should match "/dashboard"
 	     	
 		Scenario: Incorrect Password
 
 			Given I am on homepage
 			Given I have the following users
-					|username|password|
+					|email|password|
 					|Ajinkya|abc|
 					|Amod|abc|
 					|Admin|abc|
@@ -37,7 +37,7 @@ Feature: I Login
 			When  I fill in "Reeya" "efg"			
 			And   I press "Login"
 			Then  I should be on "/" 
-			#And   I should see "credentials not matched"
+			#And   I should see "credentials did not match our records"
 			#And  I should see error "credentials not matched"
 
 			
