@@ -8,11 +8,11 @@
 	<link rel="stylesheet" type="text/css" href="{{ asset('css/app.css') }}">
 	<link href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.2/css/bulma.css" rel="stylesheet">
 </head>
-<body>							
-				Hello, {{auth()->user()->name}}		
-
+<body>			
+<div class="hero is-fullheight" style="background-image: url('gymnastics3.png')">								
+				<p class="card-content has-text-danger"> Hello, {{auth()->user()->name}} </p>
 	<div class="section">
-		<div class="columns is-mobile is-multiline">
+		<div class="columns is-mobile is-multiline ">
 			<div class="column is-one-quarter">
 				<div class="box">
 					<article class="media">
@@ -85,6 +85,7 @@
 			</div>
 		</div>
 	</div>
+</div>
 
 </body>
 </html>
