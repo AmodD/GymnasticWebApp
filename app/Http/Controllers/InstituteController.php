@@ -12,9 +12,10 @@ class InstituteController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Institute $institute)
     {
-        return view('showInstitutes');
+        $institutes = $institute->all();
+        return view('showInstitutes',compact('institutes'));
     }
 
     /**
@@ -46,7 +47,7 @@ class InstituteController extends Controller
      */
     public function show(Institute $institute)
     {
-        //
+        dd("show method")    ;
     }
 
     /**
@@ -57,7 +58,7 @@ class InstituteController extends Controller
      */
     public function edit(Institute $institute)
     {
-        //
+        dd("edit method");
     }
 
     /**
@@ -80,6 +81,6 @@ class InstituteController extends Controller
      */
     public function destroy(Institute $institute)
     {
-        //
+                dd("destroy method");
     }
 }

@@ -3,13 +3,12 @@
 use App\Batch;
 use Faker\Generator as Faker;
 
-$batchName=['beginner','intermediate','advanced'];
-
-
 
 $factory->define(Batch::class, function (Faker $faker) {
-
+		$batchName=['beginner','intermediate','advanced'];
+		$time =['5pm','6pm','7pm','8pm','9pm'];
     return [
-        'name'=>'advanced',
+        'name'=>$batchName[array_rand($batchName)],
+        'time'=>$time[array_rand($time)],
     ];
 });

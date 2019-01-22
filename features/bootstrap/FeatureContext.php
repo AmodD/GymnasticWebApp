@@ -83,18 +83,11 @@ class FeatureContext extends MinkContext implements Context,SnippetAcceptingCont
     }
 
     /**
-     * @Then I should see :arg1 :arg2 :arg3
+     * @Given I follow link :arg1
      */
-    public function iShouldSee2($arg1, $arg2, $arg3)
+    public function iFollowLink($modify)
     {
         throw new PendingException();
     }
 
-    /**
-     * @Given I follow link :arg1
-     */
-    public function iFollowLink($arg1)
-    {
-        throw new PendingException();
-    }
 }

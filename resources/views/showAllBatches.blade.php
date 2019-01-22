@@ -14,27 +14,21 @@
 	<div class="section"> 
 		<div class="columns is-mobile is-multiline 	is-centered">
 			<div class="card-content">
-				@foreach ($institutes as $institute) 	
+				@foreach ($batches as $batch) 	
+				<form action="/students" method="GET">
 			<div class="column is-narrow">	
-			
-			<form action= "institutes/{{$institute->id}}" method="POST">
-				{{csrf_field()}}		
-				<div class="box">
-					<div class="card-content">
-						<div class="media-content"><p class="title is-4">{{$institute->name}}</p> 
-							
-							<a href ="institutes/{{$institute->id}}/edit" id ="modify" class="button is-warning"> Students </a>
-							
-							<a href ="institutes/{{$institute->id}}" class="button is-info">Attendance</a>
-							
-							<button class="button is-danger" type="submit" name="_method" value="DELETE"> Fees </button>
-
-						</div>
-					</div>
-				</div>
-				</form>
-			
+				<!-- <div class="card"> -->
+					<!-- <a href = "/students" class="card has-text-dark"> -->
+						<p class="card-content"> 
+						 <button  class="button is-info" type="submit" name="submit">  {{$batch->name}}  {{$batch->time}} </button>
+						</p>
+						<input type="hidden" name="batchId" value="{{$batch->id}}">
+						<!-- <button type="submit" name="submit" class="button is-info">Submit </button> -->
+				<!-- </div>		  -->
+					<!-- </a> -->
+					
 			</div>
+		</form>
 			@endforeach				
 		</div>
 		</div>

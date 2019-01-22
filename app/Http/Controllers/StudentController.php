@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Student;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class StudentController extends Controller
@@ -12,9 +13,18 @@ class StudentController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Student $student, Request $request)
     {
-        //
+        // dd($request->batchId)   ;
+
+       $today=     Carbon::now();
+       $tomorrow=  $today->addDay();
+       $yesterday= $today->subDay(); 
+
+        $students = $student->getStudentsForBatch($request->batchId);
+
+
+        return view ('showAllStudents',compact('students','today','tomorrow','yesterday'));
     }
 
     /**

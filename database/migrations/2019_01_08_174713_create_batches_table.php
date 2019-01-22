@@ -17,6 +17,7 @@ class CreateBatchesTable extends Migration
             $table->increments('id');
             $table->unsignedInteger('institute_id');
             $table->string('name');
+            $table->string('time');
             $table->timestamps();
 
         });

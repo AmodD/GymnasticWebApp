@@ -9,9 +9,10 @@ Feature: Institute
 
 			Given I am on InstitutePage
 			Then  print last response
-			Then  I should see "Symbiosis" 
-			And   I should see "ManCity"
-			And   I should see "add" "modify" "delete"			
+			Then  I should see "University" 
+			And   I should see "South"
+			When  I follow "modify"		
+			Then  the url should match "https::\\www.google.com"
 			
 
 		Scenario: I Select the institute

@@ -9,9 +9,14 @@ use App\User;
 class UserController extends Controller
 {
     
+
+    /**
+     * Instantiate a new controller instance.
+     *
+     * @return void
+     */
     public function __construct()
     {
-        
     }
     /**
      * Display a listing of the resource.
@@ -20,6 +25,7 @@ class UserController extends Controller
      */
     public function index()
     {
+        // return view('dashboard');
        
     }
 
@@ -41,12 +47,11 @@ class UserController extends Controller
      */
     public function store(Request $request,User $user)
     {
-       
-       
+
             // return view('dashboard',compact('user'));    
      
     }
-
+    
     /**
      * Display the specified resource.
      *
