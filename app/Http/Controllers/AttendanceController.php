@@ -38,19 +38,14 @@ class AttendanceController extends Controller
      */
     public function store(Attendance $attendance, Request $request)
     {
-        // dd($request->attendance);
-        if($request->attendance===true){
-
-            // dd("student is present");
-
+        dd($request->date);
+        if($request->attendance ==="presence"){
             $attendance->create([
-                'date'=>$request->day,
-                'student_id'=>$request->studentId,
-                'present'=>true  
+                'date'=>      $request->day,
+                'student_id'=>$request->student_id,
+                'present'=>   true  
             ]);
-        }else{
-
-             // dd("student is absent");
+        }elseif($request->attendance ==="absence"){
 
             $attendance->create([
                 'date'=>$request->day,

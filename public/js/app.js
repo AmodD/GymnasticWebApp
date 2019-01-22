@@ -1808,9 +1808,59 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
-    students: Array
+    students: Array,
+    today: String
+  },
+  data: function data() {
+    return {
+      attendance: "",
+      'Id': "",
+      'studentId': "",
+      'student_id': "",
+      'date': "",
+      csrf: document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+    };
+  },
+  methods: {
+    markTheAttendance: function markTheAttendance() {
+      var _this = this;
+
+      this.students.forEach(function (student) {
+        if (student.id == _this.studentId) {
+          axios.post('/attendances', {
+            'student_id': _this.student_id,
+            'date': _this.today,
+            'present': _this.attendance
+          });
+        }
+      });
+    },
+    markPresent: function markPresent(id) {
+      this.date = this.today;
+      this.student_id = id;
+      this.attendance = true;
+    },
+    markAbsent: function markAbsent(id) {
+      this.date = this.today;
+      this.student_id = id;
+      this.attendance = false;
+    }
   }
 });
 
@@ -36710,37 +36760,128 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    _vm._l(_vm.students, function(student) {
-      return _c("li", [
-        _c("div", { staticClass: "card" }, [
-          _c("div", { staticClass: "card-content" }, [
-            _vm._v("\t" + _vm._s(student.name) + " ")
+  return _c("div", [
+    _c(
+      "form",
+      {
+        attrs: { action: "/attendances", method: "POST" },
+        on: {
+          submit: function($event) {
+            _vm.markTheAttendance()
+          }
+        }
+      },
+      [
+        _c("input", {
+          attrs: { type: "hidden", name: "_token" },
+          domProps: { value: _vm.csrf }
+        }),
+        _vm._v(" "),
+        _vm._l(_vm.students, function(student) {
+          return _c("li", [
+            _c("div", { staticClass: "card" }, [
+              _c("div", { staticClass: "card-content" }, [
+                _vm._v(" " + _vm._s(student.name) + " ")
+              ])
+            ]),
+            _vm._v(" "),
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.student_id,
+                  expression: "student_id"
+                }
+              ],
+              attrs: { type: "hidden", id: "student_id", name: "student_id" },
+              domProps: { value: _vm.student_id },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.student_id = $event.target.value
+                }
+              }
+            }),
+            _vm._v(" "),
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.date,
+                  expression: "date"
+                }
+              ],
+              attrs: { type: "hidden", id: "date", name: "date" },
+              domProps: { value: _vm.date },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.date = $event.target.value
+                }
+              }
+            }),
+            _vm._v(" "),
+            _c("span", { staticClass: "has-text-white" }, [
+              _vm._v(" " + _vm._s(_vm.date))
+            ]),
+            _vm._v(" "),
+            _c(
+              "button",
+              {
+                staticClass: "button is-primary",
+                attrs: {
+                  type: "submit",
+                  name: "attendance",
+                  value: "presence"
+                },
+                on: {
+                  click: function($event) {
+                    _vm.markPresent(student.id)
+                  }
+                },
+                model: {
+                  value: _vm.attendance,
+                  callback: function($$v) {
+                    _vm.attendance = $$v
+                  },
+                  expression: "attendance"
+                }
+              },
+              [_vm._v("Present ")]
+            ),
+            _vm._v(" "),
+            _c(
+              "button",
+              {
+                staticClass: "button is-danger",
+                attrs: { type: "submit", name: "attendance", value: "absence" },
+                on: {
+                  click: function($event) {
+                    _vm.markAbsent(student.id)
+                  }
+                },
+                model: {
+                  value: _vm.attendance,
+                  callback: function($$v) {
+                    _vm.attendance = $$v
+                  },
+                  expression: "attendance"
+                }
+              },
+              [_vm._v("Absent   ")]
+            )
           ])
-        ]),
-        _vm._v(" "),
-        _c(
-          "button",
-          {
-            staticClass: "button is-primary",
-            attrs: { type: "submit", name: "attendance", value: "true" }
-          },
-          [_vm._v("Present")]
-        ),
-        _vm._v(" "),
-        _c(
-          "button",
-          {
-            staticClass: "button is-danger",
-            attrs: { type: "submit", name: "attendance", value: "false" }
-          },
-          [_vm._v("Absent")]
-        )
-      ])
-    }),
-    0
-  )
+        })
+      ],
+      2
+    )
+  ])
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -48174,15 +48315,14 @@ __webpack_require__.r(__webpack_exports__);
 /*!*********************************************!*\
   !*** ./resources/js/components/Message.vue ***!
   \*********************************************/
-/*! no static exports found */
+/*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Message_vue_vue_type_template_id_b91a6428___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Message.vue?vue&type=template&id=b91a6428& */ "./resources/js/components/Message.vue?vue&type=template&id=b91a6428&");
 /* harmony import */ var _Message_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Message.vue?vue&type=script&lang=js& */ "./resources/js/components/Message.vue?vue&type=script&lang=js&");
-/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _Message_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _Message_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__[key]; }) }(__WEBPACK_IMPORT_KEY__));
-/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
 
@@ -48212,7 +48352,7 @@ component.options.__file = "resources/js/components/Message.vue"
 /*!**********************************************************************!*\
   !*** ./resources/js/components/Message.vue?vue&type=script&lang=js& ***!
   \**********************************************************************/
-/*! no static exports found */
+/*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";

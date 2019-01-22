@@ -29,6 +29,9 @@
   "directories": {
     "test": "tests"
   },
+
+  "dependencies": {},
+
   "repository": {
     "type": "git",
     "url": "git+https://github.com/ajinkyameister/GymnasticWebApp.git"
