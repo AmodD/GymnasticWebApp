@@ -7,6 +7,7 @@ use App\Batch;
 use App\Student;
 use App\Institute;
 use Illuminate\Http\Request;
+use carbon;
 
 class AttendanceController extends Controller
 {
@@ -38,13 +39,13 @@ class AttendanceController extends Controller
      */
     public function store(Attendance $attendance, Request $request)
     {
-            
+            dd("hello attendance");
         if($request->attendance==="presence"){
-            dd($request->student_id);
+            
             $attendance->create([
-                'date'=>      $request->day,
                 'student_id'=>$request->student_id,
-                'present'=>   true  
+                'date'=> $request->date,                
+                'present'=>   true,  
             ]);
         }elseif($request->attendance==="absence"){
 

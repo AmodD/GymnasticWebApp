@@ -19,9 +19,7 @@
 								<div class="columns is-mobile is-multiline 	is-one-quarter">
 
 
-									<message v-bind:students="{{ json_encode($students) }}" 
-										v-bind:today="{{json_encode($today)}}"> </message> 
-
+									<message v-bind:students="{{ json_encode($students) }}">  </message> 
 					
 				</div>
 			</div>

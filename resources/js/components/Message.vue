@@ -1,12 +1,12 @@
 <template>			
 	<div>
-		<form action="/attendances" method="POST" @submit="markTheAttendance()">
+		<form @submit="markTheAttendance()">
 			<input type="hidden" name="_token" :value="csrf">
 			<li v-for="student in students"> 
 				<div class="card">
-					<div class="card-content">	{{student.name}} 	</div>	
+					<div class="card-content">	{{student.name}} </div>	
 				</div>									
-				<div name="student_id"> {{student.id}} </div>
+				<input type="hidden"  name="student_id" v-model="student_id"> 
 				<button class="button is-primary" type="submit" name="attendance" value="presence" 
 				@click="markPresent(student.id)" v-model="attendance">Present
 			</button>
@@ -21,13 +21,15 @@
 <script >
 	
 	export default{
-		props:{ students:Array, today:Object},
+		props:{ students:Array,},
 
 		data(){
 			return {
 				attendance:"",
 				'Id':"",
 				'studentId':"",
+				'student_id':"",//set this value to the selected student id through "this.studentId"
+				'date':"",
 				csrf: document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
 			}
 		},
@@ -37,25 +39,29 @@
 
 				this.students.forEach(student=>{ 
 
-					if(student.id==this.studentId){
-
+					if(student.id==this.student_id){
+						
 						axios.post('/attendances', {
-							'student_id': this.studentId,
-							'day':this.today,
+							'student_id': this.student_id,
+							'date':'1-2-3',
 							'present': this.attendance,
 							
-						})
+						}).then(function (response) {
+   							 console.log(response);
+  							})
 					}
 				});
 			},
 
-			markPresent(student_id){				
-				this.studentId = student_id;			
+			markPresent(id){				
+				// this.studentId = id;			
+				this.student_id=id;
 				this.attendance = true;				
 			},
 
-			markAbsent(student_id){
-				this.studentId = student_id;
+			markAbsent(id){
+				// this.studentId = id;
+				this.student_id=id;
 				this.attendance = false;
 			}
 		}

@@ -1817,14 +1817,16 @@ __webpack_require__.r(__webpack_exports__);
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
-    students: Array,
-    today: Object
+    students: Array
   },
   data: function data() {
     return {
       attendance: "",
       'Id': "",
       'studentId': "",
+      'student_id': "",
+      //set this value to the selected student id through "this.studentId"
+      'date': "",
       csrf: document.querySelector('meta[name="csrf-token"]').getAttribute('content')
     };
   },
@@ -1833,21 +1835,25 @@ __webpack_require__.r(__webpack_exports__);
       var _this = this;
 
       this.students.forEach(function (student) {
-        if (student.id == _this.studentId) {
+        if (student.id == _this.student_id) {
           axios.post('/attendances', {
-            'student_id': _this.studentId,
-            'day': _this.today,
+            'student_id': _this.student_id,
+            'date': '1-2-3',
             'present': _this.attendance
+          }).then(function (response) {
+            console.log(response);
           });
         }
       });
     },
-    markPresent: function markPresent(student_id) {
-      this.studentId = student_id;
+    markPresent: function markPresent(id) {
+      // this.studentId = id;			
+      this.student_id = id;
       this.attendance = true;
     },
-    markAbsent: function markAbsent(student_id) {
-      this.studentId = student_id;
+    markAbsent: function markAbsent(id) {
+      // this.studentId = id;
+      this.student_id = id;
       this.attendance = false;
     }
   }
@@ -36753,7 +36759,6 @@ var render = function() {
     _c(
       "form",
       {
-        attrs: { action: "/attendances", method: "POST" },
         on: {
           submit: function($event) {
             _vm.markTheAttendance()
@@ -36770,13 +36775,30 @@ var render = function() {
           return _c("li", [
             _c("div", { staticClass: "card" }, [
               _c("div", { staticClass: "card-content" }, [
-                _vm._v("\t" + _vm._s(student.name) + " \t")
+                _vm._v("\t" + _vm._s(student.name) + " ")
               ])
             ]),
             _vm._v(" "),
-            _c("div", { attrs: { name: "student_id" } }, [
-              _vm._v(" " + _vm._s(student.id) + " ")
-            ]),
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.student_id,
+                  expression: "student_id"
+                }
+              ],
+              attrs: { type: "hidden", name: "student_id" },
+              domProps: { value: _vm.student_id },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.student_id = $event.target.value
+                }
+              }
+            }),
             _vm._v(" "),
             _c(
               "button",
