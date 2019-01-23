@@ -11,9 +11,8 @@
 
 				<input type="hidden" id="student_id" name="student_id" v-model="student_id">
 
-				<input type="hidden" id="date" name="date"  v-model="date"> 
-				<span class="has-text-white"> {{date}}</span>
-
+				<input type="hidden" id="date" name="date" v-model="date">
+				
 				<button class="button is-primary" type="submit" name="attendance" value="presence" 
 				@click="markPresent(student.id)" v-model="attendance">Present </button>
 			
@@ -33,8 +32,6 @@
 		data(){
 			return {
 				attendance:"",
-				'Id':"",
-				'studentId':"",
 				'student_id':"",
 				'date':"",
 				csrf: document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
@@ -45,7 +42,7 @@
 			markTheAttendance(){
 				this.students.forEach(student=>{ 
 
-					if(student.id==this.studentId){
+					if(student.id==this.student_id){
 
 						axios.post('/attendances', {
 							'student_id': this.student_id,

@@ -1821,7 +1821,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
     students: Array,
@@ -1830,8 +1829,6 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       attendance: "",
-      'Id': "",
-      'studentId': "",
       'student_id': "",
       'date': "",
       csrf: document.querySelector('meta[name="csrf-token"]').getAttribute('content')
@@ -1842,7 +1839,7 @@ __webpack_require__.r(__webpack_exports__);
       var _this = this;
 
       this.students.forEach(function (student) {
-        if (student.id == _this.studentId) {
+        if (student.id == _this.student_id) {
           axios.post('/attendances', {
             'student_id': _this.student_id,
             'date': _this.today,
@@ -36826,10 +36823,6 @@ var render = function() {
                 }
               }
             }),
-            _vm._v(" "),
-            _c("span", { staticClass: "has-text-white" }, [
-              _vm._v(" " + _vm._s(_vm.date))
-            ]),
             _vm._v(" "),
             _c(
               "button",

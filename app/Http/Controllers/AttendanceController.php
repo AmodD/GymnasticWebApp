@@ -38,7 +38,7 @@ class AttendanceController extends Controller
      */
     public function store(Attendance $attendance, Request $request)
     {
-        dd($request->date);
+        dd($request->all());
         if($request->attendance ==="presence"){
             $attendance->create([
                 'date'=>      $request->day,
