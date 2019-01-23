@@ -17,9 +17,10 @@
 						<div class="hero is-fullheight"  style="background-image: url('gymnastics3.png')">		
 							<div class="section"> 
 								<div class="columns is-mobile is-multiline 	is-one-quarter">
-
-
-									<message v-bind:students="{{ json_encode($students) }}">  </message> 
+									<message 
+										v-bind:students="{{ json_encode($students) }}" 
+										today="{{$today}}"> 
+									</message> 
 					
 				</div>
 			</div>

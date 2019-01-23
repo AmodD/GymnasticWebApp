@@ -23,6 +23,8 @@
 // GET	/photo/{photo}/edit	edit	photo.edit
 // PUT/PATCH	/photo/{photo}	update	photo.update
 // DELETE	/photo/{photo}	destroy	photo.destroy
+use App\Attendance;
+use Illuminate\Http\Request;
 
 Route::get('/', function () {
     return view('home');
@@ -47,6 +49,26 @@ Route::get('/dashboard', 'HomeController@index')->name('home');
 
 Route::resource('institutes','InstituteController');
 Route::resource('attendances','AttendanceController');
+// Route::post('/attendances',function(Attendance $attendance, Request $request){
+	
+	// return $request->present;
+			// if($request->present=="present"){
+
+   //          	$attendance->create([
+   //              	'student_id'=>$request->student_id,
+   //              	'date'=> $request->date,                
+   //              	'present'=> true,  
+   //          ]);
+   //      	}elseif($request->present=="absent"){
+
+   //          	$attendance->create([
+   //          		'student_id'=>$request->student_id,
+   //              	'date'=>$request->date,                	
+   //              	'present'=>false ,
+   //          ]);
+   //      } 
+    
+// });
 Route::resource('batches','BatchController');
 Route::resource('students','StudentController');
 
