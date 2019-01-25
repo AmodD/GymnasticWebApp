@@ -1821,6 +1821,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
     students: Array,
@@ -1828,9 +1831,12 @@ __webpack_require__.r(__webpack_exports__);
   },
   data: function data() {
     return {
-      attendance: "",
+      'present': "",
       'student_id': "",
       'date': "",
+      'message': "",
+      'success': false,
+      'studentswa': this.students,
       csrf: document.querySelector('meta[name="csrf-token"]').getAttribute('content')
     };
   },
@@ -1842,21 +1848,31 @@ __webpack_require__.r(__webpack_exports__);
         if (student.id == _this.student_id) {
           axios.post('/attendances', {
             'student_id': _this.student_id,
-            'date': _this.today,
-            'present': _this.attendance
+            'date': _this.date,
+            'present': _this.present
+          }).then(function (response) {
+            console.log(response);
           });
+
+          if (_this.present == "present") {
+            _this.message = "The student is marked Present";
+          } else {
+            _this.message = "The student is marked Absent";
+          }
+
+          _this.success = true;
         }
       });
     },
     markPresent: function markPresent(id) {
       this.date = this.today;
       this.student_id = id;
-      this.attendance = true;
+      this.present = "present";
     },
     markAbsent: function markAbsent(id) {
       this.date = this.today;
       this.student_id = id;
-      this.attendance = false;
+      this.present = "absent";
     }
   }
 });
@@ -36757,29 +36773,58 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", [
-    _c(
-      "form",
-      {
-        attrs: { action: "/attendances", method: "POST" },
-        on: {
-          submit: function($event) {
-            _vm.markTheAttendance()
-          }
-        }
-      },
-      [
-        _c("input", {
-          attrs: { type: "hidden", name: "_token" },
-          domProps: { value: _vm.csrf }
-        }),
-        _vm._v(" "),
-        _vm._l(_vm.students, function(student) {
-          return _c("li", [
+  return _c(
+    "div",
+    _vm._l(_vm.studentswa, function(studentwa) {
+      return _c("li", [
+        _c(
+          "form",
+          {
+            on: {
+              submit: function($event) {
+                $event.preventDefault()
+                _vm.markTheAttendance()
+              }
+            }
+          },
+          [
+            _c("input", {
+              attrs: { type: "hidden", name: "_token" },
+              domProps: { value: _vm.csrf }
+            }),
+            _vm._v(" "),
             _c("div", { staticClass: "card" }, [
               _c("div", { staticClass: "card-content" }, [
-                _vm._v(" " + _vm._s(student.name) + " ")
-              ])
+                _vm._v(" " + _vm._s(studentwa.name) + " "),
+                _c("br"),
+                _vm._v(" " + _vm._s(studentwa.attendances[0].present))
+              ]),
+              _vm._v(" "),
+              studentwa.id == _vm.student_id
+                ? _c(
+                    "div",
+                    {
+                      directives: [
+                        {
+                          name: "show",
+                          rawName: "v-show",
+                          value: _vm.success,
+                          expression: "success"
+                        }
+                      ],
+                      staticClass: "has-text-dark",
+                      attrs: { type: "", id: "message", name: "message" },
+                      model: {
+                        value: _vm.message,
+                        callback: function($$v) {
+                          _vm.message = $$v
+                        },
+                        expression: "message"
+                      }
+                    },
+                    [_c("h6", [_vm._v(" " + _vm._s(_vm.message) + " ")])]
+                  )
+                : _vm._e()
             ]),
             _vm._v(" "),
             _c("input", {
@@ -36824,57 +36869,60 @@ var render = function() {
               }
             }),
             _vm._v(" "),
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.present,
+                  expression: "present"
+                }
+              ],
+              attrs: { type: "hidden", id: "present", name: "present" },
+              domProps: { value: _vm.present },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.present = $event.target.value
+                }
+              }
+            }),
+            _vm._v(" "),
             _c(
               "button",
               {
                 staticClass: "button is-primary",
-                attrs: {
-                  type: "submit",
-                  name: "attendance",
-                  value: "presence"
-                },
+                attrs: { type: "submit" },
                 on: {
                   click: function($event) {
-                    _vm.markPresent(student.id)
+                    _vm.markPresent(_vm.student.id)
                   }
-                },
-                model: {
-                  value: _vm.attendance,
-                  callback: function($$v) {
-                    _vm.attendance = $$v
-                  },
-                  expression: "attendance"
                 }
               },
-              [_vm._v("Present ")]
+              [_vm._v("Present \n\t\t\t")]
             ),
             _vm._v(" "),
             _c(
               "button",
               {
                 staticClass: "button is-danger",
-                attrs: { type: "submit", name: "attendance", value: "absence" },
+                attrs: { type: "submit" },
                 on: {
                   click: function($event) {
-                    _vm.markAbsent(student.id)
+                    _vm.markAbsent(_vm.student.id)
                   }
-                },
-                model: {
-                  value: _vm.attendance,
-                  callback: function($$v) {
-                    _vm.attendance = $$v
-                  },
-                  expression: "attendance"
                 }
               },
-              [_vm._v("Absent   ")]
+              [_vm._v("Absent   \n\t\t\t")]
             )
-          ])
-        })
-      ],
-      2
-    )
-  ])
+          ]
+        )
+      ])
+    }),
+    0
+  )
 }
 var staticRenderFns = []
 render._withStripped = true

@@ -13,5 +13,11 @@ class Attendance extends Model
     	
     	$this->belongsTo(Student::class);
     }
+
+    public function getAttendanceForAllStudents($student_id){
+
+    	          return  $this->where('student_id',$student_id)->get();
+
+    }
         
 }

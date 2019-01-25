@@ -24,6 +24,7 @@
 // PUT/PATCH	/photo/{photo}	update	photo.update
 // DELETE	/photo/{photo}	destroy	photo.destroy
 
+
 Route::get('/', function () {
     return view('home');
 });
