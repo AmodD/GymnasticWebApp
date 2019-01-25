@@ -14,9 +14,11 @@ class Student extends Model
 	
 	public function attendances() { return $this->hasMany(Attendance::class); }
 
-	public function getStudentsForBatch($batch_id){
+	public function getStudentsWithBatchAndAttendance(){
 				
-		return $this->where('batch_id',$batch_id)->get();
+		// return $this->where('batch_id',$batch_id)->get();
+
+		return $this->with(['attendances','batch'])->get();
 	}
 			
 					

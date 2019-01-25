@@ -27,7 +27,7 @@ class UserSeeder extends Seeder
              );
 
                 foreach ($batches as $batch) {
-                   $students= factory(App\Student::class,100)->create(
+                   $students= factory(App\Student::class,10)->create(
                      ['batch_id'=>$batch->id]
                  );       
 

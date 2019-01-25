@@ -23,6 +23,7 @@ window.Vue = require('vue');
 
 Vue.component('example-component', require('./components/ExampleComponent.vue').default);
 Vue.component('message', require('./components/Message.vue').default);
+Vue.component('student', require('./components/Student.vue').default);
 
 
 /**

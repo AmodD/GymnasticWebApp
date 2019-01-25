@@ -21,10 +21,15 @@ class StudentController extends Controller
        $tomorrow=  $today->addDay();
        $yesterday= $today->subDay(); 
 
-        $students = $student->getStudentsForBatch($request->batchId);
+        // $students = $student->getStudentsForBatch($request->batchId);
 
+        $students = $student->getStudentsWithBatchAndAttendance();
+        $studentsData=  $student->getStudentsWithBatchAndAttendance();
 
-        return view ('showAllStudents',compact('students','today','tomorrow','yesterday'));
+        // return view ('showAllStudents',compact('students','today','tomorrow','yesterday'));
+
+        return view ('showAllStudents',compact('students','studentsData','today','tomorrow','yesterday'));
+
     }
 
     /**
