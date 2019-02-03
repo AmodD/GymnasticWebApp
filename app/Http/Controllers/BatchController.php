@@ -87,4 +87,14 @@ class BatchController extends Controller
     {
         //
     }
+
+    public function getStudentsOfBatch(Request $request, Batch $batch){
+        
+        // $students = $batch->students;
+
+        return redirect('/batches/{batch}/students');
+
+    }
+    
+    
 }

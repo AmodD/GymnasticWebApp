@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Batch;
 use App\Attendance;
 use App\Student;
 use Carbon\Carbon;
@@ -14,32 +15,22 @@ class StudentController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Student $student, Request $request)
+    public function index(Student $student, Request $request, Batch $batch)
     {
         
        $today=     Carbon::now();
        $tomorrow=  $today->addDay();
        $yesterday= $today->subDay(); 
-
-       // $studentTwo = $student->with(['batch','attendances'])->find(347);
-
-//dd($studentTwo);
-
-       // $batch = $studentTwo->batch()->get();
-       // $attendance = $studentTwo->attendances()->get();
-
-       // dd($student,$studentTwo,$batch,$attendance);
-
-        $students = $student->getStudentsForBatch($request->batchId);
-       
-       // $studentsListByLaravel = $student->all();
-        // dd($studentsListByDravid);
-
-        // $student->attendances->get();
-        // dd($)
+       $students = $batch->students;
 
 
-        return view ('showAllStudents',compact('students','today','tomorrow','yesterday'));
+                // $students = $student->getStudentsWithBatchAndAttendance($batch->id);
+                // $student->giveTodaysAttendance($batch->id);
+               $studentsData=  $student->getStudentsWithBatchAndAttendance($request->batchId);
+                                        
+
+        return view ('showAllStudents',compact('students','studentsData','today'));
+           
     }
 
     /**

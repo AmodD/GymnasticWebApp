@@ -4,14 +4,15 @@ namespace App;
 
 use App\Batch;
 use App\Attendance;
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 
 class Student extends Model
 {
-    protected $fillable = [ 'name', 'batch_id', ];
+	protected $fillable = [ 'name', 'batch_id', ];
 
 	public function batch()	{ 
-	
+
 		return $this->belongsTo(Batch::class); 
 	}
 	
@@ -20,9 +21,21 @@ class Student extends Model
 		return $this->hasMany(Attendance::class); 
 	}
 
-	public function getStudentsForBatch($batch_id){
-				
-		 return $this->with("attendances")->where('batch_id',$batch_id)->get();
-	}	
-					
+	public function getStudentsWithBatchAndAttendance(){
+
+		return $this->with(['attendances','batch'])->get();
+	}
+
+	public function giveTodaysAttendance()
+	{
+		$todaysAttendanceC = $this->attendances()->where('date',carbon::today())->get();
+
+
+		if($todaysAttendanceC->isNotEmpty()) return $todaysAttendanceC->first()->present;
+		else return 786;
+	}
+
+	
+	
+
 }

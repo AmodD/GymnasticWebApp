@@ -47,8 +47,23 @@ Auth::routes();
 Route::get('/dashboard', 'HomeController@index')->name('home');
 
 Route::resource('institutes','InstituteController');
-Route::resource('attendances','AttendanceController');
+//Route::resource('attendances','AttendanceController');
 Route::resource('batches','BatchController');
-Route::resource('students','StudentController');
 
+// group { "/batch"
+// 	Route::resource('students','StudentController');
+// 		grou[{attendances]
+// }
+
+// Route::get('/batches/{batch}/students','StudentController@index');
+
+Route::get('/batches/{batch}/students','BatchController@getStudentsOfBatch');
+Route::get('/batches/{batch}/students','StudentController@index');
+
+// /batch/2/students/72372
+
+// /students XXXXX
+
+// /batch/2/students/23343/attendances
+// /batch/2students/2323/attendance/27-1-19  /today     
 
