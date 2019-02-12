@@ -6,7 +6,7 @@ use App\User;
 use App\Batch;
 use Illuminate\Database\Eloquent\Model;
 
-class Institute extends Model
+class Centre extends Model
 {
 
 	protected $fillable = [

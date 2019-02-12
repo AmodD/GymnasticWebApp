@@ -9,11 +9,11 @@ use Illuminate\Database\Eloquent\Model;
 class Batch extends Model
 {
 	protected $fillable = [
-        'name', 'institute_id',
+        'name', 'centre_id',
     ];
 
-	public function institute() { 
-		return $this->belongsTo(Institute::class);
+	public function centre() { 
+		return $this->belongsTo(Centre::class);
 		
 		 }
 
@@ -22,10 +22,10 @@ class Batch extends Model
 		return $this->hasMany(Student::class);
 		 }
 	
-	public function getAllBatchesForInstitute($instituteId) {
+	public function getAllBatchesForCentre($centreId) {
 
 		 
-		return $this->where('institute_id',$instituteId)->get(); 
+		return $this->where('centre_id',$centreId)->get(); 
 	}
 	
 	

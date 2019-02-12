@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Institute;
+use App\Centre;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -22,9 +22,9 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function index(Institute $institute)
+    public function index(Centre $centre)
     {
-        $institutes = $institute->all();
-        return view('dashboard',compact('institutes'));
+        $centres = $centre->all();
+        return view('dashboard',compact('centres'));
     }
 }

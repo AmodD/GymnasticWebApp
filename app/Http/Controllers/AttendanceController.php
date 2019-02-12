@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Attendance;
 use App\Batch;
 use App\Student;
-use App\Institute;
+use App\Centre;
 use Illuminate\Http\Request;
 use carbon;
 

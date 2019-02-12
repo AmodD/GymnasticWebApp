@@ -2,20 +2,20 @@
 
 namespace App\Http\Controllers;
 
-use App\Institute;
+use App\Centre;
 use Illuminate\Http\Request;
 
-class InstituteController extends Controller
+class CentreController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Institute $institute)
+    public function index(Centre $centre)
     {
-        $institutes = $institute->all();
-        return view('showInstitutes',compact('institutes'));
+        $centres = $centre->all();
+        return view('showCentres',compact('centres'));
     }
 
     /**
@@ -45,7 +45,7 @@ class InstituteController extends Controller
      * @param  \App\Institute  $institute
      * @return \Illuminate\Http\Response
      */
-    public function show(Institute $institute)
+    public function show(Centre $centre)
     {
         dd("show method")    ;
     }
@@ -56,7 +56,7 @@ class InstituteController extends Controller
      * @param  \App\Institute  $institute
      * @return \Illuminate\Http\Response
      */
-    public function edit(Institute $institute)
+    public function edit(Centre $centre)
     {
         dd("edit method");
     }
@@ -68,7 +68,7 @@ class InstituteController extends Controller
      * @param  \App\Institute  $institute
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Institute $institute)
+    public function update(Request $request, Centre $centre)
     {
         //
     }
@@ -79,7 +79,7 @@ class InstituteController extends Controller
      * @param  \App\Institute  $institute
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Institute $institute)
+    public function destroy(Centre $centre)
     {
                 dd("destroy method");
     }

@@ -20,7 +20,6 @@
 					<div class="has-text-white"> 
 						@php 
 							$todaysAttendance = $student->attendances->last()['present'] 
-							<!-- todaysAttendance to be marked "present" as defualt to be input from here? -->
 						@endphp
 					</div> <br>
 					<student  :student="{{$student}}" :attendance = "{{$todaysAttendance}}"></student>	

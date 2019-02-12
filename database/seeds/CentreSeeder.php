@@ -1,9 +1,9 @@
 <?php
 
-use App\Institute;
+use App\Centre;
 use Illuminate\Database\Seeder;
 
-class InstituteSeeder extends Seeder
+class CentreeSeeder extends Seeder
 {
     /**
      * Run the database seeds.

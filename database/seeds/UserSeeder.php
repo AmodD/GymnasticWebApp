@@ -17,13 +17,13 @@ class UserSeeder extends Seeder
     {
         factory(App\User::class, 1)->create()->each(function ($user) {
 
-        	$institutes = factory(App\Institute::class,2)->create();
+        	$centres = factory(App\Centre::class,2)->create();
 
-        	foreach ($institutes as $institute) {
-        		$user->institutes()->save($institute);
+        	foreach ($centres as $centre) {
+        		$user->centres()->save($centre);
 
                 $batches= factory(App\Batch::class,4)->create(
-                 ['institute_id'=>$institute->id]
+                 ['centre_id'=>$centre->id]
              );
 
                 foreach ($batches as $batch) {
