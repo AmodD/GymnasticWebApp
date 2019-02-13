@@ -13,27 +13,25 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
      DB::table('users')->insert([
+        ['name' => 'Abhijeet',
+       'email' => 'ap@abc.com',
+        'email_verified_at' => now(),
+        'password' => Hash::make('abc'),
+        ],
         ['name' => 'Ajinkya',
         'email' => 'ajinkyameister@gmail.comp',
         'email_verified_at' => now(),
         'password' => Hash::make('abc'), 
         ],
-
-        ['name' => 'Amod',
+	['name' => 'Amod',
         'email' => 'amod.d.kulkarni@gmail.com',
-        'email_verified_at' => now(),
-        'password' => Hash::make('abc'),
-        ],
-
-        ['name' => 'Abhijeet',
-        'email' => 'ap@abc.com',
         'email_verified_at' => now(),
         'password' => Hash::make('abc'),
         ]
     ]);
 
+     $this->call(CentreSeeder::class);
      $this->call(UserSeeder::class);
-        // $this->call(InstituteSeeder::class);
 
  }
 }

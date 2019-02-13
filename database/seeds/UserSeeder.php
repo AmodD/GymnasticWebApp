@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use App\Institute;
+use App\Centre;
 use App\User;
 use App\Batch;
 use App\Student;
@@ -17,7 +17,7 @@ class UserSeeder extends Seeder
     {
         factory(App\User::class, 1)->create()->each(function ($user) {
 
-        	$centres = factory(App\Centre::class,2)->create();
+        	$centres = Centre::all();
 
         	foreach ($centres as $centre) {
         		$user->centres()->save($centre);

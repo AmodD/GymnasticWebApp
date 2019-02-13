@@ -29,22 +29,9 @@ Route::get('/', function () {
     return view('home');
 });
 
-
-
-Route::resource('users', 'UserController');
 Auth::routes();
-// Route::get('/dashboard', 'UserController@index')->name('dashboard');
-
-Route::get('/user','UserController@index')->name('indexing');
-Route::get('/user/create','UserController@create');
-Route::post('/user','UserController@store')->middleware('auth');
-Route::get('/user/{user}','UserController@show');
-Route::get('/user/{user}/edit','UserController@edit');
-Route::patch('/user/{user}','UserController@update');
-Route::delete('/user/{user}','UserController@destroy');
-
-Auth::routes();
-Route::get('/dashboard', 'HomeController@index')->name('home');
+Route::get('/dashboard', 'HomeController@index')->name('dashboard');
+Route::get('/centres/{centre}/batches', 'CentreController@showAllBatches');
 
 Route::resource('institutes','InstituteController');
 //Route::resource('attendances','AttendanceController');

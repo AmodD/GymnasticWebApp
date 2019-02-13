@@ -11,7 +11,6 @@
 @endsection
 
 @section('mainbody')
-
-<h1>HOME</h1>
-
+	<h1><span style="color:white">CENTRES</h1>
+	@component('components.batches',["batches" => $batches]) @endcomponent
 @endsection

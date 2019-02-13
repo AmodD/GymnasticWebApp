@@ -1,44 +1,30 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<title></title>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta name="csrf-token" content="{{ csrf_token() }}">
-	<link rel="stylesheet" type="text/css" href="{{ asset('css/app.css') }}">
-	<link href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.2/css/bulma.css" rel="stylesheet">
-</head>
+@extends('layouts.app')
 
+@section('top')
 
-<body>
+	@if(Auth::guest())
+		@component('components.login', [ 'errors' => $errors] ) @endcomponent
+	@else
+		@component('components.navbar') @endcomponent
+	@endif
 
-	<div class="hero is-fullheight"  style="background-image: url('gymnastics3.png')">
+@endsection
+
+@section('mainbody')
+<h1><span style="color:white">DASHBOARD</span><h1>
+<br><br>
+<h3><span style="color:white">CENTRES</span><h3>
 		<div class="section"> 
-			<div class="columns is-mobile is-multiline 	is-centered">
-				<div class="card-content">
+			<div class="columns is-mobile is-multiline">
 					@foreach ($centres as $centre) 	
-					<div class="column is-narrow">	
-						<form action= "/batches" method="GET">
-							{{csrf_field()}}		
-							<div class="box">
-								<div class="card-content">
-									<div class="media-content" >
-										<input  type="hidden" name="centreId" 
-											value="{{$centre->id}}"> </input>
-
+					<div class="column is-one-quarter">	
+						<div class="box">
 									<p class="title is-4" id="centre">{{$centre->name}}</p> 
-
-									<button type="submit" name="attendance"class="button is-info">Attendance </button>
-								</div>
-							</div>
+									<p class="title is-6" id="centre">{{$centre->address}}</p> 
+									<a href="/centres/{{$centre->id}}/batches" class="button is-info">Attendance </a>
 						</div>
-					</form>
-				</div>
-				@endforeach				
+					</div>
+					@endforeach				
 			</div>
 		</div>
-	</div>
-</div>
-
-</body>
-</html>
+@endsection

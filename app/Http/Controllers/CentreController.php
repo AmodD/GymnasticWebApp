@@ -83,4 +83,10 @@ class CentreController extends Controller
     {
                 dd("destroy method");
     }
+
+    public function showAllBatches(Centre $centre)
+    {
+	    $batches = $centre->batches;
+            return view('centre_batches',compact('batches'));
+    }
 }

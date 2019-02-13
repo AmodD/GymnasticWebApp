@@ -1,9 +1,8 @@
 <?php
 
-use App\Centre;
 use Illuminate\Database\Seeder;
 
-class CentreeSeeder extends Seeder
+class CentreSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -12,13 +11,17 @@ class CentreeSeeder extends Seeder
      */
     public function run()
     {
-    
-    	// foreach ($institutes as $ajinkya) {	
- 			
-     //  		$batches = factory(App\Batch::class,4)->make(['institute_id'=>$institute->id]);
-     //   		$institutes->batches()->save($batches);
-     //    	}
-	}
+        
+     DB::table('centres')->insert([
+        ['user_id' => 1 ,
+        'name' => 'Symbiosis',
+        'address' => 'Viman Nagar',
+        ],
+        ['user_id' => 1 ,
+        'name' => 'Kalyani School',
+        'address' => 'Manjri',
+        ]
+	]);
+
+    }
 }
-
-

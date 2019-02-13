@@ -35,7 +35,13 @@ class FeatureContext extends MinkContext implements Context,SnippetAcceptingCont
     {
     }
 
-    
+/**
+     * @Given I click :arg1
+     */
+    public function iClick($arg1)
+    {
+       $this->visit('/'.$arg1);
+    }    
    
 
     /**
@@ -81,13 +87,4 @@ class FeatureContext extends MinkContext implements Context,SnippetAcceptingCont
        
       PHPUnit::assertSeeText($institute);
     }
-
-    /**
-     * @Given I follow link :arg1
-     */
-    public function iFollowLink($modify)
-    {
-        throw new PendingException();
-    }
-
 }
