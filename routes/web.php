@@ -31,22 +31,17 @@ Route::get('/', function () {
 
 Auth::routes();
 Route::get('/dashboard', 'HomeController@index')->name('dashboard');
-Route::get('/centres/{centre}/batches', 'CentreController@showAllBatches');
 
-Route::resource('institutes','InstituteController');
-//Route::resource('attendances','AttendanceController');
+Route::get('/centres/{centre}/batches', 'CentreController@batches');
+Route::get('/centres/{centre}/batches/{batch}/students', 'CentreController@batchStudents');
+
 Route::resource('batches','BatchController');
-
-// group { "/batch"
-// 	Route::resource('students','StudentController');
-// 		grou[{attendances]
-// }
-
-// Route::get('/batches/{batch}/students','StudentController@index');
 
 Route::get('/batches/{batch}/students','BatchController@getStudentsOfBatch');
 Route::get('/batches/{batch}/students','StudentController@index');
 
+
+Route::post('/attendances','AttendanceController@store');
 // /batch/2/students/72372
 
 // /students XXXXX

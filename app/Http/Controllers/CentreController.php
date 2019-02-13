@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Centre;
+use App\Batch;
 use Illuminate\Http\Request;
 
 class CentreController extends Controller
@@ -84,9 +85,18 @@ class CentreController extends Controller
                 dd("destroy method");
     }
 
-    public function showAllBatches(Centre $centre)
+    public function batches(Centre $centre)
     {
 	    $batches = $centre->batches;
-            return view('centre_batches',compact('batches'));
+	    $centreName = $centre->name;
+            return view('centre_batches',compact('batches','centreName'));
+    }
+    
+    public function batchStudents(Centre $centre,Batch $batch)
+    {
+	    $students = $batch->students;
+	    $centreName = $centre->name;
+	    $batchNameTime = $batch->name." ".$batch->time;
+            return view('batch_students',compact('students','centreName','batchNameTime'));
     }
 }

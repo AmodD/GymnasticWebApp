@@ -19,7 +19,7 @@ class CreateStudentsTable extends Migration
             $table->string('name');
             $table->text('email');
             $table->string('level');
-            $table->unsignedInteger('attendance');
+            $table->tinyInteger('attendance'); // 0 = absent , 1 = present , -1 = not marked
             $table->timestamps();
         });
     }

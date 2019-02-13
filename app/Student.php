@@ -28,11 +28,10 @@ class Student extends Model
 
 	public function giveTodaysAttendance()
 	{
-		$todaysAttendanceC = $this->attendances()->where('date',carbon::today())->get();
-
+		$todaysAttendanceC = $this->attendances()->where('date',date('Y-m-d'))->get();
 
 		if($todaysAttendanceC->isNotEmpty()) return $todaysAttendanceC->first()->present;
-		else return 786;
+		else return -1;
 	}
 
 	

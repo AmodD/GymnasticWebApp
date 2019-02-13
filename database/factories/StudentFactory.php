@@ -1,16 +1,17 @@
 <?php
 
 use App\Student;
-use Faker\Generator as Faker;
 
 
 
-$factory->define(App\Student::class, function (Faker $faker) {
+$factory->define(App\Student::class, function (Faker\Generator $faker) {
 
-	$level=['beginner','intermediate','advanced'];
-    $attendance =[20,40,60,80,100];
-    return [
-        'name'=>$faker->name,
+$indian = Faker\Factory::create('en_IN');
+$level=['beginner','intermediate','advanced'];
+$attendance =[20,40,60,80,100];
+
+return [
+        'name'=>$indian->name,
         'email'=>$faker->unique()->safeEmail,
         'level'=> array_rand($level,1),
         'attendance'=>$attendance[array_rand($attendance)]

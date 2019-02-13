@@ -21,7 +21,7 @@
 						<div class="box">
 									<p class="title is-4" id="centre">{{$centre->name}}</p> 
 									<p class="title is-6" id="centre">{{$centre->address}}</p> 
-									<a href="/centres/{{$centre->id}}/batches" class="button is-info">Attendance </a>
+									<a href="/centres/{{$centre->id}}/batches" class="button is-info">Batches</a>
 						</div>
 					</div>
 					@endforeach				

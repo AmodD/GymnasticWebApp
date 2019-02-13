@@ -1,30 +1,22 @@
 <template>			
-
-	<div>		
 		<form @submit.prevent="markTheAttendance()">
 			<input type="hidden" name="_token" :value="csrf">
 
-			<div class="card"> 
-				<div class="card-content"> {{studentid}}  {{studentName}} {{student_attendance}}</div>
-				<div v-if="studentid==student_id" v-show="success" class="has-text-dark" type="" id="message" 
-				name="message"  v-model="message"> <h6> {{message}} </h6>
+			<p class="title is-4" id="centre">{{studentName}}</p> 
+			<p class="title is-4" id="centre">{{student_attendance}}</p> 
+				
+			<div v-if="studentid==student_id" v-show="success" class="has-text-dark" type="" id="message" name="message"  v-model="message">
+			       	<h6> {{message}} </h6>
+			</div>	
 
-			</div>					
-		</div>	
+			<input type="hidden" id="student_id" name="student_id"  v-model="student_id">
+			<input type="hidden" id="date"       name="date"        v-model="date"> 
+			<input type="hidden" id="present"    name="present"  v-model="present"> 
 
-		<input type="hidden" id="student_id" name="student_id"  v-model="student_id">
-		<input type="hidden" id="date"       name="date"        v-model="date"> 
-		<input type="hidden" id="present"    name="present"  v-model="present"> 
-
-		<button class="button is-primary" type="submit"	@click="markPresent(studentid)" >Present 
-		</button>			
-		<button class="button is-danger" type="submit" @click="markAbsent(studentid)" >Absent   
-		</button>
-		<button class="button is-danger" type="submit" 
-				@click="showStudentsForTheSelectedBatch(student_batch)" >batch 	</button>
-	</form>
-
-</div>
+			<button class="button is-primary" type="submit"	@click="markPresent(studentid)">Present</button>			
+			<button class="button is-danger" type="submit" @click="markAbsent(studentid)">Absent</button>
+			<button class="button is-danger" type="submit" @click="showStudentsForTheSelectedBatch(student_batch)" >batch 	</button>
+		</form>
 
 </template>
 <script >

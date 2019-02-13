@@ -35,12 +35,6 @@ Feature: HomePage
 			Then I should not see "login" 
 			And I should see "logout" 
 
-		Scenario: Click Dashboard
-
-			Given I am on homepage
-			And I click "dashboard"
-			Then  the url should match "dashboard"
-			And I should see "Dashboard" 
 	     	
 		Scenario: Logout
 

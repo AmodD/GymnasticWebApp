@@ -1,25 +1,13 @@
-	<div class="section"> 
-		<div class="columns is-mobile is-multiline 	is-centered">
-			<div class="card-content">
-				@foreach ($batches as $batch) 	
-				<form action="/batches/{{$batch->id}}/students" method="GET">
-
-			<div class="column is-narrow">	
-				<!-- <div class="card"> -->
-					<!-- <a href = "/students" class="card has-text-dark"> -->
-						<p class="card-content"> 
-						 <button  class="button is-info" type="submit" name="submit">  
-						 	{{$batch->name}}  {{$batch->time}} </button>
-						</p>
-						<input type="hidden" name="batchname" value="{{$batch->name}}">
-						<input type="hidden" name="batchId" value="{{$batch->id}}">
-						<!-- <button type="submit" name="submit" class="button is-info">Submit </button> -->
-				<!-- </div>		  -->
-					<!-- </a> -->
-					
+<div class="section"> 
+	<div class="columns is-mobile is-multiline">
+	@foreach ($batches as $batch) 					
+		<div class="column is-one-quarter">
+			<div class="box">
+				<p class="title is-4" id="centre">{{$batch->name}}</p> 
+				<p class="title is-6" id="centre">{{$batch->time}}</p> 
+				<a href="/centres/{{$batch->centre_id}}/batches/{{$batch->id}}/students" class="button is-info">Students</a>
 			</div>
-		</form>
-			@endforeach				
 		</div>
-		</div>
+	@endforeach				
 	</div>
+</div>

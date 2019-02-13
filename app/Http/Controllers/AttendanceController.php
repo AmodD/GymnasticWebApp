@@ -37,24 +37,15 @@ class AttendanceController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Attendance $attendance, Request $request)
+    public function store(Attendance $attendance,Request $request)
     {
-       
-        if($request->present=="present"){
-
-                $attendance->create([
+            $attendance->create([
                     'student_id'=>$request->student_id,
-                    'date'=> $request->date,                
-                    'present'=> true,  
-            ]);
-            }elseif($request->present=="absent"){
+                    'date'=> date('Y-m-d'),                
+                    'present'=> (bool) $request->present,  
+	    ]);
 
-                $attendance->create([
-                    'student_id'=>$request->student_id,
-                    'date'=>$request->date,                 
-                    'present'=>false ,
-            ]);
-        } 
+	    return back();
     }   
     
 
