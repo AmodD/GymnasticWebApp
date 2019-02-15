@@ -11,7 +11,7 @@
 @endsection
 
 @section('mainbody')
-<h1><span style="color:white">DASHBOARD</span><h1>
-<br><br>
-	@component('components.centres',["centres" => $centres]) @endcomponent
+	@component('components.students', [ 'students' => $students] ) @endcomponent
 @endsection
+
+

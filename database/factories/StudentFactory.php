@@ -12,19 +12,12 @@ $attendance =[20,40,60,80,100];
 
 return [
         'name'=>$indian->name,
-        'email'=>$faker->unique()->safeEmail,
-        'level'=> array_rand($level,1),
-        'attendance'=>$attendance[array_rand($attendance)]
+	'parent_email'=>$indian->email,
+	'parent_mobile' => $indian->mobileNumber,
+	'date_of_birth' => $faker->date($format = 'Y-m-d',$startDate = '-30 years', $max = '2010-2-12'),
+	'date_of_joining' => $faker->date($format = 'Y-m-d',$startDate = '-10 years', $max = 'now'),
+	'date_of_leaving' => $faker->date($format = 'Y-m-d',$startDate = '-2 years', $max = 'now'),
+	'active' => $faker->boolean($chanceOfGettingTrue = 90)
 
-
-
-
-// $factory->define(App\Student::class, function (Faker $faker) {
-// 	$attendance=[20,40,60,80,100];
-//     return [       
-//         'name'=>$faker->name,
-//         'email'=>$faker->unique()->safeEmail,
-//         'attendance'=>$attendance[array_rand($attendance)],
-// >>>>>>> 5ec194cbc49d556a9a45170ad05cc244177e9870
     ];
 });

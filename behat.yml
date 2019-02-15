@@ -17,3 +17,6 @@ default:
         attendance:
             paths:    [ "%paths.base%/features/attendance" ]        
             contexts: [ FeatureContext ] 
+        students:
+            paths:    [ "%paths.base%/features/students" ]        
+            contexts: [ StudentContext ] 

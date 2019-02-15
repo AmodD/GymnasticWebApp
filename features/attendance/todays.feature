@@ -22,15 +22,20 @@ Feature: Todays Attendance
 		When I click students for any batch
 		Then I should see list of students for that batch
 
+	Scenario: For Unmarked Students
+		Given I am on the students page
+		When A student is unmarked
+		Then I should see Present and Absent buttons
+
 	Scenario: Mark a Student Present
 		Given I am on the students page
 		When I click present for an unmarked student
-		Then I should see "Status : Present"
+		Then I should see "Today's Attendance : Present"
 
 	Scenario: Mark a Student Absent
 		Given I am on the students page
 		When I click absent for an unmarked student
-		Then I should see "Status : Absent"
+		Then I should see "Today's Attendance : Absent"
 
 		Scenario: Logout
 

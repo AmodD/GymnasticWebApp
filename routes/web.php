@@ -35,7 +35,9 @@ Route::get('/dashboard', 'HomeController@index')->name('dashboard');
 Route::get('/centres/{centre}/batches', 'CentreController@batches');
 Route::get('/centres/{centre}/batches/{batch}/students', 'CentreController@batchStudents');
 
+Route::resource('centres','CentreController');
 Route::resource('batches','BatchController');
+Route::resource('students','StudentController');
 
 Route::get('/batches/{batch}/students','BatchController@getStudentsOfBatch');
 Route::get('/batches/{batch}/students','StudentController@index');

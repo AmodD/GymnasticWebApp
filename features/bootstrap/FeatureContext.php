@@ -123,7 +123,7 @@ class FeatureContext extends MinkContext implements Context,SnippetAcceptingCont
 		break;	
 	    }
             
-	    $this->pressButton('present_'.$selectedStudent->id);
+	    if($selectedStudent) $this->pressButton('present_'.$selectedStudent->id);
 	    	
     }
 
@@ -141,6 +141,80 @@ class FeatureContext extends MinkContext implements Context,SnippetAcceptingCont
 		break;	
 	    }
             
-	    $this->pressButton('absent_'.$selectedStudent->id);
+	    if($selectedStudent) $this->pressButton('absent_'.$selectedStudent->id);
+    }
+
+   /**
+     * @Then I should see a list of all batches
+     */
+    public function iShouldSeeAListOfAllBatches()
+    {
+	    $batch_name = App\Batch::all()->random()->name;	    
+	    $this->assertPageContainsText($batch_name);
+    }
+
+    /**
+     * @Then I should see a list of all students
+     */
+    public function iShouldSeeAListOfAllStudents()
+    {
+	    $student_name = App\Student::all()->random()->name;	    
+	    $this->assertPageContainsText($student_name);
+    }
+
+    /**
+     * @When A student is unmarked
+     */
+    public function aStudentIsUnmarked()
+    {
+        throw new PendingException();
+    }
+
+    /**
+     * @Then I should see Present and Absent buttons
+     */
+    public function iShouldSeePresentAndAbsentButtons()
+    {
+        throw new PendingException();
+    }
+
+    /**
+     * @Then I should see list of students
+     */
+    public function iShouldSeeListOfStudents()
+    {
+	    $this->assertPageContainsText(App\Student::all()->random()->name);
+    }
+
+    /**
+     * @Given I am on students index page
+     */
+    public function iAmOnStudentsIndexPage()
+    {
+        throw new PendingException();
+    }
+
+    /**
+     * @When I click a particular student
+     */
+    public function iClickAParticularStudent()
+    {
+        throw new PendingException();
+    }
+
+    /**
+     * @Then I should see all details of the student
+     */
+    public function iShouldSeeAllDetailsOfTheStudent()
+    {
+        throw new PendingException();
+    }
+
+    /**
+     * @When I click students menu
+     */
+    public function iClickStudentsMenu()
+    {
+	    $this->visit("/students");
     }
 }

@@ -13,12 +13,10 @@ class BatchController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Batch $batch, Request $request)
+    public function index()
     {
-        
-        $batches = $batch->getAllBatchesForCentre($request->centreId); 
-
-        return view('showAllBatches',compact('batches'));
+        $batches = Batch::with('centre:id,name')->get(); 
+        return view('batches_index',compact('batches'));
           
     }
 

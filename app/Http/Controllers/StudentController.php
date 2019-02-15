@@ -15,22 +15,10 @@ class StudentController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Student $student, Request $request, Batch $batch)
+    public function index()
     {
-        
-       $today=     Carbon::now();
-       $tomorrow=  $today->addDay();
-       $yesterday= $today->subDay(); 
-       $students = $batch->students;
-
-
-                // $students = $student->getStudentsWithBatchAndAttendance($batch->id);
-                // $student->giveTodaysAttendance($batch->id);
-               $studentsData=  $student->getStudentsWithBatchAndAttendance($request->batchId);
-                                        
-
-        return view ('showAllStudents',compact('students','studentsData','today'));
-           
+	$students = Student::with('batch.centre:id,name')->get();    
+        return view ('students_index',compact('students'));
     }
 
     /**
@@ -62,7 +50,9 @@ class StudentController extends Controller
      */
     public function show(Student $student)
     {
-        //
+	//$student = Student::with('batch.centre:id,name')->find($student->id);    
+	    $student->load(['batch.centre:id,name','attendances']);
+        return view ('students_show',compact('student'));
     }
 
     /**

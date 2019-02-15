@@ -22,9 +22,9 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function index(Centre $centre)
+    public function index()
     {
-        $centres = $centre->all();
+        $centres = Centre::all();
         return view('dashboard',compact('centres'));
     }
 }

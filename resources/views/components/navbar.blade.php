@@ -19,13 +19,31 @@
          &nbsp; Home
       </a>
       </span>	
-
       <span class="navbar-item">
       <a id="dashboard" class="button is-rounded" href="/dashboard" >
 	<span class="icon"><i class="fas fa-tachometer-alt"></i></span>
         &nbsp; Dashboard
       </a>
       </span>
+      <span class="navbar-item">
+      <a id="centres_menu" class="button is-rounded" href="/centres" >
+	<span class="icon"><i class="fas fa-tachometer-alt"></i></span>
+        &nbsp; Centres
+      </a>
+      </span>
+      <span class="navbar-item">
+      <a id="batches_menu" class="button is-rounded" href="/batches" >
+	<span class="icon"><i class="fas fa-tachometer-alt"></i></span>
+        &nbsp; Batches
+      </a>
+      </span>
+      <span class="navbar-item">
+      <a id="students_menu" class="button is-rounded" href="/students" >
+	<span class="icon"><i class="fas fa-tachometer-alt"></i></span>
+        &nbsp; Students
+      </a>
+      </span>
+
     </div>
 
     <div class="navbar-end">

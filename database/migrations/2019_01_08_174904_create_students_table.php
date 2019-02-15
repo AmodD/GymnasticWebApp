@@ -17,9 +17,12 @@ class CreateStudentsTable extends Migration
             $table->increments('id');
             $table->unsignedInteger('batch_id');
             $table->string('name');
-            $table->text('email');
-            $table->string('level');
-            $table->tinyInteger('attendance'); // 0 = absent , 1 = present , -1 = not marked
+            $table->text('parent_email');
+            $table->text('parent_mobile');
+            $table->date('date_of_birth');
+            $table->date('date_of_joining');
+            $table->date('date_of_leaving');
+            $table->boolean('active');
             $table->timestamps();
         });
     }

@@ -13,10 +13,10 @@ class CentreController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Centre $centre)
+    public function index()
     {
-        $centres = $centre->all();
-        return view('showCentres',compact('centres'));
+        $centres = Centre::all();
+        return view('centres_index',compact('centres'));
     }
 
     /**

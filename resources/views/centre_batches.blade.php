@@ -11,7 +11,6 @@
 @endsection
 
 @section('mainbody')
-	<h1><span style="color:white">CENTRES</h1>
-	<h3><span style="color:white">{{ $centreName }}</h3>
+	<h1><span style="color:white">{{ $centreName }}</h1>
 	@component('components.batches',["batches" => $batches]) @endcomponent
 @endsection
