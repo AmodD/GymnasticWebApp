@@ -27,7 +27,7 @@ class FeatureContext extends MinkContext implements Context,SnippetAcceptingCont
      * You can also pass arbitrary arguments to the
      * context constructor through behat.yml.
      */
-    use Migrator, DatabaseTransactions;
+    use Migrator, DatabaseTransactions, AttendanceTrait;
 
     protected $usertable;
     protected $centreid;

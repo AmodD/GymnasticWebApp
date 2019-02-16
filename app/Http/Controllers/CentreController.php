@@ -91,12 +91,4 @@ class CentreController extends Controller
 	    $centreName = $centre->name;
             return view('centre_batches',compact('batches','centreName'));
     }
-    
-    public function batchStudents(Centre $centre,Batch $batch)
-    {
-	    $students = $batch->students;
-	    $centreName = $centre->name;
-	    $batchNameTime = $batch->name." ".$batch->time;
-            return view('batch_students',compact('students','centreName','batchNameTime'));
-    }
 }

@@ -8,6 +8,12 @@ use Illuminate\Http\Request;
 
 class BatchController extends Controller
 {
+
+	public function __construct()
+	{
+	    $this->middleware('auth');
+	}
+
     /**
      * Display a listing of the resource.
      *
@@ -86,11 +92,12 @@ class BatchController extends Controller
         //
     }
 
-    public function getStudentsOfBatch(Request $request, Batch $batch){
+    public function students(Request $request, Batch $batch){
         
-        // $students = $batch->students;
-
-        return redirect('/batches/{batch}/students');
+	    $students = $batch->students;
+	    $centreName = $batch->centre->name;
+	    $batchNameTime = $batch->name." ".$batch->time;
+            return view('batch_students',compact('students','centreName','batchNameTime'));
 
     }
     

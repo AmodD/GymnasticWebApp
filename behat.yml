@@ -1,4 +1,6 @@
 default:
+    autoload:
+        '': "%paths.base%/bdd/contexts"  
     extensions:
         Laracasts\Behat\ServiceContainer\BehatExtension: ~
         Laracasts\Behat:
@@ -12,11 +14,14 @@ default:
             tags: ~@wip
     suites:
         pages:
-            paths:    [ "%paths.base%/features/pages" ]        
+            paths:    [ "%paths.base%/bdd/features/pages" ]        
             contexts: [ FeatureContext ] 
         attendance:
-            paths:    [ "%paths.base%/features/attendance" ]        
+            paths:    [ "%paths.base%/bdd/features/attendance" ]        
             contexts: [ FeatureContext ] 
         students:
-            paths:    [ "%paths.base%/features/students" ]        
+            paths:    [ "%paths.base%/bdd/features/students" ]        
             contexts: [ StudentContext ] 
+        batch_students:
+            paths:    [ "%paths.base%/bdd/features/students" ]        
+            contexts: [ BatchContext ] 

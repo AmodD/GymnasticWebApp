@@ -15,7 +15,7 @@ Feature: Navigation
 		Scenario: I visit the centres page 
 
 			Given I am on "dashboard"
-			When I follow "centres"
+			When I go to "centres"
 			Then I should see "CENTRES"
 			And I should see "Symbiosis"
 			And I should see "Kalyani School"
@@ -23,13 +23,13 @@ Feature: Navigation
 		Scenario: I visit the batches page 
 
 			Given I am on "dashboard"
-			When I follow "batches"
+			When I go to "batches"
 			Then I should see a list of all batches
 	
 		Scenario: I visit the students page 
 
 			Given I am on "dashboard"
-			When I follow "students"
+			When I go to "students"
 			Then I should see a list of all students
 
 		Scenario: Logout
