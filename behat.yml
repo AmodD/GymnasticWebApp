@@ -13,15 +13,19 @@ default:
         filters:
             tags: ~@wip
     suites:
-        pages:
-            paths:    [ "%paths.base%/bdd/features/pages" ]        
-            contexts: [ FeatureContext ] 
-        attendance:
-            paths:    [ "%paths.base%/bdd/features/attendance" ]        
-            contexts: [ FeatureContext ] 
+        core_features:
+            paths:  
+                - "%paths.base%/bdd/features/navigation"        
+                - "%paths.base%/bdd/features/miscellaneous"        
+                - "%paths.base%/bdd/features/autherization"        
+                - "%paths.base%/bdd/features/authentication"        
+            contexts: 
+                - RootContext
         students:
             paths:    [ "%paths.base%/bdd/features/students" ]        
-            contexts: [ StudentContext ] 
-        batch_students:
+            contexts:  
+                - StudentContext 
+        batches:
             paths:    [ "%paths.base%/bdd/features/students" ]        
-            contexts: [ BatchContext ] 
+            contexts:  
+                - BatchContext 

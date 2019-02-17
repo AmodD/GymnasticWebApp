@@ -21,10 +21,3 @@ Feature: Mark Attendance
 		When I click absent for an unmarked student
 		Then I should see "Today's Attendance : Absent"
 
-		Scenario: Logout
-
-			Given I am on homepage
-			And I press "logout"
-			Then  the url should match "/"
-			And I should see "login" 
-

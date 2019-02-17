@@ -19,7 +19,7 @@ use Behat\Testwork\Hook\Scope\BeforeSuiteScope;
 /**
  * Defines application features from the specific context.
  */
-class StudentContext extends MinkContext implements Context,SnippetAcceptingContext
+class RootContext extends MinkContext implements Context,SnippetAcceptingContext
 {
     /**
      * Initializes context.
@@ -28,9 +28,9 @@ class StudentContext extends MinkContext implements Context,SnippetAcceptingCont
      * You can also pass arbitrary arguments to the
      * context constructor through behat.yml.
      */
-    use Migrator, DatabaseTransactions , AttendanceTrait , StudentTrait;
+    use Migrator, DatabaseTransactions;
 
-    protected $selectedStudent;
+    protected $usertable;
     protected $centreid;
     protected $batchid;
 
@@ -47,21 +47,11 @@ class StudentContext extends MinkContext implements Context,SnippetAcceptingCont
 	     Auth::loginUsingId(1);
      }
 
-
-    /**
-     * @Given I am on students page
+        /**
+     * @Given I am not logged in
      */
-    public function iAmOnStudentsPage()
+    public function iAmNotLoggedIn()
     {
-       $this->visit('/students');
-	    $this->assertResponseStatus(200);
-    }
-    /**
-     * @When I go to students page
-     */
-    public function iGoToStudentsPage()
-    {
-       $this->visit('/students');
-       $this->assertResponseStatus(200);
+	Auth::logout();
     }
 }
