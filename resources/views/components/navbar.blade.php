@@ -26,21 +26,21 @@
       </a>
       </span>
       <span class="navbar-item">
-      <a id="centres" class="button is-rounded" href="/centres" >
-	<span class="icon"><i class="fas fa-tachometer-alt"></i></span>
-        &nbsp; Centres
-      </a>
-      </span>
-      <span class="navbar-item">
-      <a id="batches" class="button is-rounded" href="/batches" >
-	<span class="icon"><i class="fas fa-tachometer-alt"></i></span>
-        &nbsp; Batches
-      </a>
-      </span>
-      <span class="navbar-item">
       <a id="students" class="button is-rounded" href="/students" >
-	<span class="icon"><i class="fas fa-tachometer-alt"></i></span>
+	<span class="icon"><i class="fas fa-users"></i></span>
         &nbsp; Students
+      </a>
+      </span>
+      <span class="navbar-item">
+      <a id="attendances" class="button is-rounded" href="/attendances/batches" >
+	<span class="icon"><i class="fas fa-calendar-alt"></i></span>
+        &nbsp; Attendances
+      </a>
+      </span>
+      <span class="navbar-item">
+      <a id="fees" class="button is-rounded" href="/fees/centres" >
+	<span class="icon"><i class="fas fa-rupee-sign"></i></span>
+        &nbsp; Fees
       </a>
       </span>
 

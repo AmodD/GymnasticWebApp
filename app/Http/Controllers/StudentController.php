@@ -57,7 +57,7 @@ class StudentController extends Controller
     public function show(Student $student)
     {
 	//$student = Student::with('batch.centre:id,name')->find($student->id);    
-	    $student->load(['batch.centre:id,name','attendances']);
+	    $student->load(['batch.centre','attendances']);
         return view ('students_show',compact('student'));
     }
 
@@ -94,5 +94,6 @@ class StudentController extends Controller
     {
         //
     }
+
     
 }

@@ -18,6 +18,8 @@ class CreateCentresTable extends Migration
             $table->unsignedInteger('user_id');
             $table->string('name');
             $table->string('address');
+	    $table->unsignedSmallInteger('fee_amount');
+	    $table->char('fee_frequency');// M - Monthly , Q - Quarterly
             $table->timestamps();
         });
     }

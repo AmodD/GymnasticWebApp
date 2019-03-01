@@ -23,7 +23,10 @@ class Centre extends Model
     	return $this->hasMany(Batch::class);
     }
     
-    
+    public function students()
+    {
+        return $this->hasManyThrough('App\Student', 'App\Batch');
+    }    
     
     
 

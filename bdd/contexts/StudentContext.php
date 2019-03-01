@@ -28,7 +28,7 @@ class StudentContext extends MinkContext implements Context,SnippetAcceptingCont
      * You can also pass arbitrary arguments to the
      * context constructor through behat.yml.
      */
-    use Migrator, DatabaseTransactions , AttendanceTrait , StudentTrait;
+    use Migrator, DatabaseTransactions , AttendanceTrait , StudentTrait , FeeTrait;
 
     protected $selectedStudent;
     protected $centreid;
@@ -63,5 +63,23 @@ class StudentContext extends MinkContext implements Context,SnippetAcceptingCont
     {
        $this->visit('/students');
        $this->assertResponseStatus(200);
+    }
+
+   /**
+     * @Given I am on a particular student page
+     */
+    public function iAmOnAParticularStudentPage()
+    {
+	    $this->getAStudent();    
+	    $this->visit('/students/'.$this->selectedStudent->id);
+    }
+
+        /**
+     * @Given I am on a particular student page who has paid fees
+     */
+    public function iAmOnAParticularStudentPageWhoHasPaidFees()
+    {
+	$this->getAStudentWhoHasPaidFees();
+	$this->visit('/students/'.$this->selectedStudent->id);
     }
 }

@@ -13,3 +13,12 @@ Feature: Student Profile Page
 		Given I am on students page
 		When I click a particular student
 		Then I should see all details of the student
+	
+	Scenario: Page Layout
+		Given I am on students page
+		When I click a particular student
+		#Then I should see 3 '<div class="tile is-child box">' elements
+	 	Then the "div" element should contain "class=\"tile is-ancestor\""
+		And the "div" element should contain "class=\"tile is-child box\""
+		And I should see "Fee"
+		And I should see "Attendance"

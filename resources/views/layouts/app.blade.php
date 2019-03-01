@@ -17,14 +17,8 @@
 	<title>{{ config('app.name', 'Laravel123') }}</title>
 </head>
 <body>
-	<div id="">
 		<section class="hero  is-fullheight-with-navbar"   style="background-image: linear-gradient(rgba(0, 0, 0, 0.49),rgba(0, 0, 0, 0.49)), url('gymnastics_split.jpg'); background-size: 100% 100%; 	background-attachment:fixed;" >
 			@yield('top')
-			
-			<div class="content "> 
-				<p> @yield('siteheader') </p>
-			</div>
-
 
 			<div class="hero-body">
 				<div class="container">
@@ -32,7 +26,6 @@
 					@yield('mainbody')
 
 					@component('components.errordisplay') @endcomponent
-
 					@yield('footer')
 
 				</div>
@@ -40,7 +33,6 @@
 						@yield('images')
 			</section>
 
-		</div>
 		<script type="text/javascript" src="/js/app.js" ></script>
 
 	</body>

@@ -11,7 +11,7 @@ default:
             laravel: ~
     gherkin:
         filters:
-            tags: ~@wip
+            tags: ~@wip,~@cf
     suites:
         core_features:
             paths:  
@@ -29,3 +29,7 @@ default:
             paths:    [ "%paths.base%/bdd/features/students" ]        
             contexts:  
                 - BatchContext 
+        centres:
+            paths:    [ "%paths.base%/bdd/features/centres" ]        
+            contexts:  
+                - CentreContext 

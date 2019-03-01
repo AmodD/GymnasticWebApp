@@ -10,16 +10,31 @@ trait StudentTrait
 	    else $this->students = App\Student::all();
 	    
 	    if(!$this->students || $this->students->count() == 0) throw new Exception('Error : Students not available');
-    }	    
+    }
 
     private function getAStudent()
     {
 	    $this->getStudents();
+	    $this->selectedStudent = $this->students->random(); 
+	    if(!$this->selectedStudent) throw new Exception('Error : Student could not be selected');
+    }    
 
-	    $this->selectedStudent = $this->students->random();
+    private function getAStudentWhoHasPaidFees()
+    {
+	    $this->getStudents();
+	    while(true)
+	    {
+		    $student = $this->students->random();
+		    if($student->fees->isNotEmpty())
+		    {
+			    $this->selectedStudent = $student;
+			    break;
+		    }
+	    }
 	    
 	    if(!$this->selectedStudent) throw new Exception('Error : Student could not be selected');
     }
+
     /**
      * @Then I should see list of students
      */

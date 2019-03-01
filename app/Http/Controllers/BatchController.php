@@ -55,7 +55,7 @@ class BatchController extends Controller
      */
     public function show(Batch $batch)
     {
-        
+        return view ('batches_show',compact('batch'));
     }
 
     /**

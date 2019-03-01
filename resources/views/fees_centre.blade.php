@@ -11,5 +11,6 @@
 @endsection
 
 @section('mainbody')
-	@component('components.batches', [ 'batches' => $batches] ) @endcomponent
+	<h1 class="has-text-centered"><span style="color:white">PAY FEES & SEND RECEIPTS</h1>
+	@component('components.fee', [ 'centre' => $centre] ) @endcomponent
 @endsection

@@ -28,7 +28,5 @@ class Attendance extends Model
     	// return "hello ajinkya dravid";
     	
     }
-    
-    
         
 }

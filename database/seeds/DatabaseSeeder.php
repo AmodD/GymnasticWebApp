@@ -14,19 +14,19 @@ class DatabaseSeeder extends Seeder
     {
      DB::table('users')->insert([
         ['name' => 'Abhijeet',
-       'email' => 'ap@abc.com',
-        'email_verified_at' => now(),
-        'password' => Hash::make('abc'),
+         'email' => 'ap@abc.com',
+         'email_verified_at' => now(),
+         'password' => Hash::make('abc'),
         ],
         ['name' => 'Ajinkya',
-        'email' => 'ajinkyameister@gmail.comp',
-        'email_verified_at' => now(),
-        'password' => Hash::make('abc'), 
+         'email' => 'ajinkyameister@gmail.comp',
+         'email_verified_at' => now(),
+         'password' => Hash::make('abc'), 
         ],
 	['name' => 'Amod',
-        'email' => 'amod.d.kulkarni@gmail.com',
-        'email_verified_at' => now(),
-        'password' => Hash::make('abc'),
+         'email' => 'amod.d.kulkarni@gmail.com',
+         'email_verified_at' => now(),
+         'password' => Hash::make('abc'),
         ]
     ]);
 

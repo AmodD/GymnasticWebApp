@@ -1,5 +1,4 @@
-<div id="app" class="section">
-	<h1><span style="color:white">{{$student->name}}</span></h1>
+<h1><span style="color:white">{{$student->name}}</span></h1>
 <div class="tile is-ancestor">
   <div class="tile is-4 is-vertical is-parent">
     <div class="tile is-child box">
@@ -12,14 +11,7 @@
 	<p><strong>Parent Mobile</strong> : {{$student->parent_mobile}}  </p>	
     </div>
     <div class="tile is-child box">
-      <p class="title">Fee</p>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ornare magna eros, eu pellentesque tortor vestibulum ut. Maecenas non massa sem. Etiam finibus odio quis feugiat facilisis.</p>
-    </div>
-  </div>
-  <div class="tile is-parent">
-    <div class="tile is-child box">
       <p class="title">Attendance</p>
-<div class="column is-half">
     <table class="table is-striped">
       <thead>
         <tr>
@@ -28,18 +20,27 @@
         </tr>
       </thead>
       <tbody>
-	@foreach($student->attendances as $attendance)
+	@foreach($student->attendances->sortByDesc('id') as $attendance)
         <tr>
           <td>{{$attendance->date}}</td>
-          <td>{{$attendance->present}}</td>
+	  <td class="">
+		@if($attendance->present) <button class="button is-success is-small is-rounded" disabled><b>P</b></button>
+		@else <button class="button is-danger is-small is-rounded" disabled><b>A</b></button>
+		@endif
+	</td>
 	</tr>
 	@endforeach
       </tbody>
     </table>
+    </div>
   </div>
+  <div class="tile is-parent">
+    <div class="tile is-child box">
+      <p class="title">Fee</p>
+	@component('components.fee_form',["student" => $student]) @endcomponent
+	@component('components.fee_history',["student" => $student]) @endcomponent
     </div>
   </div>
 </div>
 
-</div>
 

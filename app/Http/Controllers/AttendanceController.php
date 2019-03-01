@@ -39,13 +39,41 @@ class AttendanceController extends Controller
      */
     public function store(Attendance $attendance,Request $request)
     {
-            $attendance->create([
+	    if($request->students)
+	    {
+		$this->validate(request(),[
+			"day" => 'required',
+			"month" => 'required',
+			"year" => 'required',
+			"selected_students" => 'required'
+		]);
+
+		if ($request->has('selected_students'))
+	       	{
+			$selectedStudentsA = $request->input('selected_students');
+			$present = (bool) $request->present;
+			$attDate = date("Y-m-d", strtotime($request->year.'-'.$request->month.'-'.$request->day));
+			
+			foreach($selectedStudentsA as $student_id)
+			{
+            			$attendance->create([
+		                    'student_id'=> $student_id,
+                		    'date'=> $attDate,                
+		                    'present'=> $present,  
+				    ]);
+			}
+		}
+	    }
+	    else
+	    {
+            	$attendance->create([
                     'student_id'=>$request->student_id,
                     'date'=> date('Y-m-d'),                
                     'present'=> (bool) $request->present,  
-	    ]);
+		    ]);
+	    }
 
-	    return back();
+	    return back()->with('attendance_success', 'Attendance successfully added');
     }   
     
 
@@ -58,7 +86,6 @@ class AttendanceController extends Controller
      */
     public function show(Attendance $attendance)
     {
-
     }
 
     /**
@@ -94,4 +121,24 @@ class AttendanceController extends Controller
     {
         //
     }
+    
+    public function batch(Batch $batch)
+    {
+        return view ('attendances_batch',compact('batch'));
+    }
+
+    public function batches()
+    {
+        $batches = Batch::with('centre:id,name')->get(); 
+        return view('attendances_batches',compact('batches'));
+    }
+
+    public function students(Request $request, Batch $batch){
+        
+	    $students = $batch->students;
+	    $centreName = $batch->centre->name;
+	    $batchNameTime = $batch->name." ".$batch->time;
+            return view('attendances_today',compact('students','centreName','batchNameTime'));
+    }
+
 }

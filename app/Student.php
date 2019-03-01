@@ -20,6 +20,11 @@ class Student extends Model
 
 		return $this->hasMany(Attendance::class); 
 	}
+	
+	public function fees() { 
+
+		return $this->hasMany(Fee::class); 
+	}
 
 	public function getStudentsWithBatchAndAttendance(){
 
@@ -34,7 +39,10 @@ class Student extends Model
 		else return -1;
 	}
 
-	
+	public function feePaid($date)
+	{
+
+	}	
 	
 
 }

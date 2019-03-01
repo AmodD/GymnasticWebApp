@@ -16,7 +16,11 @@ class CreateFeesTable extends Migration
         Schema::create('fees', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('student_id');
-            $table->unsignedInteger('amount');
+	    $table->unsignedInteger('amount');
+	    $table->date('date');
+	    $table->boolean('cash');// 1 - cash , 0 - cheque
+	    $table->text('period');// 'January' , 'September', 'April-June' 
+	    $table->text('comments');// 'chq no 29927' 
             $table->timestamps();
         });
     }

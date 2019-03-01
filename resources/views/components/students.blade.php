@@ -1,4 +1,3 @@
-<div id="app" class="section"> 
 	<div class="columns is-mobile is-multiline">
 	@foreach($students as $student)	 
 	<div class="column is-one-quarter"> 
@@ -10,6 +9,7 @@
 			<form action="/attendances" method="POST">
 			{{csrf_field()}}
 	  			<input type="hidden" name="student_id" value="{{$student->id}}">
+	  			<input type="hidden" name="students" value="0">
 				<button type="submit" name="present" value="1" id="present_{{$student->id}}" class="button is-primary">Present</button>	
 				<button  type="submit" name="present" value="0" id="absent_{{$student->id}}" class="button is-danger is-pulled-right">Absent</button>
 			</form>
@@ -22,6 +22,5 @@
 	</div>
 	@endforeach	
 	</div>
-</div>
 
 	<script type="text/javascript" src="/js/app.js"></script>
