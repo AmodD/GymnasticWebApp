@@ -12,12 +12,11 @@
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
 	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.js"></script>	
 	<script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
-	
 
 	<title>{{ config('app.name', 'Laravel123') }}</title>
 </head>
 <body>
-		<section class="hero  is-fullheight-with-navbar"   style="background-image: linear-gradient(rgba(0, 0, 0, 0.49),rgba(0, 0, 0, 0.49)), url('gymnastics_split.jpg'); background-size: 100% 100%; 	background-attachment:fixed;" >
+		<section class="hero is-fullheight-with-navbar"   style="background-image: linear-gradient(rgba(0, 0, 0, 0.49),rgba(0, 0, 0, 0.49)), url('gymnastics_split.jpg'); background-size: 100% 100%; 	background-attachment:fixed;" >
 			@yield('top')
 
 			<div class="hero-body">

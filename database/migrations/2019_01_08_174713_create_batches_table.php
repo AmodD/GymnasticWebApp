@@ -19,7 +19,6 @@ class CreateBatchesTable extends Migration
             $table->string('name');
             $table->string('time');
             $table->timestamps();
-
         });
     }
 
