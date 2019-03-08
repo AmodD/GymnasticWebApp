@@ -15,34 +15,20 @@ class UserSeeder extends Seeder
      */
     public function run()
     {
-        factory(App\User::class, 1)->create()->each(function ($user) {
+        $centres = Centre::all();
 
-        	$centres = Centre::all();
+	foreach ($centres as $centre) 
+	{
+                $batches= factory(App\Batch::class,4)->create(['centre_id'=>$centre->id]);
 
-        	foreach ($centres as $centre) {
-        		$user->centres()->save($centre);
+		foreach ($batches as $batch) 
+		{
+		       	$students= factory(App\Student::class,5)->create(['batch_id'=>$batch->id]);       
 
-                $batches= factory(App\Batch::class,4)->create(
-                 ['centre_id'=>$centre->id]
-             );
+	                foreach ($students as $student) { $attendances= factory(App\Attendance::class,10)->create(['student_id'=>$student->id,]);}
+                }//foreach batch	
+        }//foreach centres
 
-                foreach ($batches as $batch) {
-                   $students= factory(App\Student::class,5)->create(
-                     ['batch_id'=>$batch->id]
-                 );       
-
-                   foreach ($students as $student) {
-                    $attendances= factory(App\Attendance::class,10)->create(
-                     ['student_id'=>$student->id,]
-                 );           
-
-                }
-
-            }	
-
-        }
-
-
-    });
-    }
-}
+     }//method
+   
+}//class

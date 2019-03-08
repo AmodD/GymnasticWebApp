@@ -16,7 +16,7 @@
 	<title>{{ config('app.name', 'Laravel123') }}</title>
 </head>
 <body>
-		<section class="hero is-fullheight-with-navbar"   style="background-image: linear-gradient(rgba(0, 0, 0, 0.49),rgba(0, 0, 0, 0.49)), url('gymnastics_split.jpg'); background-size: 100% 100%; 	background-attachment:fixed;" >
+		<section class="hero is-fullheight-with-navbar"   style="background-image: linear-gradient(rgba(0, 0, 0, 0.49),rgba(0, 0, 0, 0.49)), url('/gymnastics_split.jpg'); background-size: 100% 100%; 	background-attachment:fixed;" >
 			@yield('top')
 
 			<div class="hero-body">

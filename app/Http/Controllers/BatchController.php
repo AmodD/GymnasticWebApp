@@ -31,9 +31,9 @@ class BatchController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Centre $centre)
     {
-        //
+        return view('batch_add',["centre" => $centre]);
     }
 
     /**
@@ -44,7 +44,19 @@ class BatchController extends Controller
      */
     public function store(Request $request)
     {
-        //
+	$this->validate(request(),[
+		"name" => 'required|max:255',
+		"hours" => 'required',
+		"minutes" => 'required',
+	]);
+
+	Batch::create([
+		"centre_id" => $request->centre_id,
+		"name" => $request->name,
+		"time" => $request->hours.$request->minutes
+	]);
+
+	return redirect("/dashboard");
     }
 
     /**
@@ -64,9 +76,9 @@ class BatchController extends Controller
      * @param  \App\Batch  $batch
      * @return \Illuminate\Http\Response
      */
-    public function edit(Batch $batch)
+    public function edit(Centre $centre, Batch $batch)
     {
-        //
+        return view('batch_edit',['batch' => $batch , 'centre' => $centre]);
     }
 
     /**
@@ -78,7 +90,17 @@ class BatchController extends Controller
      */
     public function update(Request $request, Batch $batch)
     {
-        //
+	$this->validate(request(),[
+		"name" => 'required|max:255',
+		"hours" => 'required',
+		"minutes" => 'required',
+	]);
+
+	$batch->name = $request->name;
+	$batch->time = $request->hours.$request->minutes;
+	$batch->save();
+
+	return redirect("/dashboard");
     }
 
     /**
@@ -89,7 +111,10 @@ class BatchController extends Controller
      */
     public function destroy(Batch $batch)
     {
-        //
+	    $batch->students()->delete();
+	    $batch->delete();
+
+	    return back();
     }
 
     public function students(Request $request, Batch $batch){

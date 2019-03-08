@@ -28,7 +28,7 @@
       <span class="navbar-item">
       <a id="students" class="button is-rounded" href="/students" >
 	<span class="icon"><i class="fas fa-users"></i></span>
-        &nbsp; Students
+        &nbsp; Profiles
       </a>
       </span>
       <span class="navbar-item">
@@ -41,6 +41,12 @@
       <a id="fees" class="button is-rounded" href="/fees/centres" >
 	<span class="icon"><i class="fas fa-rupee-sign"></i></span>
         &nbsp; Fees
+      </a>
+      </span>
+      <span class="navbar-item">
+      <a id="fees" class="button is-rounded" href="/archives" >
+	<span class="icon"><i class="fas fa-archive"></i></span>
+        &nbsp; Archives
       </a>
       </span>
 

@@ -137,7 +137,7 @@ class AttendanceController extends Controller
         
 	    $students = $batch->students;
 	    $centreName = $batch->centre->name;
-	    $batchNameTime = $batch->name." ".$batch->time;
+	    $batchNameTime = $batch->name." ".$batch->timeInAMPM();
             return view('attendances_today',compact('students','centreName','batchNameTime'));
     }
 

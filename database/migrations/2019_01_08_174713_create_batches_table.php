@@ -17,8 +17,9 @@ class CreateBatchesTable extends Migration
             $table->increments('id');
             $table->unsignedInteger('centre_id');
             $table->string('name');
-            $table->string('time');
-            $table->timestamps();
+            $table->char('time',4);// 1400 hrs , 2000 , 0700
+	    $table->timestamps();
+	    $table->softDeletes();
         });
     }
 

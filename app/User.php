@@ -31,10 +31,4 @@ class User extends Authenticatable
     ];
 
 
-    public function centres(){
-        
-        return $this->hasMany(Centre::class);
-        
-    }
-
 }

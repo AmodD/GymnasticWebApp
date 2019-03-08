@@ -3,7 +3,7 @@
 	<div class="column is-one-quarter"> 
 		<div class="box">
 			<p class="title is-5" id="centre"><a id="details_{{$student->id}}" href="/students/{{$student->id}}">{{$student->name}}</a></p> 
-			<p class="subtitle is-6" id="centre">{{$student->batch->centre->name}} / {{ $student->batch->time }}</p> 
+			<p class="subtitle is-6" id="centre">{{$student->batch->centre->name}} / {{ $student->batch->timeInAMPM() }}</p> 
 			@if($student->giveTodaysAttendance() == -1) 
 			<p class="title is-7" id="centre">Today's Attendance : Not Yet Marked</p>
 			<form action="/attendances" method="POST">

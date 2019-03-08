@@ -21,9 +21,10 @@ class CreateStudentsTable extends Migration
             $table->text('parent_mobile');
             $table->date('date_of_birth');
             $table->date('date_of_joining');
-            $table->date('date_of_leaving');
-            $table->boolean('active');
-            $table->timestamps();
+            $table->date('date_of_leaving')->nullable();
+            $table->boolean('active')->default(true);
+	    $table->timestamps();
+	    $table->softDeletes();
         });
     }
 

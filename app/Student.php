@@ -6,10 +6,20 @@ use App\Batch;
 use App\Attendance;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Student extends Model
 {
-	protected $fillable = [ 'name', 'batch_id', ];
+    use SoftDeletes;
+
+    /**
+     * The attributes that should be mutated to dates.
+     *
+     * @var array
+     */
+    protected $dates = ['deleted_at'];
+
+	protected $fillable = ['name','batch_id','centre_id','parent_email','parent_mobile','date_of_birth','date_of_joining','date_of_leaving' ];
 
 	public function batch()	{ 
 

@@ -2,13 +2,25 @@
 <div class="tile is-ancestor">
   <div class="tile is-4 is-vertical is-parent">
     <div class="tile is-child box">
-	<h3><a href="/centres/{{$student->batch->centre->id}}">{{$student->batch->centre->name}}</a></h3>
-	<h5><a href="/batches/{{$student->batch->id}}">{{$student->batch->name}} {{$student->batch->time}}</a></h5>
+	<h3>{{$student->batch->centre->name}}</h3>
+	<h5>{{$student->batch->name}} {{$student->batch->timeInAMPM()}}</h5>
 	<br>
+	<h4><span style="color:red;">ID:<span> {{$student->id}}</h4>
 	<p><strong>Date of Birth</strong> : {{$student->date_of_birth}} </p>	
 	<p><strong>Date of Joining</strong> : {{$student->date_of_joining}}  </p>	
 	<p><strong>Parent Email</strong> : {{$student->parent_email}}  </p>	
 	<p><strong>Parent Mobile</strong> : {{$student->parent_mobile}}  </p>	
+	<p>
+	<form action="/students/{{$student->id}}" method="POST">
+		<span class="is-pulled-right"><a class="button is-warning" href="/students/{{$student->id}}/edit">Edit</a>
+		&nbsp;
+		@method('DELETE')
+	        @csrf
+		<button onClick="javascript: return confirm('Please confirm deletion');" class="button is-danger">
+			<span class="icon is-small"><i class="fas fa-times"></i></span>
+		</button>
+	</form>
+	</p>
     </div>
     <div class="tile is-child box">
       <p class="title">Attendance</p>

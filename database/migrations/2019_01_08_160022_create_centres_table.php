@@ -15,12 +15,12 @@ class CreateCentresTable extends Migration
     {
         Schema::create('centres', function (Blueprint $table) {
             $table->increments('id');
-            $table->unsignedInteger('user_id');
             $table->string('name');
             $table->string('address');
 	    $table->unsignedSmallInteger('fee_amount');
 	    $table->char('fee_frequency');// M - Monthly , Q - Quarterly
-            $table->timestamps();
+	    $table->timestamps();
+	    $table->softDeletes();
         });
     }
 

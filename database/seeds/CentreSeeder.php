@@ -13,13 +13,13 @@ class CentreSeeder extends Seeder
     {
         
      DB::table('centres')->insert([
-        ['user_id' => 1 ,
+        [
         'name' => 'Symbiosis',
 	'address' => 'Viman Nagar',
 	'fee_amount' => 2300,
 	'fee_frequency' => 'M' 
         ],
-        ['user_id' => 1 ,
+        [
         'name' => 'Kalyani School',
         'address' => 'Manjri',
 	'fee_amount' => 1900,

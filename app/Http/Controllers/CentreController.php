@@ -21,8 +21,7 @@ class CentreController extends Controller
      */
     public function index()
     {
-        $centres = Centre::all();
-        return view('centres_index',compact('centres'));
+        return view('centres_index');
     }
 
     /**
@@ -32,7 +31,7 @@ class CentreController extends Controller
      */
     public function create()
     {
-        //
+        return view('centre_add');
     }
 
     /**
@@ -43,7 +42,16 @@ class CentreController extends Controller
      */
     public function store(Request $request)
     {
-        //
+	$this->validate(request(),[
+		"name" => 'required|max:127',
+		"address" => 'required|max:255',
+		"fee_amount" => 'required|numeric',
+		"fee_frequency" => 'required',
+	]);
+
+	Centre::create($request->all());
+
+	return redirect("/dashboard");
     }
 
     /**
@@ -65,7 +73,7 @@ class CentreController extends Controller
      */
     public function edit(Centre $centre)
     {
-        dd("edit method");
+        return view('centre_edit', ['centre' => $centre]);
     }
 
     /**
@@ -77,7 +85,17 @@ class CentreController extends Controller
      */
     public function update(Request $request, Centre $centre)
     {
-        //
+	$this->validate(request(),[
+		"name" => 'required|max:127',
+		"address" => 'required|max:255',
+		"fee_amount" => 'required|numeric',
+		"fee_frequency" => 'required',
+	]);
+
+	$centre->fill($request->all());
+	$centre->save();
+
+	return redirect("/dashboard");
     }
 
     /**
@@ -88,7 +106,11 @@ class CentreController extends Controller
      */
     public function destroy(Centre $centre)
     {
-                dd("destroy method");
+	    $centre->students()->delete();
+	    $centre->batches()->delete();
+	    $centre->delete();
+
+	    return back();
     }
 
     public function batches(Centre $centre)
@@ -98,3 +120,4 @@ class CentreController extends Controller
             return view('centre_batches',compact('batches','centreName'));
     }
 }
+

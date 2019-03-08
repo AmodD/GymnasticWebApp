@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Centre;
 use App\Batch;
 use App\Attendance;
 use App\Student;
@@ -34,7 +35,9 @@ class StudentController extends Controller
      */
     public function create()
     {
-        //
+	$centres = Centre::all();    
+	$batches = Batch::all();    
+        return view('student_add',["centres" => $centres , "batches" => $batches]);
     }
 
     /**
@@ -45,6 +48,18 @@ class StudentController extends Controller
      */
     public function store(Request $request)
     {
+	$this->validate(request(),[
+		"batch_id" => 'required',
+		"name" => 'required|max:255',
+		"parent_email" => 'required|email',
+		"parent_mobile" => 'required|digits:10|numeric',
+		"date_of_birth" => 'required|date_format:"Y-m-d"',
+		"date_of_joining" => 'required|date_format:"Y-m-d"',
+	]);
+
+	Student::create($request->all());
+
+	return redirect("/students");
         
     }
 
@@ -69,7 +84,9 @@ class StudentController extends Controller
      */
     public function edit(Student $student)
     {
-        //
+	$centres = Centre::all();    
+	$batches = Batch::all();    
+        return view('student_edit',['student' => $student, "centres" => $centres , "batches" => $batches]);
     }
 
     /**
@@ -81,7 +98,19 @@ class StudentController extends Controller
      */
     public function update(Request $request, Student $student)
     {
-        //
+	$this->validate(request(),[
+		"batch_id" => 'required',
+		"name" => 'required|max:255',
+		"parent_email" => 'required|email',
+		"parent_mobile" => 'required|digits:10|numeric',
+		"date_of_birth" => 'required|date_format:"Y-m-d"',
+		"date_of_joining" => 'required|date_format:"Y-m-d"',
+	]);
+
+	$student->fill($request->all());
+	$student->save();
+
+	return redirect("/students");
     }
 
     /**
@@ -92,7 +121,9 @@ class StudentController extends Controller
      */
     public function destroy(Student $student)
     {
-        //
+	$student->delete();
+
+        return redirect('/students');
     }
 
     

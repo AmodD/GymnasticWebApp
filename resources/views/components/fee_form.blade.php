@@ -1,6 +1,6 @@
 <form method="POST" action="/fees">
 @csrf
-<input type=hidden name=student_id value="{{$student->id}}">
+<input type=hidden name="student_id" value="{{$student->id}}">
 <input type="hidden" name="students" value="0">
 <div class="field has-addons">
   @component('components.date') @endcomponent
