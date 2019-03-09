@@ -14,7 +14,6 @@ Route::get('/centres/{centre}/batches', 'CentreController@batches');
 Route::get('/centres/{centre}/batches/create', 'BatchController@create');
 Route::get('/centres/{centre}/batches/{batch}/edit', 'BatchController@edit');
 
-
 Route::get('/batches/{batch}/students','BatchController@students');
 Route::get('/batches/{batch}/attendances','BatchController@students');
 
@@ -28,6 +27,17 @@ Route::get('/fees/centres/{centre}','FeeController@centre');
 Route::post('/fees','FeeController@store');
 Route::get('/fees/{fee}/sendreceipt','FeeController@sendreceipt');
 
+Route::get('/archives', function () {
+	$centresTrashed = App\Centre::onlyTrashed()->get();
+	$batchesTrashed = App\Batch::onlyTrashed()->get();
+	$studentsTrashed = App\Student::onlyTrashed()->get();
+
+	$centresActive = App\Centre::all();
+	$batchesActive = App\Batch::all();
+	//dd($centres);
+        return view('archives',compact('centresTrashed','batchesTrashed','studentsTrashed','centresActive','batchesActive'));
+});
+Route::post('/archives','HomeController@archives');
 
 Route::get('mailable', function () {
     $fee = App\Fee::find(12);
