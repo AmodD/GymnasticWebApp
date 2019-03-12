@@ -21,12 +21,45 @@
 			</div>
 		</div>
 		<div class="field is-horizontal">
-			<div class="field-label is-normal"><label class="label">Cash</label></div>
+			<div class="field-label is-normal"><label class="label">Mode</label></div>
 			<div class="field-body">
 			<p class="control">
-			<label class="radio"><input type="radio" name="answer"> Yes</label>
-			<label class="radio"><input type="radio" name="answer"> No</label>
+			<label class="radio"><input type="radio" name="mode" value="CASH" checked> Cash</label>
+			<label class="radio"><input type="radio" name="mode" value="CHEQ"> Cheque</label>
 			</p>
+			</div>
+		</div>
+		<div class="field is-horizontal">
+			<div class="field-label is-normal"><label class="label">Period</label></div>
+			<div class="field-body">
+  <p class="control">
+    <div class="select">
+      <select name="period" required>
+	@if($centre->fee_frequency == 'M')
+	<option value="">Select Month</option>
+        <option value="January">January</option>
+        <option value="February">February</option>
+        <option value="March">March</option>
+        <option value="April">April</option>
+        <option value="May">May</option>
+        <option value="June">June</option>
+        <option value="July">July</option>
+        <option value="August">August</option>
+        <option value="September">September</option>
+        <option value="October">October</option>
+        <option value="November">November</option>
+	<option value="December">December</option>
+	@endif
+	@if($centre->fee_frequency == 'Q')
+	<option value="">Select Quarter</option>
+        <option value="April-June">April-June</option>
+        <option value="July-September">July-September</option>
+        <option value="October-December">October-December</option>
+	<option value="January-March">January-March</option>
+	@endif
+      </select>
+  </div>
+  </p>
 			</div>
 		</div>
 		<div class="field is-horizontal">
@@ -34,7 +67,7 @@
 			<div class="field-body">
  				<div class="field">
 					<div class="control">
-					<textarea class="textarea" placeholder="e.g. Cheque no 28826"></textarea>
+					<textarea class="textarea" name="comments" placeholder="e.g. Cheque no 28826"></textarea>
 					</div>
 				</div>
 			</div>

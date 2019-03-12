@@ -2,6 +2,8 @@
       <thead>
         <tr>
           <th>Date</th>
+          <th>Period</th>
+          <th>Mode</th>
           <th>Amount</th>
 	  <th>Receipt</th>
         </tr>
@@ -10,6 +12,8 @@
 	@foreach($student->fees->sortByDesc('id') as $fee)
         <tr>
           <td>{{$fee->date}}</td>
+          <td>{{$fee->period}}</td>
+          <td>{{$fee->mode}}</td>
           <td>{{$fee->amount}}</td>
 	  <td>
 		<form method="GET" action="/fees/{{$fee->id}}/sendreceipt">

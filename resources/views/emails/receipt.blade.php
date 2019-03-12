@@ -5,6 +5,8 @@
 Date: <b>{{ $fee->date }}</b><br>
 Received with thanks from : <b>{{ $fee->student->name }} </b><br>
 The Sum of Rupees : <b>{{ $fee->amount }}</b><br>
+Via : <b>{{ $fee->mode }}</b><br>
+For the Period : <b>{{ $fee->period }}</b><br>
 @endcomponent
 
 Thanks,<br>

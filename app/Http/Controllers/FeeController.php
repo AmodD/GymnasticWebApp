@@ -43,10 +43,15 @@ class FeeController extends Controller
 		"day" => 'required',
 		"month" => 'required',
 		"year" => 'required',
+		"period" => 'required',
+		"mode" => 'required',
 	]);
 
 	$feeDate = date("Y-m-d", strtotime($request->year."-".$request->month."-".$request->day));
 	$amount = $request->amount;
+	$mode = $request->mode;
+	$period = $request->period;
+	$comments = $request->input('comments', '');
 	
 	if($request->students)
 	{
@@ -62,6 +67,9 @@ class FeeController extends Controller
 	        	$fee->student_id = $student_id;
 		        $fee->date = $feeDate;
         		$fee->amount = $amount;
+        		$fee->mode = $mode;
+        		$fee->period = $period;
+        		$fee->comments = $comments;
 			$fee->save();	
 
 //			$this->sendreceipt($fee);
@@ -74,6 +82,9 @@ class FeeController extends Controller
         	$fee->student_id = $request->student_id;
 	        $fee->date = $feeDate;
         	$fee->amount = $amount;
+        	$fee->mode = $mode;
+        	$fee->period = $period;
+        	$fee->comments = $comments;
 		$fee->save();	
 	}
 

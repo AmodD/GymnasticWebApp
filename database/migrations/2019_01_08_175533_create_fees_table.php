@@ -18,9 +18,9 @@ class CreateFeesTable extends Migration
             $table->unsignedInteger('student_id');
 	    $table->unsignedInteger('amount');
 	    $table->date('date');
-	    $table->boolean('cash');// 1 - cash , 0 - cheque
+	    $table->char('mode',4);// 1 - cash , 0 - cheque
 	    $table->text('period');// 'January' , 'September', 'April-June' 
-	    $table->text('comments');// 'chq no 29927' 
+	    $table->text('comments')->nullable();// 'chq no 29927' 
             $table->timestamps();
         });
     }
