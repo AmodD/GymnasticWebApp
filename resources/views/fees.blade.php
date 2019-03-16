@@ -1,8 +1,20 @@
+@extends('layouts.app')
 
+@section('top')
+
+	@if(Auth::guest())
+		@component('components.login', [ 'errors' => $errors] ) @endcomponent
+	@else
+		@component('components.navbar') @endcomponent
+	@endif
+
+@endsection
+
+@section('mainbody')
 <h1><span style="color:white">FEES</span></h1>
 <h4><span style="color:white">CENTRES</span></h4>
 <div class="section"> 
-	<div class="columns is-mobile is-multiline">
+	<div class="columns  is-multiline">
 	@foreach ($centres as $centre) 	
 		<div class="column is-one-quarter">	
 			<div class="box">
@@ -14,3 +26,4 @@
 	@endforeach				
 	</div>
 </div>
+@endsection

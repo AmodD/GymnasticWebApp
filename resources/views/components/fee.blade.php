@@ -80,18 +80,21 @@
 		  	<p class="control"><button id="paid" class="button is-primary">Pay Fees & Send Receipts</button></p>
 			</div>
 		</div>
-</div>
 
+<div class="field is-horizontal">
 <p class="help is-danger">{{ $errors->first('day') }}</p>
 <p class="help is-danger">{{ $errors->first('month') }}</p>
 <p class="help is-danger">{{ $errors->first('year') }}</p>								
 <p class="help is-danger">{{ $errors->first('selected_students') }}</p>								
-
 @if (session('fee_success'))
     <div class="help is-success">
         {{ session('fee_success') }}
     </div>
 @endif
+</div>
+
+</div>
+
 
 	<div class="column">
        <table class="table is-striped">

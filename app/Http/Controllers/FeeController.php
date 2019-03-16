@@ -8,6 +8,7 @@ use App\Jobs\ProcessReceipts;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\Receipt;
+use Illuminate\Support\Facades\Auth;
 
 class FeeController extends Controller
 {
@@ -73,8 +74,10 @@ class FeeController extends Controller
 			$fee->save();	
 
 //			$this->sendreceipt($fee);
-	    		Mail::to($fee->student->parent_email)->queue(new Receipt($fee) );
+			Mail::to($fee->student->parent_email)->queue(new Receipt($fee) );
 		}
+
+		return back()->with('fee_success', 'Fee payment successfully added and Receipts emailed');
 	}
 	else
 	{
@@ -86,10 +89,11 @@ class FeeController extends Controller
         	$fee->period = $period;
         	$fee->comments = $comments;
 		$fee->save();	
+		
+		return back()->with('fee_success', 'Fee payment successfully added');
 	}
 
 
-	return back()->with('fee_success', 'Fee payment successfully added');
     }
 
     /**
@@ -149,12 +153,17 @@ class FeeController extends Controller
     
     public function centres()
     {
-        $centres = Centre::all();
-        return view('fees_centres',compact('centres'));
+	if(Auth::user()->id == 2) $centres = Centre::where('id','2')->get();
+	else $centres = Centre::all();
+	
+	return view('fees',compact('centres'));
     }
     
     public function centre(Centre $centre)
     {
-        return view ('fees_centre',compact('centre'));
+	    
+	if(Auth::user()->id == 2 && $centre->id == 1) abort(403, 'Access denied');
+	else  return view ('fees_centre',compact('centre'));
+       
     }
 }

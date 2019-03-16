@@ -6,6 +6,7 @@ use App\Centre;
 use App\Batch;
 use App\Student;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
@@ -26,7 +27,8 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $centres = Centre::all();
+	    if(Auth::user()->id == 2) $centres = Centre::where('id','2')->get();
+	    else $centres = Centre::all();
         return view('dashboard',compact('centres'));
     }
 

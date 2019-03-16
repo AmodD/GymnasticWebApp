@@ -11,7 +11,7 @@
 @endsection
 
 @section('mainbody')
-<div class="field"><a class="button is-success" href="/students/create">Add Profile</a></div>
+<div class="field"><a class="button is-success" href="/students/create">Add Students</a></div>
 	@component('components.students', [ 'students' => $students] ) @endcomponent
 @endsection
 

@@ -1,6 +1,6 @@
 <form action="{{ route('login') }}" method="POST">
 {{csrf_field()}}
-<div class="columns is-mobile">
+<div class="columns">
 	<div class = "column is-narrow is-4 is-offset-1">
 		<div class="field" >
 			<div class="control">

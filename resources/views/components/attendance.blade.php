@@ -1,14 +1,21 @@
+
+<form method="POST" action="/attendances">
 <div class="box">
-	<form method="POST" action="/attendances">
+<div class="columns">
 	@csrf
+	<div class="column is-half">
 	<input type="hidden" name="students" value="1">
-	<div class="field has-addons">
-	@component('components.date') @endcomponent
+		<div class="field is-horizontal">
+			<div class="field-body"> @component('components.date') @endcomponent </div>
+		</div>
+		<div class="field is-horizontal">
+			<div class="field-body">
 	<p class="control">	
 		<button type="submit" name="present" value="1" class="button is-primary">Present</button>	
 		<button type="submit" name="present" value="0" class="button is-danger">Absent</button>
 	</p>
-	</div>
+			</div>
+		</div>
 
 <p class="help is-danger">{{ $errors->first('day') }}</p>
 <p class="help is-danger">{{ $errors->first('month') }}</p>
@@ -20,7 +27,8 @@
         {{ session('attendance_success') }}
     </div>
 @endif
-
+	</div>
+	<div class="column is-half">
        <table class="table is-striped">
         <thead>
           <tr>
@@ -37,8 +45,10 @@
 	@endforeach
         </tbody>
        </table>
-       </form>
+	</div>
 </div>
+</div>
+</form>
 
 <script language="JavaScript">
 

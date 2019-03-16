@@ -3,7 +3,7 @@
 <h4><span style="color:white">BATCHES</span></h4>
 
 <div class="section"> 
-	<div class="columns is-mobile is-multiline">
+	<div class="columns is-multiline">
 	@foreach ($batches->sortBy('time') as $batch) 					
 		<div class="column is-one-quarter">
 			<div class="box">

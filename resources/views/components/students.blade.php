@@ -1,4 +1,4 @@
-	<div class="columns is-mobile is-multiline">
+	<div class="columns is-multiline">
 	@foreach($students as $student)	 
 	<div class="column is-one-quarter"> 
 		<div class="box">
@@ -23,4 +23,3 @@
 	@endforeach	
 	</div>
 
-	<script type="text/javascript" src="/js/app.js"></script>
