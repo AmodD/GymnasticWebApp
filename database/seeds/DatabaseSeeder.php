@@ -31,7 +31,7 @@ class DatabaseSeeder extends Seeder
     ]);
 
      $this->call(CentreSeeder::class);
-     $this->call(UserSeeder::class);
+    // $this->call(UserSeeder::class);
 
  }
 }
