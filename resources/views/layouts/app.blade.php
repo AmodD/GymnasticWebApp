@@ -13,7 +13,7 @@
 	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.js"></script>	
 	<script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
 
-	<title>{{ config('app.name', 'Laravel123') }}</title>
+	<title>Pune Gymnatsics Academy</title>
 </head>
 <body>
 		<section class="hero is-fullheight-with-navbar"   style="background-image: linear-gradient(rgba(0, 0, 0, 0.49),rgba(0, 0, 0, 0.49)), url('/gymnastics_split.jpg'); background-size: 100% 100%; 	background-attachment:fixed;" >

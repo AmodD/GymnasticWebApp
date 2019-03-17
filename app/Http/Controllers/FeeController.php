@@ -89,12 +89,11 @@ class FeeController extends Controller
         	$fee->period = $period;
         	$fee->comments = $comments;
 		$fee->save();	
-		
+
 		return back()->with('fee_success', 'Fee payment successfully added');
 	}
 
-
-    }
+    }// endofmethod
 
     /**
      * Display the specified resource.
@@ -104,7 +103,11 @@ class FeeController extends Controller
      */
     public function show(Fee $fee)
     {
-        //
+	    //
+	    //
+	    //
+	    //
+	    //
     }
 
     /**
