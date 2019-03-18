@@ -30,6 +30,6 @@ class Receipt extends Mailable
      */
     public function build()
     {
-        return $this->subject("Receipt : Pune Gymnastics Academy")->markdown('emails.receipt');
+        return $this->subject("Receipt : (".$this->fee->period.") Pune Gymnastics Academy")->markdown('emails.receipt');
     }
 }
