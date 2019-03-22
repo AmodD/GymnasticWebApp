@@ -40,6 +40,7 @@ class FeeController extends Controller
      */
     public function store(Fee $fee,Request $request)
     {
+
 	$this->validate(request(),[
 		"day" => 'required',
 		"month" => 'required',

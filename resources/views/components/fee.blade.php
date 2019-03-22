@@ -1,6 +1,6 @@
 
 <form method="POST" action="/fees">
-<div class="box">
+<div id="myApp" class="box">
 <h3 class="has-text-centered">{{$centre->name}}</h3>
 <br>
 <div class="columns">
@@ -15,7 +15,7 @@
 			<div class="field-label is-normal"><label class="label">Amount</label></div>
 			<div class="field-body">
 			  <p class="control has-icons-left">
-	    		  <input class="input" type="text" name="amount"  value="{{$centre->fee_amount}}" readonly>
+	    		  <input class="input" type="text" name="amount" v-model="amount" placeholder="{{$centre->fee_amount}}"  readonly>
 			  <span class="icon is-small is-left"><i class="fas fa-rupee-sign"></i></span>
 			  </p>
 			</div>
@@ -26,6 +26,7 @@
 			<p class="control">
 			<label class="radio"><input type="radio" name="mode" value="CASH" checked> Cash</label>
 			<label class="radio"><input type="radio" name="mode" value="CHEQ"> Cheque</label>
+			<label class="radio"><input type="radio" name="mode" value="ONLT"> Online</label>
 			</p>
 			</div>
 		</div>
@@ -34,7 +35,7 @@
 			<div class="field-body">
   <p class="control">
     <div class="select">
-      <select name="period" required>
+      <select name="periodmonths" v-on:change="setamount({{$centre->fee_amount}})" v-model="periodmonths" required>
 	@if($centre->fee_frequency == 'M')
 	<option value="">Select Month</option>
         <option value="January">January</option>
@@ -53,12 +54,28 @@
 	@if($centre->fee_frequency == 'Q')
 	<option value="">Select Quarter</option>
         <option value="April-June">April-June</option>
-        <option value="July-September">July-September</option>
-        <option value="October-December">October-December</option>
-	<option value="January-March">January-March</option>
+        <option value="April-May-June">April-May-June</option>
+        <option value="June-July-August">June-July-August</option>
+        <option value="July-August-September">July-August-September</option>
+        <option value="October-November-December">October-November-December</option>
+	<option value="January-February-March">January-February-March</option>
 	@endif
       </select>
   </div>
+  </p>
+  <p class="control">
+	<div class="select">
+		<select name="periodyear" v-model="periodyear" required>
+		<option value="">Select Year</option>
+		<option value="2018">2018</option>
+		<option value="2018-2019">2018-2019</option>
+		<option value="2019">2019</option>
+		<option value="2019-2020">2019-2020</option>
+		<option value="2020">2020</option>
+		<option value="2020-2021">2020-2021</option>
+		<option value="2021">2021</option>
+      		</select>
+	</div>
   </p>
 			</div>
 		</div>
@@ -67,7 +84,7 @@
 			<div class="field-body">
  				<div class="field">
 					<div class="control">
-					<textarea class="textarea" name="comments" placeholder="e.g. Cheque no 28826"></textarea>
+					<textarea class="textarea" name="comments" placeholder="e.g. Cheque no 28826 , Online Transfer Ref No 57affarfr#45d5svy6"></textarea>
 					</div>
 				</div>
 			</div>
@@ -115,6 +132,7 @@
        </table>
 	</div>
 
+<input type="hidden" name="period" v-model="periodMonthYear">
 
 </div>
 </form>
@@ -128,6 +146,30 @@ function toggle(source) {
     checkboxes[i].checked = source.checked;
   }
 }
+
+var app = new Vue({
+	el: '#myApp',
+	data:{
+		amount: '',
+		periodmonths: '',
+		periodyear: '',
+	},	
+	methods : {
+	setamount(fee_amnt){
+		// ""..split(",").length gives u number of dashes plus 1
+		// which actually is the number of months 
+		this.amount = fee_amnt * this.periodmonths.split("-").length;
+//https://stackoverflow.com/questions/881085/count-the-number-of-occurrences-of-a-character-in-a-string-in-javascript
+	}
+	},
+	computed: {
+	    periodMonthYear: function () {
+	      return this.periodmonths + ' ' + this.periodyear ; 
+	    }
+  }
+});
+
+
 </script>
 
 
