@@ -25,8 +25,8 @@
 			<div class="field-body">
 			<p class="control">
 			<label class="radio"><input type="radio" name="mode" value="CASH" checked> Cash</label>
-			<label class="radio"><input type="radio" name="mode" value="CHEQ"> Cheque</label>
-			<label class="radio"><input type="radio" name="mode" value="ONLT"> Online</label>
+			<label class="radio"><input type="radio" name="mode" value="CHEQUE"> Cheque</label>
+			<label class="radio"><input type="radio" name="mode" value="ONLINE"> Online</label>
 			</p>
 			</div>
 		</div>

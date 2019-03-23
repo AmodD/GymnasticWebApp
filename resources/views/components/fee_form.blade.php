@@ -15,8 +15,8 @@
 <div class="field is-grouped">
 	<p class="control">
 		<label class="radio"><input type="radio" name="mode" value="CASH" checked> Cash</label>
-		<label class="radio"><input type="radio" name="mode" value="CHEQ"> Cheque</label>
-		<label class="radio"><input type="radio" name="mode" value="ONLT"> Online</label>
+		<label class="radio"><input type="radio" name="mode" value="CHEQUE"> Cheque</label>
+		<label class="radio"><input type="radio" name="mode" value="ONLINE"> Online</label>
 	</p>
 	<p class="control">
 		<input class="input is-link" name="comments" placeholder="Comments"></input>
