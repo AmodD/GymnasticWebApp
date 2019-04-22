@@ -25,7 +25,11 @@ class StudentController extends Controller
     public function index()
     {
 	$students = Student::with('batch.centre:id,name')->get();    
-        return view ('students_index',compact('students'));
+	    //        return view ('students_index',compact('students'));
+
+	$centres = Centre::all();    
+	$batches = Batch::all();    
+        return view('students_index',["centres" => $centres , "batches" => $batches , "students" => $students]);
     }
 
     /**
@@ -124,6 +128,19 @@ class StudentController extends Controller
 	$student->delete();
 
         return redirect('/students');
+    }
+
+    public function getStudents(Request $request)
+    {
+	    $centre_id = $request->centre;
+	    $batch_id = $request->batch;
+
+	    if($batch_id) $students = Batch::find($batch_id)->students;
+	    else $students = Centre::find($centre_id)->students;	
+	    //$students = Student::all();
+
+	    return $students;
+
     }
 
     

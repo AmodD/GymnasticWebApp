@@ -10,6 +10,8 @@ Route::resource('centres','CentreController');
 Route::resource('batches','BatchController');
 Route::resource('students','StudentController');
 
+Route::get('/getstudents', 'StudentController@getStudents');
+
 Route::get('/centres/{centre}/batches', 'CentreController@batches');
 Route::get('/centres/{centre}/batches/create', 'BatchController@create');
 Route::get('/centres/{centre}/batches/{batch}/edit', 'BatchController@edit');

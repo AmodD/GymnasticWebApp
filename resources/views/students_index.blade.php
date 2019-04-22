@@ -12,7 +12,9 @@
 
 @section('mainbody')
 <div class="field"><a class="button is-success" href="/students/create">Add Students</a></div>
-	@component('components.students', [ 'students' => $students] ) @endcomponent
+<div id="app">
+<students :centres="{{$centres}}" :batches="{{$batches}}" :students="{{$students}}"></students>
+</div>
 @endsection
 
 
