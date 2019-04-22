@@ -21,6 +21,8 @@
 				<p class="title is-4" id="centre">{{$centre->name}}</p> 
 				<p class="title is-6" id="centre">{{$centre->address}}</p> 
 				<a href="/fees/centres/{{$centre->id}}" class="button is-warning">Fees & Receipts</a>
+				<hr>
+				<a href="/fees/centres/{{$centre->id}}/reports" class="button is-danger">Reports</a>
 			</div>
 		</div>
 	@endforeach				

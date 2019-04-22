@@ -19,7 +19,6 @@ class FeeController extends Controller
      */
     public function index()
     {
-        //
     }
 
     /**
@@ -169,5 +168,21 @@ class FeeController extends Controller
 	if(Auth::user()->id == 2 && $centre->id == 1) abort(403, 'Access denied');
 	else  return view ('fees_centre',compact('centre'));
        
+    }
+    
+    public function reports(Centre $centre)
+    {
+	    //$fees = $centre->students()->with('fees')->where('student.id','10')->get();
+	//$fees = $centre->fees;
+	//dd($fees);
+	return view('fee_centre_report',compact('centre'));
+
+    }	    
+
+    public function centrePeriod(Centre $centre,Request $request)
+    {
+	    $fees = $centre->fees->where('period',$request->period)->whereNotIn('student_id', [38, 39]);
+//	    $fees['amountTotal'] = $fees->sum('amount');	
+	    return $fees;
     }
 }

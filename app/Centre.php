@@ -6,6 +6,7 @@ use App\Batch;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
+
 class Centre extends Model
 {
     use SoftDeletes;
@@ -28,7 +29,10 @@ class Centre extends Model
     {
         return $this->hasManyThrough('App\Student', 'App\Batch');
     }    
-    
-    
 
+    use \Staudenmeir\EloquentHasManyDeep\HasRelationships;
+    public function fees()
+    {
+        return $this->hasManyDeep('App\Fee', ['App\Batch','App\Student'])->withIntermediate('App\Student');;
+    }    
 }
