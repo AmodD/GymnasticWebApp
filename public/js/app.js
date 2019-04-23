@@ -1995,11 +1995,6 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 //
 //
 //
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['centre'],
   data: function data() {
@@ -37450,44 +37445,9 @@ var render = function() {
     _c("div", { staticClass: "columns" }, [
       _c("div", { staticClass: "column is-centred" }, [
         _c("div", { staticClass: "box has-text-centered" }, [
-          _vm.fees
-            ? _c("div", [
-                _c("p", [
-                  _c("strong", [_vm._v("Total Amount : ")]),
-                  _vm._v(" ₹ " + _vm._s(_vm.totalAmount))
-                ]),
-                _vm._v(" "),
-                _c("p", [
-                  _c("strong", [_vm._v("School Commission Percent : ")]),
-                  _vm._v(" "),
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.schoolPercent,
-                        expression: "schoolPercent"
-                      }
-                    ],
-                    staticClass: "input is-small is-narrow",
-                    staticStyle: { width: "50px" },
-                    attrs: { type: "text" },
-                    domProps: { value: _vm.schoolPercent },
-                    on: {
-                      input: function($event) {
-                        if ($event.target.composing) {
-                          return
-                        }
-                        _vm.schoolPercent = $event.target.value
-                      }
-                    }
-                  }),
-                  _vm._v(" ₹ " + _vm._s(_vm.schoolAmount) + "\n\t\t")
-                ]),
-                _vm._v(" "),
-                _c("hr")
-              ])
-            : _vm._e(),
+          _c("h3", [_vm._v("Report for " + _vm._s(_vm.periodMonthYear))]),
+          _vm._v(" "),
+          _c("hr"),
           _vm._v(" "),
           _c("table", { staticClass: "table is-bordered is-striped" }, [
             _vm._m(0),

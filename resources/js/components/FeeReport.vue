@@ -48,13 +48,8 @@
 <div class="columns">
 	<div class="column is-centred">
 		<div class="box has-text-centered">
-		<div v-if="fees">	
-		<p><strong>Total Amount : </strong> ₹ {{ totalAmount }}</p>
-		<p><strong>School Commission Percent : </strong>
-		<input class="input is-small is-narrow" type="text" v-model="schoolPercent"  style="width: 50px;"> ₹ {{ schoolAmount }}
-		</p>
+		<h3>Report for {{ periodMonthYear }}</h3>
 		<hr>
-		</div>	
 		<table class="table is-bordered is-striped">
 		      <thead>
 		        <tr>
