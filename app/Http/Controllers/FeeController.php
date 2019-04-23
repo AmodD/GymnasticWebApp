@@ -81,6 +81,10 @@ class FeeController extends Controller
 	}
 	else
 	{
+		$this->validate(request(),[
+			"period" => ['required', 'unique:fees,period,'.$request->student_id]
+		]);
+
 		$fee = new Fee;
         	$fee->student_id = $request->student_id;
 	        $fee->date = $feeDate;

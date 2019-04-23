@@ -23,7 +23,7 @@
 	</p>
   <p class="control">
     <div class="select">
-      <select name="periodmonths" v-on:change="setamount({{$student->batch->centre->fee_amount}})" v-model="periodmonths" required>
+      <select name="periodmonths" v-model="periodmonths" required>
 	@if($student->batch->centre->fee_frequency == 'M')
 	<option value="">Select Month</option>
         <option value="January">January</option>
@@ -72,6 +72,7 @@
 <p class="help is-danger">{{ $errors->first('day') }}</p>
 <p class="help is-danger">{{ $errors->first('month') }}</p>
 <p class="help is-danger">{{ $errors->first('year') }}</p>								
+<p class="help is-danger">{{ $errors->first('period') }}</p>								
 
 @if (session('fee_success'))
     <div class="help is-success">
