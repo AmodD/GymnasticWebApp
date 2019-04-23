@@ -124,7 +124,8 @@
         </thead>
         <tbody>
 	<tr v-for="student in students">
-	  <td><input name="selected_students[]" :id="studentID(student.id)" :value="student.id"  type="checkbox"></td>
+	  <td v-if="feePaidStatus(student.fees)"><input name="selected_students[]" :id="studentID(student.id)" :value="student.id"  type="checkbox" disabled></td>
+	  <td v-else><input name="selected_students[]" :id="studentID(student.id)" :value="student.id"  type="checkbox"></td>
 	  <td><a :href="studentLink(student.id)" v-text="student.name"></a></td>
 	  <td v-html="testmethod(student.fees)"></td>
 	</tr>
@@ -166,6 +167,12 @@ var app = new Vue({
 	},
 	studentID(id){
 		return "students_" + id;
+	},
+	feePaidStatus(fees){
+		let self = this;
+		if(this.periodMonthYear == '') return false;
+		else if(fees.filter(function(fee) { return fee.period == self.periodMonthYear; }).length > 0) return true;
+		else return false;
 	},
 	testmethod(fees){
 	//return fees;
