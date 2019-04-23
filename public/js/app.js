@@ -1964,6 +1964,42 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['centre'],
   data: function data() {
@@ -37458,30 +37494,121 @@ var render = function() {
             _vm._v(" "),
             _c(
               "tbody",
-              _vm._l(_vm.fees, function(fee, key, index) {
-                return _c("tr", [
-                  _c("td", [_vm._v(_vm._s(index + 1))]),
+              [
+                _vm._l(_vm.fees, function(fee, key, index) {
+                  return _c("tr", [
+                    _c("td", [_vm._v(_vm._s(index + 1))]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(fee.date))]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(fee.id))]),
+                    _vm._v(" "),
+                    _c("td", [
+                      _c(
+                        "a",
+                        { attrs: { href: _vm.studentLink(fee.student_id) } },
+                        [_vm._v(_vm._s(fee.student.name))]
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(fee.mode))]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(fee.comments))]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(" ₹ " + _vm._s(fee.amount))])
+                  ])
+                }),
+                _vm._v(" "),
+                _c("tr", [
+                  _c("th"),
                   _vm._v(" "),
-                  _c("td", [_vm._v(_vm._s(fee.date))]),
+                  _c("th"),
                   _vm._v(" "),
-                  _c("td", [_vm._v(_vm._s(fee.id))]),
+                  _c("th"),
                   _vm._v(" "),
-                  _c("td", [
-                    _c(
-                      "a",
-                      { attrs: { href: _vm.studentLink(fee.student_id) } },
-                      [_vm._v(_vm._s(fee.student.name))]
-                    )
-                  ]),
+                  _c("th"),
                   _vm._v(" "),
-                  _c("td", [_vm._v(_vm._s(fee.mode))]),
+                  _c("th"),
                   _vm._v(" "),
-                  _c("td", [_vm._v(_vm._s(fee.comments))]),
+                  _c("th", [_vm._v("Total")]),
                   _vm._v(" "),
-                  _c("td", [_vm._v(_vm._s(fee.amount))])
+                  _c("th", [_vm._v(" ₹ " + _vm._s(_vm.totalAmount))])
+                ]),
+                _vm._v(" "),
+                _c("tr", [
+                  _c("th"),
+                  _vm._v(" "),
+                  _c("th"),
+                  _vm._v(" "),
+                  _c("th"),
+                  _vm._v(" "),
+                  _c("th"),
+                  _vm._v(" "),
+                  _c("th"),
+                  _vm._v(" "),
+                  _c("th", [_vm._v("Sharing Percentage")]),
+                  _vm._v(" "),
+                  _c("th", [
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.schoolPercent,
+                          expression: "schoolPercent"
+                        }
+                      ],
+                      staticClass: "input is-small is-narrow",
+                      staticStyle: { width: "50px" },
+                      attrs: { type: "text" },
+                      domProps: { value: _vm.schoolPercent },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.schoolPercent = $event.target.value
+                        }
+                      }
+                    })
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("tr", [
+                  _c("th"),
+                  _vm._v(" "),
+                  _c("th"),
+                  _vm._v(" "),
+                  _c("th"),
+                  _vm._v(" "),
+                  _c("th"),
+                  _vm._v(" "),
+                  _c("th"),
+                  _vm._v(" "),
+                  _c("th", [_vm._v("To School")]),
+                  _vm._v(" "),
+                  _c("th", [_vm._v(" ₹ " + _vm._s(_vm.schoolAmount))])
+                ]),
+                _vm._v(" "),
+                _c("tr", [
+                  _c("th"),
+                  _vm._v(" "),
+                  _c("th"),
+                  _vm._v(" "),
+                  _c("th"),
+                  _vm._v(" "),
+                  _c("th"),
+                  _vm._v(" "),
+                  _c("th"),
+                  _vm._v(" "),
+                  _c("th", [_vm._v("To Coach")]),
+                  _vm._v(" "),
+                  _c("th", [
+                    _vm._v(" ₹ " + _vm._s(_vm.totalAmount - _vm.schoolAmount))
+                  ])
                 ])
-              }),
-              0
+              ],
+              2
             )
           ])
         ])

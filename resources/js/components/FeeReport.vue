@@ -51,7 +51,7 @@
 		<div v-if="fees">	
 		<p><strong>Total Amount : </strong> ₹ {{ totalAmount }}</p>
 		<p><strong>School Commission Percent : </strong>
-			<input class="input is-small is-narrow" type="text" v-model="schoolPercent"  style="width: 50px;"> ₹ {{ schoolAmount }}
+		<input class="input is-small is-narrow" type="text" v-model="schoolPercent"  style="width: 50px;"> ₹ {{ schoolAmount }}
 		</p>
 		<hr>
 		</div>	
@@ -75,7 +75,43 @@
 			  <td><a :href="studentLink(fee.student_id)">{{fee.student.name}}</a></td>
 			  <td>{{fee.mode}}</td>
 			  <td>{{fee.comments}}</td>
-			  <td>{{fee.amount}}</td>
+			  <td> ₹ {{fee.amount}}</td>
+		        </tr>
+		        <tr>
+		          <th></th>
+		          <th></th>
+		          <th></th>
+		          <th></th>
+		          <th></th>
+		          <th>Total</th>
+		          <th> ₹ {{ totalAmount }}</th>
+		        </tr>
+		        <tr>
+		          <th></th>
+		          <th></th>
+		          <th></th>
+		          <th></th>
+		          <th></th>
+		          <th>Sharing Percentage</th>
+		          <th><input class="input is-small is-narrow" type="text" v-model="schoolPercent"  style="width: 50px;"></th>
+		        </tr>
+		        <tr>
+		          <th></th>
+		          <th></th>
+		          <th></th>
+		          <th></th>
+		          <th></th>
+		          <th>To School</th>
+		          <th> ₹ {{ schoolAmount }}</th>
+		        </tr>
+		        <tr>
+		          <th></th>
+		          <th></th>
+		          <th></th>
+		          <th></th>
+		          <th></th>
+		          <th>To Coach</th>
+		          <th> ₹ {{ totalAmount - schoolAmount }}</th>
 		        </tr>
 		      </tbody>
 		</table>
