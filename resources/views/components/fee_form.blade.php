@@ -7,7 +7,7 @@
 <div class="field has-addons">
   @component('components.date') @endcomponent
   <p class="control has-icons-left">
-    <input class="input" type="text" name="amount" v-model="amount" placeholder="{{$student->batch->centre->fee_amount}}"  readonly>
+    <input class="input" type="text" name="amount" v-model="amount" placeholder="{{$student->batch->centre->fee_amount}}">
     <span class="icon is-small is-left"><i class="fas fa-rupee-sign"></i></span>
   </p>
   <p class="control"><button id="paid" class="button is-primary">Pay</button></p>
