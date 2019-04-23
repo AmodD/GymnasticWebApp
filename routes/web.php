@@ -31,6 +31,7 @@ Route::post('/fees','FeeController@store');
 Route::get('/fees/{fee}/sendreceipt','FeeController@sendreceipt');
 Route::get('/fees/centres/{centre}/reports','FeeController@reports');
 Route::get('/fees/centres/{centre}/reports/period','FeeController@centrePeriod');
+Route::delete('/fees/{fee}','FeeController@destroy');
 
 Route::get('/archives', function () {
 	$centresTrashed = App\Centre::onlyTrashed()->get();

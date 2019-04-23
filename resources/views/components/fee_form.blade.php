@@ -10,7 +10,7 @@
     <input class="input" type="text" name="amount" v-model="amount" placeholder="{{$student->batch->centre->fee_amount}}"  readonly>
     <span class="icon is-small is-left"><i class="fas fa-rupee-sign"></i></span>
   </p>
-  <p class="control"><button id="paid" class="button is-primary">Paid</button></p>
+  <p class="control"><button id="paid" class="button is-primary">Pay</button></p>
 </div>
 <div class="field is-grouped">
 	<p class="control">

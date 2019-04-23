@@ -141,7 +141,9 @@ class FeeController extends Controller
      */
     public function destroy(Fee $fee)
     {
-        //
+	    $fee->delete();
+
+	    return back();
     }
 
     public function sendreceipt(Fee $fee)
