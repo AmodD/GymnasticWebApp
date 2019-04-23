@@ -22,7 +22,7 @@
 	  </div>
 	</div>
 	<div class="section box">
-		<table class="table is-bordered">
+		<table class="table is-bordered is-striped">
 		      <thead>
 		        <tr>
 		          <th>ID</th>

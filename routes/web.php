@@ -11,6 +11,7 @@ Route::resource('batches','BatchController');
 Route::resource('students','StudentController');
 
 Route::get('/getstudents', 'StudentController@getStudents');
+Route::get('/getstudentsforfees', 'StudentController@getStudentsForFees');
 
 Route::get('/centres/{centre}/batches', 'CentreController@batches');
 Route::get('/centres/{centre}/batches/create', 'BatchController@create');

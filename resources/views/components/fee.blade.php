@@ -1,6 +1,6 @@
 
 <form method="POST" action="/fees">
-<div id="myApp" class="box">
+<div id="myApp"  class="box">
 <h3 class="has-text-centered">{{$centre->name}}</h3>
 <br>
 <div class="columns">
@@ -94,7 +94,7 @@
     			<!-- Left empty for spacing -->
 			</div>
 			<div class="field-body">
-		  	<p class="control"><button id="paid" class="button is-primary">Pay Fees & Send Receipts</button></p>
+		  	<p class="control"><button id="paid" class="button is-warning">Pay Fees & Send Receipts</button></p>
 			</div>
 		</div>
 
@@ -110,6 +110,7 @@
 @endif
 </div>
 
+<input type="hidden" name="period" v-model="periodMonthYear">
 </div>
 
 
@@ -122,17 +123,15 @@
           </tr>
         </thead>
         <tbody>
-	@foreach($centre->students as $student)
-	<tr>
-	  <td><input name="selected_students[]" id="student_{{$student->id}}" value="{{$student->id}}"  type="checkbox"></td>
-          <td><a href="/students/{{$student->id}}">{{$student->name}}</a></td>
+	<tr v-for="student in students">
+	  <td><input name="selected_students[]" :id="studentID(student.id)" :value="student.id"  type="checkbox"></td>
+	  <td><a :href="studentLink(student.id)" v-text="student.name"></a></td>
+	  <td v-html="testmethod(student.fees)"></td>
 	</tr>
-	@endforeach
         </tbody>
        </table>
-	</div>
+        </div>
 
-<input type="hidden" name="period" v-model="periodMonthYear">
 
 </div>
 </form>
@@ -153,8 +152,41 @@ var app = new Vue({
 		amount: '',
 		periodmonths: '',
 		periodyear: '',
+		students: [],
+		centre:'{{$centre->id}}'
 	},	
+        mounted() {
+	console.log("before");
+	this.getStudents();
+		console.log("after");
+        },
 	methods : {
+	studentLink(id){
+		return "/students/" + id;
+	},
+	studentID(id){
+		return "students_" + id;
+	},
+	testmethod(fees){
+	//return fees;
+	let self = this;
+	if(this.periodMonthYear == '') return "";
+	else if(fees.filter(function(fee) { return fee.period == self.periodMonthYear; }).length > 0) return "<span class='tag is-rounded is-success'>PAID</span>";
+	else return "<span class='tag is-rounded is-danger'>UNPAID</span>";
+	//return "HEER" + a;
+	},
+	getStudents(){
+		axios.get('/getstudentsforfees', {
+    			params: {
+			      period: this.periodMonthYear,
+			      centre: this.centre,
+			    }
+			  })
+			.then(response => this.students = response.data)
+			.catch(function (error) {
+			    console.log(error);
+			  });
+	},
 	setamount(fee_amnt){
 		// ""..split(",").length gives u number of dashes plus 1
 		// which actually is the number of months 
@@ -163,8 +195,12 @@ var app = new Vue({
 	}
 	},
 	computed: {
+	    testComputed: function () {
+	      return "abc"; 
+	    },
 	    periodMonthYear: function () {
-	      return this.periodmonths + ' ' + this.periodyear ; 
+		if(this.periodmonths == '' || this.periodyear == '') return '';    
+		else return this.periodmonths + ' ' + this.periodyear ; 
 	    }
   }
 });

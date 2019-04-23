@@ -55,7 +55,7 @@
 		</p>
 		<hr>
 		</div>	
-		<table class="table is-bordered">
+		<table class="table is-bordered is-striped">
 		      <thead>
 		        <tr>
 		          <th>No</th>

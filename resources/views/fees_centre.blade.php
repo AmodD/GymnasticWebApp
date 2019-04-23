@@ -12,5 +12,6 @@
 
 @section('mainbody')
 	<h1 class="has-text-centered"><span style="color:white">PAY FEES & SEND RECEIPTS</h1>
-	@component('components.fee', [ 'centre' => $centre] ) @endcomponent
+	@component('components.fee', [ 'centre' => $centre ,
+					'students' => $students] ) @endcomponent
 @endsection

@@ -143,5 +143,17 @@ class StudentController extends Controller
 
     }
 
+    public function getStudentsForFees(Request $request)
+    {
+	    $period = $request->period;
+	    $centre_id = $request->centre;
+
+	    $students = Centre::with('students.fees')->find($centre_id)->students;
+	    //$students = Centre::with('students.fees')->find($centre_id)->fees->where('period',$period)->pluck('student');
+	 //   $students = Centre::with('students.fees')->where('centres.students.fees.period',$period)->get();
+
+	    return $students;
+
+    }
     
 }
