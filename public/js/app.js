@@ -37458,9 +37458,9 @@ var render = function() {
             _vm._v(" "),
             _c(
               "tbody",
-              _vm._l(_vm.fees, function(fee, key) {
+              _vm._l(_vm.fees, function(fee, key, index) {
                 return _c("tr", [
-                  _c("td", [_vm._v(_vm._s(key))]),
+                  _c("td", [_vm._v(_vm._s(index + 1))]),
                   _vm._v(" "),
                   _c("td", [_vm._v(_vm._s(fee.date))]),
                   _vm._v(" "),

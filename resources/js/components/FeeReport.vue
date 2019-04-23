@@ -68,8 +68,8 @@
 		        </tr>
 		      </thead>
 		      <tbody>
-			<tr v-for="(fee,key) in fees">
-			  <td>{{key}}</td> 	
+			<tr v-for="(fee,key,index) in fees">
+			  <td>{{index + 1}}</td> 	
 			  <td>{{fee.date}}</td> 	
 		          <td>{{fee.id}}</td>
 			  <td><a :href="studentLink(fee.student_id)">{{fee.student.name}}</a></td>
