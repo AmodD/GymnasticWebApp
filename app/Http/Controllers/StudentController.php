@@ -125,6 +125,8 @@ class StudentController extends Controller
      */
     public function destroy(Student $student)
     {
+	    $student->date_of_leaving = date("Y-m-d");
+	    $student->save();
 	$student->delete();
 
         return redirect('/students');
