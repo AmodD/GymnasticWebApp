@@ -17,7 +17,7 @@ class KalyaniAdmin
     {
 	    if (   ($request->user()) 
 		&& ($request->user()->id == 2) 
-	        && !($request->is('fees/*') || $request->is('dashboard') || $request->is('fees')  || $request->path() == '/' || $request->is('logout'))	
+	        && !($request->is('fees/*')  || $request->is('getstudentsforfees*') || $request->is('dashboard') || $request->is('fees')  || $request->path() == '/' || $request->is('logout'))	
 	       )
 	    {
 		      abort(403, 'Access denied');

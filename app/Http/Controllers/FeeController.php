@@ -172,7 +172,7 @@ class FeeController extends Controller
     {
 	//$centre = Centre::with('students.fees')->find($centre)->first();
 
-	$students = Centre::with('students.fees')->find($centre->id)->students;
+	    $students = Centre::with('students.fees')->find($centre->id)->students;
 	    
 	if(Auth::user()->id == 2 && $centre->id == 1) abort(403, 'Access denied');
 	else  return view ('fees_centre',compact('centre','students'));
