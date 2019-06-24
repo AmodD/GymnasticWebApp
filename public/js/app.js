@@ -2224,6 +2224,7 @@ __webpack_require__.r(__webpack_exports__);
     filteredList: function filteredList() {
       var _this = this;
 
+      //if(!Array.isArray(students)) return students ;
       return this.students.filter(function (student) {
         return student.name.toLowerCase().includes(_this.search.toLowerCase()) || student.parent_email.toLowerCase().includes(_this.search.toLowerCase()) || student.parent_mobile.toLowerCase().includes(_this.search.toLowerCase());
       });
@@ -2251,6 +2252,9 @@ __webpack_require__.r(__webpack_exports__);
         console.log(error);
       });
     }
+  },
+  mounted: function mounted() {
+    console.log('Students Component mounted.');
   }
 });
 

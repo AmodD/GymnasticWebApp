@@ -62,6 +62,8 @@
 	computed: {
 	    filteredList() {
 
+	      //if(!Array.isArray(students)) return students ;
+		
 	      return this.students.filter(student => {
         	return student.name.toLowerCase().includes(this.search.toLowerCase()) || 
 		       student.parent_email.toLowerCase().includes(this.search.toLowerCase()) ||
@@ -91,6 +93,9 @@
 			    console.log(error);
 			  });
 	}
-	}
+	},
+        mounted() {
+            console.log('Students Component mounted.')
+        }
     }
 </script>

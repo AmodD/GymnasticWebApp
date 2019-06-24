@@ -24,11 +24,16 @@ class StudentController extends Controller
      */
     public function index()
     {
-	$students = Student::with('batch.centre:id,name')->get();    
-	    //        return view ('students_index',compact('students'));
+	//if(request()->user()->id == 2) 
+	//{
+	//	$students = Student::with('batch.centre:id,name')->get()->where('batch.centre.id',2);    
+	//	$centres = Centre::where('id',2)->get();
+	//	$batches = Batch::where('centre_id',2)->get();    
+	//}
+		$students = Student::with('batch.centre:id,name')->get();    
+		$centres = Centre::all();    
+		$batches = Batch::all();    
 
-	$centres = Centre::all();    
-	$batches = Batch::all();    
         return view('students_index',["centres" => $centres , "batches" => $batches , "students" => $students]);
     }
 
@@ -56,12 +61,24 @@ class StudentController extends Controller
 		"batch_id" => 'required',
 		"name" => 'required|max:255',
 		"parent_email" => 'required|email',
-		"parent_mobile" => 'required|digits:10|numeric',
-		"date_of_birth" => 'required|date_format:"Y-m-d"',
-		"date_of_joining" => 'required|date_format:"Y-m-d"',
+	//	"parent_mobile" => 'required|digits:10|numeric',
+	//	"date_of_birth" => 'required|date_format:"Y-m-d"',
+	//	"date_of_joining" => 'required|date_format:"Y-m-d"',
 	]);
 
-	Student::create($request->all());
+	//Student::create($request->all());
+
+
+	$student = new Student();
+
+	$student->firstOrCreate([
+	   	"batch_id" => $request->batch_id,
+	   	"name" => $request->name,
+	   	"parent_email" => $request->parent_email,
+	   	"parent_mobile" => ($request->parent_mobile) ? $request->parent_mobile : "",
+	   	"date_of_birth" => ($request->date_of_birth) ? $request->date_of_birth : "",
+	   	"date_of_joining" => ($request->date_of_joining) ? $request->date_of_joining : ""
+	]);
 
 	return redirect("/students");
         

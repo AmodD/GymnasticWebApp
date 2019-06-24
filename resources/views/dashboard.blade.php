@@ -33,7 +33,8 @@
 		</span>
 		<hr>
 		<div class="field">
-      <a class="button is-light" href="centres/{{$centre->id}}/batches/create"><span class="icon"><i class="fas fa-plus"></i></span><span>Batch</span></a>
+    <a class="button is-link" href="centres/{{$centre->id}}/batches/create"><span class="icon"><i class="fas fa-plus"></i></span><span>Batch</span></a>
+    <a class="button is-info" href="students/create"><span class="icon"><i class="fas fa-plus"></i></span><span>Student</span></a>
 		</div>
 		@foreach($centre->batches->sortBy('time') as $batch)
 			<div class="box has-background-light">
