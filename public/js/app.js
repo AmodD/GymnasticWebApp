@@ -37499,44 +37499,7 @@ var render = function() {
                   _c("th", [_vm._v(" ₹ " + _vm._s(_vm.totalAmount))])
                 ]),
                 _vm._v(" "),
-                _c("tr", [
-                  _c("th"),
-                  _vm._v(" "),
-                  _c("th"),
-                  _vm._v(" "),
-                  _c("th"),
-                  _vm._v(" "),
-                  _c("th"),
-                  _vm._v(" "),
-                  _c("th"),
-                  _vm._v(" "),
-                  _c("th", [_vm._v("Sharing Percentage")]),
-                  _vm._v(" "),
-                  _c("th", [
-                    _c("input", {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.schoolPercent,
-                          expression: "schoolPercent"
-                        }
-                      ],
-                      staticClass: "input is-small is-narrow",
-                      staticStyle: { width: "50px" },
-                      attrs: { type: "text" },
-                      domProps: { value: _vm.schoolPercent },
-                      on: {
-                        input: function($event) {
-                          if ($event.target.composing) {
-                            return
-                          }
-                          _vm.schoolPercent = $event.target.value
-                        }
-                      }
-                    })
-                  ])
-                ]),
+                _vm._m(1),
                 _vm._v(" "),
                 _c("tr", [
                   _c("th"),
@@ -37549,7 +37512,46 @@ var render = function() {
                   _vm._v(" "),
                   _c("th"),
                   _vm._v(" "),
-                  _c("th", [_vm._v("To School")]),
+                  _c("th", [
+                    _vm._v("To School  "),
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.schoolPercent,
+                          expression: "schoolPercent"
+                        }
+                      ],
+                      staticClass: "input is-small is-narrow is-pulled-right",
+                      staticStyle: { width: "50px" },
+                      attrs: { id: "school-percent", type: "text" },
+                      domProps: { value: _vm.schoolPercent },
+                      on: {
+                        keyup: function($event) {
+                          if (
+                            !("button" in $event) &&
+                            _vm._k(
+                              $event.keyCode,
+                              "enter",
+                              13,
+                              $event.key,
+                              "Enter"
+                            )
+                          ) {
+                            return null
+                          }
+                          $event.target.blur()
+                        },
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.schoolPercent = $event.target.value
+                        }
+                      }
+                    })
+                  ]),
                   _vm._v(" "),
                   _c("th", [_vm._v(" ₹ " + _vm._s(_vm.schoolAmount))])
                 ]),
@@ -37565,7 +37567,14 @@ var render = function() {
                   _vm._v(" "),
                   _c("th"),
                   _vm._v(" "),
-                  _c("th", [_vm._v("To Coach")]),
+                  _c("th", [
+                    _vm._v("To Coach   "),
+                    _vm.schoolPercent
+                      ? _c("span", { staticClass: "is-pulled-right" }, [
+                          _vm._v(" " + _vm._s(100 - _vm.schoolPercent))
+                        ])
+                      : _vm._e()
+                  ]),
                   _vm._v(" "),
                   _c("th", [
                     _vm._v(" ₹ " + _vm._s(_vm.totalAmount - _vm.schoolAmount))
@@ -37601,6 +37610,26 @@ var staticRenderFns = [
         _vm._v(" "),
         _c("th", [_vm._v("Amount")])
       ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("tr", [
+      _c("th"),
+      _vm._v(" "),
+      _c("th"),
+      _vm._v(" "),
+      _c("th"),
+      _vm._v(" "),
+      _c("th"),
+      _vm._v(" "),
+      _c("th"),
+      _vm._v(" "),
+      _c("th", [_vm._v("Sharing Percentage")]),
+      _vm._v(" "),
+      _c("th", [_vm._v("Rupees")])
     ])
   }
 ]

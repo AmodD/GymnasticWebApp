@@ -88,7 +88,7 @@
 		          <th></th>
 		          <th></th>
 		          <th>Sharing Percentage</th>
-		          <th><input class="input is-small is-narrow" type="text" v-model="schoolPercent"  style="width: 50px;"></th>
+		          <th>Rupees</th>
 		        </tr>
 		        <tr>
 		          <th></th>
@@ -96,7 +96,7 @@
 		          <th></th>
 		          <th></th>
 		          <th></th>
-		          <th>To School</th>
+			  <th>To School  <input id="school-percent" class="input is-small is-narrow is-pulled-right" type="text" v-model="schoolPercent"  style="width: 50px;" v-on:keyup.enter="$event.target.blur()" > </th>
 		          <th> ₹ {{ schoolAmount }}</th>
 		        </tr>
 		        <tr>
@@ -105,7 +105,7 @@
 		          <th></th>
 		          <th></th>
 		          <th></th>
-		          <th>To Coach</th>
+			  <th>To Coach   <span v-if="schoolPercent" class="is-pulled-right"> {{ 100 - schoolPercent }}</span> </th>
 		          <th> ₹ {{ totalAmount - schoolAmount }}</th>
 		        </tr>
 		      </tbody>
@@ -155,7 +155,7 @@
 	},
 	computed: {
 	    schoolAmount: function () {
-		    return (this.totalAmount * this.schoolPercent ) / 100;
+		return (this.totalAmount * this.schoolPercent ) / 100;
 	    },
 	    totalAmount: function () {
 
