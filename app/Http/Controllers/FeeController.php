@@ -194,4 +194,10 @@ class FeeController extends Controller
 //	    $fees['amountTotal'] = $fees->sum('amount');	
 	    return $fees;
     }
+
+
+    public function receipt(Fee $fee)
+    {
+    	return new \App\Mail\Receipt($fee);
+    }	    
 }

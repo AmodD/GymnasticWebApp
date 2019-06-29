@@ -13,6 +13,7 @@ For the Period : <b>{{ $fee->period }}</b><br>
 
 Thanks,<br>
 {{ config('app.name') }}
+  		<button onClick="javascript: window.print();return false;">PRINT</button>
 @endcomponent
 
 

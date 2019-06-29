@@ -45,6 +45,7 @@ Route::get('/archives', function () {
 });
 Route::post('/archives','HomeController@archives');
 
+Route::get('/fees/receipt/{fee}','FeeController@receipt');
 Route::get('mailable', function () {
     $fee = App\Fee::find(50);
 
