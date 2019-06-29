@@ -43,6 +43,9 @@
 	</div>
   </p>
   &nbsp;&nbsp;<a class="button is-warning" v-on:click="generate()">Generate</a>
+  &nbsp;&nbsp;<button onClick="javascript: window.print();return false;" class="button is-info is-pulled-right">
+			<span class="icon"><i class="fas fa-print"></i></span>
+	      </button>
 </div>
 </div>
 <div class="columns">
@@ -110,6 +113,10 @@
 		        </tr>
 		      </tbody>
 		</table>
+
+		<button onClick="javascript: window.print();return false;" class="button is-info is-pulled-right">
+			<span class="icon"><i class="fas fa-print"></i></span>
+		</button>
 		</div>
 	</div>
 </div>

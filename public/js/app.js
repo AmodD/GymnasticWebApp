@@ -1995,6 +1995,13 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['centre'],
   data: function data() {
@@ -37442,7 +37449,9 @@ var render = function() {
             }
           },
           [_vm._v("Generate")]
-        )
+        ),
+        _vm._v("\n    "),
+        _vm._m(0)
       ])
     ]),
     _vm._v(" "),
@@ -37454,7 +37463,7 @@ var render = function() {
           _c("hr"),
           _vm._v(" "),
           _c("table", { staticClass: "table is-bordered is-striped" }, [
-            _vm._m(0),
+            _vm._m(1),
             _vm._v(" "),
             _c(
               "tbody",
@@ -37499,7 +37508,7 @@ var render = function() {
                   _c("th", [_vm._v(" ₹ " + _vm._s(_vm.totalAmount))])
                 ]),
                 _vm._v(" "),
-                _vm._m(1),
+                _vm._m(2),
                 _vm._v(" "),
                 _c("tr", [
                   _c("th"),
@@ -37583,13 +37592,32 @@ var render = function() {
               ],
               2
             )
-          ])
+          ]),
+          _vm._v(" "),
+          _vm._m(3)
         ])
       ])
     ])
   ])
 }
 var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "button",
+      {
+        staticClass: "button is-info is-pulled-right",
+        attrs: { onClick: "javascript: window.print();return false;" }
+      },
+      [
+        _c("span", { staticClass: "icon" }, [
+          _c("i", { staticClass: "fas fa-print" })
+        ])
+      ]
+    )
+  },
   function() {
     var _vm = this
     var _h = _vm.$createElement
@@ -37631,6 +37659,23 @@ var staticRenderFns = [
       _vm._v(" "),
       _c("th", [_vm._v("Rupees")])
     ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "button",
+      {
+        staticClass: "button is-info is-pulled-right",
+        attrs: { onClick: "javascript: window.print();return false;" }
+      },
+      [
+        _c("span", { staticClass: "icon" }, [
+          _c("i", { staticClass: "fas fa-print" })
+        ])
+      ]
+    )
   }
 ]
 render._withStripped = true
