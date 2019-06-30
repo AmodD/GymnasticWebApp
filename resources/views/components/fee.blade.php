@@ -116,14 +116,18 @@
 
 	<div class="column">
        <table class="table is-striped">
-        <thead>
-          <tr>
+	<thead>
+	  <tr>
+	    <th></th>	
+	    <th><input class="input is-warning" type="text" placeholder="Search..." v-model="search" style="width: 250px;"></th>
+	  </tr>
+          <tr v-if="!search">
             <th><input type="checkbox" onClick="toggle(this)"></th>
 	    <th>All</th>
           </tr>
         </thead>
         <tbody>
-	<tr v-for="student in students">
+	<tr v-for="student in filteredList">
 	  <td v-if="feePaidStatus(student.fees)"><input name="selected_students[]" :id="studentID(student.id)" :value="student.id"  type="checkbox" disabled></td>
 	  <td v-else><input name="selected_students[]" :id="studentID(student.id)" :value="student.id"  type="checkbox"></td>
 	  <td><a :href="studentLink(student.id)" v-text="student.name"></a></td>
@@ -154,7 +158,8 @@ var app = new Vue({
 		periodmonths: '',
 		periodyear: '',
 		students: [],
-		centre:'{{$centre->id}}'
+		centre:'{{$centre->id}}',
+		search: ''
 	},	
         mounted() {
 	console.log("before");
@@ -162,6 +167,8 @@ var app = new Vue({
 		console.log("after");
         },
 	methods : {
+	removeSelection(){
+	},
 	studentLink(id){
 		return "/students/" + id;
 	},
@@ -204,6 +211,16 @@ var app = new Vue({
 	computed: {
 	    testComputed: function () {
 	      return "abc"; 
+	    },
+	    filteredList() {
+
+	      //if(!Array.isArray(students)) return students ;
+		
+	      return this.students.filter(student => {
+        	return student.name.toLowerCase().includes(this.search.toLowerCase()) || 
+		       student.parent_email.toLowerCase().includes(this.search.toLowerCase()) ||
+		       student.parent_mobile.toLowerCase().includes(this.search.toLowerCase())
+	      })
 	    },
 	    periodMonthYear: function () {
 		if(this.periodmonths == '' || this.periodyear == '') return '';    
