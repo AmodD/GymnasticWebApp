@@ -117,6 +117,9 @@
 		<button onClick="javascript: window.print();return false;" class="button is-info is-pulled-right">
 			<span class="icon"><i class="fas fa-print"></i></span>
 		</button>
+		<button onClick="javascript: window.download();return false;" class="button is-info is-pulled-right">
+			<span class="icon"><i class="fas fa-download"></i></span>
+		</button>
 		</div>
 	</div>
 </div>

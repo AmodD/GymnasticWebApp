@@ -121,15 +121,15 @@
 	    <th></th>	
 	    <th><input class="input is-warning" type="text" placeholder="Search..." v-model="search" style="width: 250px;"></th>
 	  </tr>
-          <tr v-if="!search">
+          <tr v-if=false>
             <th><input type="checkbox" onClick="toggle(this)"></th>
 	    <th>All</th>
           </tr>
         </thead>
         <tbody>
-	<tr v-for="student in filteredList">
-	  <td v-if="feePaidStatus(student.fees)"><input name="selected_students[]" :id="studentID(student.id)" :value="student.id"  type="checkbox" disabled></td>
-	  <td v-else><input name="selected_students[]" :id="studentID(student.id)" :value="student.id"  type="checkbox"></td>
+	<tr v-for="(student,index) in filteredList" v-bind:key="student.id" >
+	  <td v-if="feePaidStatus(student.fees)"><input name="selected_students[]" :id="student.id" :value="student.id"  type="checkbox" :checked="getSelectedStudents(student)"  disabled></td>
+	  <td v-else><input name="selected_students[]"  v-on:click="setSelectedStudents(student)" :id="student.id" :value="student.id"  :checked="getSelectedStudents(student)"  type="checkbox"></td>
 	  <td><a :href="studentLink(student.id)" v-text="student.name"></a></td>
 	  <td v-html="testmethod(student.fees)"></td>
 	</tr>
@@ -158,6 +158,7 @@ var app = new Vue({
 		periodmonths: '',
 		periodyear: '',
 		students: [],
+		selectedStudents: [],
 		centre:'{{$centre->id}}',
 		search: ''
 	},	
@@ -200,6 +201,12 @@ var app = new Vue({
 			.catch(function (error) {
 			    console.log(error);
 			  });
+	},
+	setSelectedStudents(student){
+		this.selectedStudents.push(student);
+	},
+	getSelectedStudents(student){
+     		   return  _.findIndex(this.selectedStudents, function(s) { return s.id == student.id;}) >= 0;
 	},
 	setamount(fee_amnt){
 		// ""..split(",").length gives u number of dashes plus 1

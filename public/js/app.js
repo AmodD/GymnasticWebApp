@@ -2002,6 +2002,9 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 //
 //
 //
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['centre'],
   data: function data() {
@@ -37594,7 +37597,9 @@ var render = function() {
             )
           ]),
           _vm._v(" "),
-          _vm._m(3)
+          _vm._m(3),
+          _vm._v(" "),
+          _vm._m(4)
         ])
       ])
     ])
@@ -37673,6 +37678,23 @@ var staticRenderFns = [
       [
         _c("span", { staticClass: "icon" }, [
           _c("i", { staticClass: "fas fa-print" })
+        ])
+      ]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "button",
+      {
+        staticClass: "button is-info is-pulled-right",
+        attrs: { onClick: "javascript: window.download();return false;" }
+      },
+      [
+        _c("span", { staticClass: "icon" }, [
+          _c("i", { staticClass: "fas fa-download" })
         ])
       ]
     )
