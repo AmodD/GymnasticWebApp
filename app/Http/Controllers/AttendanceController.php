@@ -141,4 +141,24 @@ class AttendanceController extends Controller
             return view('attendances_today',compact('students','centreName','batchNameTime'));
     }
 
+    public function report(Request $request, Batch $batch){
+        
+	    $students = $batch->students;
+	    $attendances = $batch->attendances;
+
+            return view('attendances_report',compact('students','attendances','batch'));
+    }
+
+    public function dates(Request $request, Batch $batch){
+
+	   $year = $request->year; 
+	   $month = date_parse($request->month)['month'];
+	   $month = strlen($month) < 2 ? str_pad($month,2,'0',STR_PAD_LEFT) : $month ;
+	   $from = date($year.'-'.$month.'-01');
+	   $to = date($year.'-'.$month.'-31');
+
+//	   return $batch->attendances;
+//	   dd ($batch->attendances->whereBetween('date', ['2019-07-01','2019-07-31'])->toArray());
+	   return $batch->attendances->whereBetween('date', [$from, $to]);
+    }
 }

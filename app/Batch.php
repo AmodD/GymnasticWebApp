@@ -26,10 +26,14 @@ class Batch extends Model
 		
 		 }
 
-	public function students()	{ 
-
+	public function students(){ 
 		return $this->hasMany(Student::class);
-		 }
+	}
+
+    public function attendances()
+    {
+        return $this->hasManyThrough('App\Attendance', 'App\Student');
+    }
 	
 	public function getAllBatchesForCentre($centreId) {
 

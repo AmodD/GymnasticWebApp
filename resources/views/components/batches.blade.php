@@ -12,6 +12,7 @@
 				<p class="title is-6" id="centre">{{$batch->timeInAMPM()}}</p> 
 				<p><a href="/attendances/batches/{{$batch->id}}/students" class="button is-warning">Today's Attendance</a></p>
 				<p><a href="/attendances/batches/{{$batch->id}}" class="button is-link">Attendances</a></p>
+				<p><a href="/attendances/batches/{{$batch->id}}/report" class="button is-danger">Reports</a></p>
 			</div>
 		</div>
 	@endforeach				

@@ -26,6 +26,7 @@ Vue.component('message', require('./components/Message.vue').default);
 //Vue.component('student', require('./components/Student.vue').default);
 //Vue.component('fee', require('./components/fee.vue').default);
 Vue.component('fee-report', require('./components/FeeReport.vue').default);
+Vue.component('attendance-report', require('./components/AttendanceReport.vue').default);
 Vue.component('students', require('./components/Students.vue').default);
 Vue.component('archives', require('./components/Archives.vue').default);
 Vue.component('centre-students-fee', require('./components/CentreStudentsFee.vue').default);

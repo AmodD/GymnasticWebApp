@@ -1875,6 +1875,167 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/AttendanceReport.vue?vue&type=script&lang=js&":
+/*!***************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/AttendanceReport.vue?vue&type=script&lang=js& ***!
+  \***************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  props: ['students', 'batch', 'attendances'],
+  data: function data() {
+    return {
+      amount: '',
+      periodmonths: '',
+      periodyear: '',
+      //	attendances : [],
+      amountTotal: '',
+      counter: 0,
+      totalA: [],
+      schoolPercent: ''
+    };
+  },
+  methods: {
+    studentLink: function studentLink(id) {
+      return "/students/" + id;
+    },
+    generateReport: function generateReport() {},
+    getStudentPresentAbsent: function getStudentPresentAbsent(student, dayNumber) {
+      //const date = new Date(this.periodyear, this.periodmonths - 1, dayNumber);  // 2009-11-10
+      var date = this.periodyear + '-' + this.periodmonths.toString().padStart(2, '0') + '-' + dayNumber.toString().padStart(2, '0'); // 2009-11-10
+
+      var present = _.findIndex(this.attendances, function (a) {
+        return a.student_id == student.id && date == a.date && a.present == "1";
+      }) >= 0;
+      var absent = _.findIndex(this.attendances, function (a) {
+        return a.student_id == student.id && date == a.date && a.present == "0";
+      }) >= 0;
+      if (present) return '<span class="icon has-text-success "><i class="fas fa-check"></i></span>';else if (absent) return '<span class="icon has-text-danger "><i class="fas fa-times"></i></span>'; //else return '<span class="icon has-text-danger "><i class="fas fa-times"></i></span>';
+      else return "";
+    },
+    generate: function generate() {
+      var _this = this;
+
+      this.amountTotal = 0;
+      this.totalA = [];
+      axios.get('/attendances/batches/' + this.batch.id + '/dates' + '?year=' + this.periodyear + '&month=' + this.periodmonths).then(function (response) {
+        return _this.attendances = response.data;
+      }).catch(function (error) {
+        console.log(error);
+      });
+    },
+    getStudentAttendance: function getStudentAttendance(student, date) {
+      //return "ok";
+      var present = _.findIndex(this.attendances, function (a) {
+        return a.student_id == student.id && date == a.date.substring(8);
+      }) >= 0;
+      if (present) return '<span class="icon has-text-success "><i class="fas fa-check"></i></span>'; //else return '<span class="icon has-text-danger "><i class="fas fa-times"></i></span>';
+      else return "";
+    }
+  },
+  computed: {
+    attendance: function attendance(n) {
+      return "Yo" + n;
+    },
+    periodMonthYear: function periodMonthYear() {
+      var date = new Date(2019, this.periodmonths - 1, 10); // 2009-11-10
+
+      var month = date.toLocaleString('default', {
+        month: 'long'
+      }); //return this.periodmonths + ' ' + this.periodyear ;
+
+      if (this.periodyear) return month + ' ' + this.periodyear;else return "";
+    }
+  }
+});
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/CentreStudentsFee.vue?vue&type=script&lang=js&":
 /*!****************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/CentreStudentsFee.vue?vue&type=script&lang=js& ***!
@@ -37609,6 +37770,291 @@ render._withStripped = true
 
 /***/ }),
 
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/AttendanceReport.vue?vue&type=template&id=555dc530&":
+/*!*******************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/AttendanceReport.vue?vue&type=template&id=555dc530& ***!
+  \*******************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", [
+    _c("div", { staticClass: "field is-horizontal" }, [
+      _c("div", { staticClass: "field-body" }, [
+        _c("p", { staticClass: "control" }),
+        _c("div", { staticClass: "select" }, [
+          _c(
+            "select",
+            {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.periodmonths,
+                  expression: "periodmonths"
+                }
+              ],
+              attrs: { name: "periodmonths", required: "" },
+              on: {
+                change: function($event) {
+                  var $$selectedVal = Array.prototype.filter
+                    .call($event.target.options, function(o) {
+                      return o.selected
+                    })
+                    .map(function(o) {
+                      var val = "_value" in o ? o._value : o.value
+                      return val
+                    })
+                  _vm.periodmonths = $event.target.multiple
+                    ? $$selectedVal
+                    : $$selectedVal[0]
+                }
+              }
+            },
+            [
+              _c("option", { attrs: { value: "" } }, [_vm._v("Select Month")]),
+              _vm._v(" "),
+              _c("option", { attrs: { value: "01" } }, [_vm._v("January")]),
+              _vm._v(" "),
+              _c("option", { attrs: { value: "02" } }, [_vm._v("February")]),
+              _vm._v(" "),
+              _c("option", { attrs: { value: "03" } }, [_vm._v("March")]),
+              _vm._v(" "),
+              _c("option", { attrs: { value: "04" } }, [_vm._v("April")]),
+              _vm._v(" "),
+              _c("option", { attrs: { value: "05" } }, [_vm._v("May")]),
+              _vm._v(" "),
+              _c("option", { attrs: { value: "06" } }, [_vm._v("June")]),
+              _vm._v(" "),
+              _c("option", { attrs: { value: "07" } }, [_vm._v("July")]),
+              _vm._v(" "),
+              _c("option", { attrs: { value: "08" } }, [_vm._v("August")]),
+              _vm._v(" "),
+              _c("option", { attrs: { value: "09" } }, [_vm._v("September")]),
+              _vm._v(" "),
+              _c("option", { attrs: { value: "10" } }, [_vm._v("October")]),
+              _vm._v(" "),
+              _c("option", { attrs: { value: "11" } }, [_vm._v("November")]),
+              _vm._v(" "),
+              _c("option", { attrs: { value: "12" } }, [_vm._v("December")]),
+              _vm._v(" "),
+              false
+                ? undefined
+                : _vm._e(),
+              _vm._v(" "),
+              false
+                ? undefined
+                : _vm._e(),
+              _vm._v(" "),
+              false
+                ? undefined
+                : _vm._e(),
+              _vm._v(" "),
+              false
+                ? undefined
+                : _vm._e(),
+              _vm._v(" "),
+              false
+                ? undefined
+                : _vm._e(),
+              _vm._v(" "),
+              false
+                ? undefined
+                : _vm._e(),
+              _vm._v(" "),
+              false
+                ? undefined
+                : _vm._e(),
+              _vm._v(" "),
+              false
+                ? undefined
+                : _vm._e(),
+              _vm._v(" "),
+              false
+                ? undefined
+                : _vm._e(),
+              _vm._v(" "),
+              false
+                ? undefined
+                : _vm._e(),
+              _vm._v(" "),
+              false
+                ? undefined
+                : _vm._e(),
+              _vm._v(" "),
+              false
+                ? undefined
+                : _vm._e()
+            ]
+          )
+        ]),
+        _vm._v(" "),
+        _c("p"),
+        _vm._v(" "),
+        _c("p", { staticClass: "control" }),
+        _c("div", { staticClass: "select" }, [
+          _c(
+            "select",
+            {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.periodyear,
+                  expression: "periodyear"
+                }
+              ],
+              attrs: { name: "periodyear", required: "" },
+              on: {
+                change: function($event) {
+                  var $$selectedVal = Array.prototype.filter
+                    .call($event.target.options, function(o) {
+                      return o.selected
+                    })
+                    .map(function(o) {
+                      var val = "_value" in o ? o._value : o.value
+                      return val
+                    })
+                  _vm.periodyear = $event.target.multiple
+                    ? $$selectedVal
+                    : $$selectedVal[0]
+                }
+              }
+            },
+            [
+              _c("option", { attrs: { value: "" } }, [_vm._v("Select Year")]),
+              _vm._v(" "),
+              _c("option", { attrs: { value: "2018" } }, [_vm._v("2018")]),
+              _vm._v(" "),
+              _c("option", { attrs: { value: "2019" } }, [_vm._v("2019")]),
+              _vm._v(" "),
+              _c("option", { attrs: { value: "2020" } }, [_vm._v("2020")]),
+              _vm._v(" "),
+              _c("option", { attrs: { value: "2021" } }, [_vm._v("2021")])
+            ]
+          )
+        ]),
+        _vm._v(" "),
+        _c("p")
+      ])
+    ]),
+    _vm._v(" "),
+    _vm.periodmonths && _vm.periodyear
+      ? _c("div", { staticClass: "table-container has-text-centered" }, [
+          _c("h3", [
+            _vm._v("Attendance Report for " + _vm._s(_vm.periodMonthYear))
+          ]),
+          _vm._v(" "),
+          _c("hr"),
+          _vm._v(" "),
+          _c(
+            "table",
+            { staticClass: "table is-bordered is-striped is-narrow" },
+            [
+              _c("thead", [
+                _c(
+                  "tr",
+                  [
+                    _c("th", [_vm._v("Student Name")]),
+                    _vm._v(" "),
+                    _vm._l(31, function(n) {
+                      return _c("th", [_vm._v(_vm._s(n))])
+                    })
+                  ],
+                  2
+                )
+              ]),
+              _vm._v(" "),
+              _c(
+                "tbody",
+                _vm._l(_vm.students, function(student) {
+                  return _c(
+                    "tr",
+                    [
+                      _c("td", [
+                        _c(
+                          "a",
+                          { attrs: { href: _vm.studentLink(student.id) } },
+                          [_vm._v(_vm._s(student.name))]
+                        )
+                      ]),
+                      _vm._v(" "),
+                      _vm._l(31, function(n) {
+                        return _c("td", [
+                          _c("span", {
+                            domProps: {
+                              innerHTML: _vm._s(
+                                _vm.getStudentPresentAbsent(student, n)
+                              )
+                            }
+                          })
+                        ])
+                      })
+                    ],
+                    2
+                  )
+                }),
+                0
+              )
+            ]
+          ),
+          _vm._v(" "),
+          _vm._m(0),
+          _vm._v(" "),
+          _vm._m(1)
+        ])
+      : _vm._e()
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "button",
+      {
+        staticClass: "button is-info is-pulled-right",
+        attrs: { onClick: "javascript: window.print();return false;" }
+      },
+      [
+        _c("span", { staticClass: "icon" }, [
+          _c("i", { staticClass: "fas fa-print" })
+        ])
+      ]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "button",
+      {
+        staticClass: "button is-info is-pulled-right",
+        attrs: { onClick: "javascript: window.download();return false;" }
+      },
+      [
+        _c("span", { staticClass: "icon" }, [
+          _c("i", { staticClass: "fas fa-download" })
+        ])
+      ]
+    )
+  }
+]
+render._withStripped = true
+
+
+
+/***/ }),
+
 /***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/CentreStudentsFee.vue?vue&type=template&id=922fd4d0&":
 /*!********************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/CentreStudentsFee.vue?vue&type=template&id=922fd4d0& ***!
@@ -49877,6 +50323,7 @@ Vue.component('message', __webpack_require__(/*! ./components/Message.vue */ "./
 //Vue.component('fee', require('./components/fee.vue').default);
 
 Vue.component('fee-report', __webpack_require__(/*! ./components/FeeReport.vue */ "./resources/js/components/FeeReport.vue").default);
+Vue.component('attendance-report', __webpack_require__(/*! ./components/AttendanceReport.vue */ "./resources/js/components/AttendanceReport.vue").default);
 Vue.component('students', __webpack_require__(/*! ./components/Students.vue */ "./resources/js/components/Students.vue").default);
 Vue.component('archives', __webpack_require__(/*! ./components/Archives.vue */ "./resources/js/components/Archives.vue").default);
 Vue.component('centre-students-fee', __webpack_require__(/*! ./components/CentreStudentsFee.vue */ "./resources/js/components/CentreStudentsFee.vue").default);
@@ -50014,6 +50461,75 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Archives_vue_vue_type_template_id_924a2648___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Archives_vue_vue_type_template_id_924a2648___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/AttendanceReport.vue":
+/*!******************************************************!*\
+  !*** ./resources/js/components/AttendanceReport.vue ***!
+  \******************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _AttendanceReport_vue_vue_type_template_id_555dc530___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./AttendanceReport.vue?vue&type=template&id=555dc530& */ "./resources/js/components/AttendanceReport.vue?vue&type=template&id=555dc530&");
+/* harmony import */ var _AttendanceReport_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./AttendanceReport.vue?vue&type=script&lang=js& */ "./resources/js/components/AttendanceReport.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _AttendanceReport_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _AttendanceReport_vue_vue_type_template_id_555dc530___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _AttendanceReport_vue_vue_type_template_id_555dc530___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/AttendanceReport.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/AttendanceReport.vue?vue&type=script&lang=js&":
+/*!*******************************************************************************!*\
+  !*** ./resources/js/components/AttendanceReport.vue?vue&type=script&lang=js& ***!
+  \*******************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_AttendanceReport_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./AttendanceReport.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/AttendanceReport.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_AttendanceReport_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/AttendanceReport.vue?vue&type=template&id=555dc530&":
+/*!*************************************************************************************!*\
+  !*** ./resources/js/components/AttendanceReport.vue?vue&type=template&id=555dc530& ***!
+  \*************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_AttendanceReport_vue_vue_type_template_id_555dc530___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./AttendanceReport.vue?vue&type=template&id=555dc530& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/AttendanceReport.vue?vue&type=template&id=555dc530&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_AttendanceReport_vue_vue_type_template_id_555dc530___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_AttendanceReport_vue_vue_type_template_id_555dc530___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 

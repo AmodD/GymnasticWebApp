@@ -24,6 +24,8 @@ Route::post('/attendances','AttendanceController@store');
 Route::get('/attendances/batches','AttendanceController@batches');
 Route::get('/attendances/batches/{batch}','AttendanceController@batch');
 Route::get('/attendances/batches/{batch}/students','AttendanceController@students');
+Route::get('/attendances/batches/{batch}/report','AttendanceController@report');
+Route::get('/attendances/batches/{batch}/dates','AttendanceController@dates');
 
 Route::get('/fees/centres','FeeController@centres');
 Route::get('/fees/centres/{centre}','FeeController@centre');
