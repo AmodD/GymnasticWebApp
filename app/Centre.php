@@ -33,6 +33,6 @@ class Centre extends Model
     use \Staudenmeir\EloquentHasManyDeep\HasRelationships;
     public function fees()
     {
-        return $this->hasManyDeep('App\Fee', ['App\Batch','App\Student'])->withIntermediate('App\Student');;
+        return $this->hasManyDeep('App\Fee', ['App\Batch','App\Student'])->withIntermediate('App\Student')->withTrashed('students.deleted_at');;
     }    
 }
